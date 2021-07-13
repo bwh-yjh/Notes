@@ -1,9 +1,5 @@
 {
   "plugins": [
-     "splitter",
-     "fontsettings",
-     "-search",
-    "search-pro",
     "collapsible-menu",
     "anchor-navigation-ex",
     "splitter",
