@@ -1,13 +1,15 @@
 {
   "plugins": [
+     "splitter",
+     "fontsettings",
+     "-search",
+    "search-pro",
     "collapsible-menu",
     "anchor-navigation-ex",
-    "disqus"
+    "splitter",
   ],
-  "title": "发布业务逻辑梳理",
+  "title": "学习资料",
   "pluginsConfig": {
-      "disqus": {
-        "shortName": "gitbookuse"
-      }
+      
   }
 }
