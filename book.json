@@ -1,7 +1,7 @@
 {
-    "title":"GPRS C SDK DOC",
-    "description": "GPRS C SDK 文档",
-    "author":"Ai-Thinker",
+    "title":"Notes",
+    "description": "学习笔记",
+    "author":"B.W.H",
     "language": "zh-hans",
     "root":".",
     "plugins": [
@@ -12,6 +12,6 @@
         "back-to-top-button",
         "-lunr", 
         "-search", 
-        "search-pro",
-    ]
+        "search-pro"
+   ]
 }
