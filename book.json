@@ -2,10 +2,7 @@
   "plugins": [
     "collapsible-menu",
     "anchor-navigation-ex",
-    "splitter",
+    "splitter"
   ],
-  "title": "学习资料",
-  "pluginsConfig": {
-      
-  }
+  "title": "学习资料"
 }
