@@ -12,6 +12,7 @@
         "search-pro",
         "anchor-navigation-ex",
         "sharing",
+        "edit-link",
         "my-toolbar",
         "ga",
         "toggle-chapters"
@@ -23,6 +24,10 @@
         "search-pro": {
             "cutWordLib": "nodejieba",
             "defineWord" : ["Gitbook Use"]
+        },
+         "edit-link": {
+            "base": "https://github.com/bwh-yjh/Notes/blob/master",
+            "label": ""
         },
         "sharing": {
             "weibo": false,
