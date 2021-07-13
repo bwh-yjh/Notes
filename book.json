@@ -14,7 +14,6 @@
         "sharing",
         "edit-link",
         "my-toolbar",
-        "ga",
         "toggle-chapters"
     ],
     "pluginsConfig": {
@@ -74,8 +73,5 @@
                 "level3Icon": "fa fa-angle-double-right"
             }
         },
-        "ga": {
-            "token": "UA-119047820-1"
-        }
     }
 }
