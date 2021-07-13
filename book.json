@@ -1,10 +1,13 @@
 {
-    "title" : "Notes",
-    "description": "学习笔记",
-    "author":"B.W.H",
-    "plugins": [
-    "splitter",
-    "-search",
-    "toggle-chapters"
-    ],
+  "plugins": [
+    "collapsible-menu",
+    "anchor-navigation-ex",
+    "disqus"
+  ],
+  "title": "发布业务逻辑梳理",
+  "pluginsConfig": {
+      "disqus": {
+        "shortName": "gitbookuse"
+      }
+  }
 }
