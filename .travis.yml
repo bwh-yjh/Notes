@@ -40,5 +40,5 @@ deploy:
   name: $GIT_NAME
   email: $GIT_EMAIL
   on:
-  branch: master
+    branch: master
  
