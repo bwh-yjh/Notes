@@ -12,18 +12,18 @@
         "back-to-top-button",
         "-lunr", 
         "-search", 
-        "search-pro"
+        "search-pro",
         "edit-link",
         "github"
    ],
     "pluginsConfig": {
-    "edit-link": {
-      "base": "https://github.com/bwh-yjh/Notes/blob/master",
-      "label": "Edit This Page"
-    },
-    "github": {
-      "url": "https://github.com/bwh-yjh/Notes/"
-    }
+        "edit-link": {
+          "base" : "https://github.com/bwh-yjh/Notes/blob/master",
+          "label" : "Edit This Page"
+        },
+        "github": {
+          "url": "https://github.com/bwh-yjh/Notes/"
+        }
   }
 
 }
