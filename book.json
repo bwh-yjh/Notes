@@ -15,7 +15,8 @@
         "-search", 
         "search-pro",
         "edit-link",
-        "github"
+        "github",
+        "hide-element"
    ],
     "pluginsConfig": {
         "edit-link": {
@@ -24,6 +25,9 @@
         },
         "github": {
           "url": "https://github.com/bwh-yjh/Notes/"
+        },
+         "hide-element": {
+            "elements": [".gitbook-link"]	
         }
   }
 
