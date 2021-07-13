@@ -5,73 +5,13 @@
     "language": "zh-hans",
     "root":".",
     "plugins": [
-        "github",
-        "splitter",
-        "fontsettings",
-        "-search",
+        "code",
+        "copy-code-button",
+        "expandable-chapters",
+        "expandable-chapters-small",
+        "back-to-top-button",
+        "-lunr", 
+        "-search", 
         "search-pro",
-        "anchor-navigation-ex",
-        "sharing",
-        "edit-link",
-        "my-toolbar",
-        "toggle-chapters"
-    ],
-    "pluginsConfig": {
-        "github": {
-            "url": "https://github.com/bwh-yjh/Notes"
-        },
-        "search-pro": {
-            "cutWordLib": "nodejieba",
-            "defineWord" : ["Gitbook Use"]
-        },
-         "edit-link": {
-            "base": "https://github.com/bwh-yjh/Notes/blob/master",
-            "label": ""
-        },
-        "sharing": {
-            "weibo": false,
-            "facebook": false,
-            "twitter": false,
-            "google": false,
-            "instapaper": false,
-            "vk": false,
-            "all": [
-                "weibo",
-                "facebook",
-                "twitter",
-                "google",
-                "instapaper",
-                "vk"
-            ]
-        },
-        "my-toolbar": {
-            "buttons": [
-                {
-                    "label": "English",
-                    "text":"English",
-                    "icon": "fa fa-language",
-                    "position": "left",
-                    "target": "_self",
-                    "url": "https://github.com/bwh-yjh/Notes/"
-                }
-            ]
-        },
-        "fontsettings": {
-            "theme": "white",
-            "family": "sans", 
-            "size": 2 
-        },
-        "anchor-navigation-ex": {
-            "associatedWithSummary": false,
-            "showLevel": true,
-            "multipleH1": false,
-            "mode": "float",
-            "pageTop": {
-                "showLevelIcon": true,
-                "level1Icon": "fa fa-angle-double-right",
-                "level2Icon": "fa fa-angle-double-right",
-                "level3Icon": "fa fa-angle-double-right"
-            }
-        },
-    }
+    ]
 }
