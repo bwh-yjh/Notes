@@ -1,7 +1,57 @@
     {
         "title" : "Notes",
-        "theme-default": {
-            "showLevel": true
+        "description": "学习笔记",
+        "author":"B.W.H",
+        "plugins": [
+        "github",
+        "splitter",
+        "fontsettings",
+        "-search",
+        "search-pro",
+        "anchor-navigation-ex",
+        "sharing",
+        "toggle-chapters"
+        ],
+        "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/bwh-yjh/Notes"
         },
-        "plugins": ["summary"]
+        "search-pro": {
+            "cutWordLib": "nodejieba",
+            "defineWord" : ["Gitbook Use"]
+        },
+        "sharing": {
+            "weibo": false,
+            "facebook": false,
+            "twitter": false,
+            "google": false,
+            "instapaper": false,
+            "vk": false,
+            "all": [
+                "weibo",
+                "facebook",
+                "twitter",
+                "google",
+                "instapaper",
+                "vk"
+            ]
+        },
+        "fontsettings": {
+            "theme": "white",
+            "family": "sans", 
+            "size": 2 
+        },
+        "anchor-navigation-ex": {
+            "associatedWithSummary": false,
+            "showLevel": true,
+            "multipleH1": false,
+            "mode": "float",
+            "pageTop": {
+                "showLevelIcon": true,
+                "level1Icon": "fa fa-angle-double-right",
+                "level2Icon": "fa fa-angle-double-right",
+                "level3Icon": "fa fa-angle-double-right"
+            }
+        },
+    }
     }
