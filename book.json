@@ -14,20 +14,11 @@
         "-lunr", 
         "-search", 
         "search-pro",
-        "edit-link",
-        "github",
         "hide-element"
    ],
     "pluginsConfig": {
-        "edit-link": {
-          "base" : "https://github.com/bwh-yjh/Notes/blob/master",
-          "label" : "Edit This Page"
-        },
-        "github": {
-          "url": "https://github.com/bwh-yjh/Notes/"
-        },
          "hide-element": {
-            "elements": [".gitbook-link"]	
+            "elements": [".gitbook-link",".pull-right"]	
         },
         "page-treeview": {
             "copyright": "",
