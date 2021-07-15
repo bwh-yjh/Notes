@@ -5,7 +5,7 @@
     "language": "zh-hans",
     "root":".",
     "plugins": [
-        "toc",
+        "simple-page-toc",
         "code",
         "copy-code-button",
         "expandable-chapters",
@@ -28,6 +28,10 @@
         },
          "hide-element": {
             "elements": [".gitbook-link"]	
+        },
+        "simple-page-toc": {
+            "maxDepth": 3,
+            "skipFirstH1": true
         }
   }
 
