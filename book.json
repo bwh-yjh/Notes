@@ -5,6 +5,7 @@
     "language": "zh-hans",
     "root":".",
     "plugins": [
+        "toc",
         "code",
         "copy-code-button",
         "expandable-chapters",
