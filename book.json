@@ -5,6 +5,7 @@
     "language": "zh-hans",
     "root":".",
     "plugins": [
+        "emphasize",
         "page-treeview",
         "code",
         "copy-code-button",
