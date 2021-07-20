@@ -9,12 +9,11 @@
         "page-treeview",
         "code",
         "copy-code-button",
-        "expandable-chapters",
-        "expandable-chapters-small",
         "back-to-top-button",
         "-lunr", 
         "-search", 
         "search-pro",
+        "chapter-fold",
         "hide-element"
    ],
     "pluginsConfig": {
