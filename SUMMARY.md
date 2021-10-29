@@ -10,6 +10,7 @@
 
 ## Java学习
 - [并发编程](/学习资料/Java/juc并发编程/并发编程.md)
+- [Spring注解驱动](/学习资料/Java/Spring注解驱动/Spring注解驱动.md)
 
 ## 拓展知识
 - [管程深入理解](/学习资料/Java/juc并发编程/拓展/管程.md)
