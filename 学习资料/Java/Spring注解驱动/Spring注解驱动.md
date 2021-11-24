@@ -209,3 +209,117 @@ public class ColorFactoryBean implements FactoryBean<Color> {
 
 ## 二、生命周期
 
+```java
+bean的生命周期
+	bean创建---初始化---销毁的过程
+容器管理bean的生命周期：
+	我们可以自定义初始化和销毁方法：容器在bean进行到当前生命周期的时候来调用我们自定义的初始化和销毁方法
+构造（对象创建）
+	单实例：在容器启动的时候创建对象
+    多实例：在每次获取的时候创建对象
+BeanPostProcessor.postProcessBeforeInitialization
+初始化：
+	对象创建完成，并赋值好，调用初始化方法...
+BeanPostProcessor.postProcessAfterInitialization
+遍历得到容器中所有的BeanPostProcessors：挨个执行beforeInitialization,一但返回null，跳出for循环，不会执行后面的BeanPostProcessor.postProcessBeforeInitialization(result, beanName);
+this.populateBean(beanName, mbd, instanceWrapper);给bean进行属性赋值
+this.initializeBean{
+ 	this.applyBeanPostProcessorsBeforeInitialization(bean, beanName);
+ 	this.invokeInitMethods(beanName, wrappedBean, mbd);执行初始化
+ 	this.applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
+ }
+ 销毁：
+      单实例：容器关闭的时候关闭
+      多实例：容器不会管理这个bean；容器不会调用销毁方法
+ 1）、指定初始化和销毁方法
+      指定init-method="" destroy-method=""
+ 2)、通过让Bean实现InitializingBean（定义初始化逻辑）、DisposableBean（定义销毁逻辑）
+ 3)、可以使用JSR250：
+ @PostConstruct:在bean创建完成时完成并且属性赋值完成；来执行初始化方法
+ @PreDestroy：在容器销毁bean之前通知我们进行清理工作
+ 4）、BeanPostProcessor【interface】：bean的后置处理器
+      在bean初始化前后进行一些处理工作：
+      postProcessBeforeInitialization：在初始化之前工作
+      postProcessAfterInitialization：在初始化之后工作
+
+  Spring底层对BeanPostProcessor的使用:
+      bean赋值，注入其他组件，@Autowired，生命周期注解功能，@Async，xxx BeanPoseProcessor;
+ 
+```
+
+## 三、AOP
+
+### 1.AOP简介
+
+AOP：【动态代理】
+
+​	指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式。
+
+①、导入aop模块；Spring AOP; （spring-aspects）
+
+②、定义一个业务逻辑类 (MathCalculator)；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行结束、方法出现异常、xxx）
+
+```java
+public class MathCalculator {
+
+    public int div(int i,int j){
+        return i/j;
+    }
+
+}
+```
+
+③、定义一个日志切面类（LogAspects）：切面类里面的方法需要动态感知MathCalculator.div运行到哪里然后执行。
+
+* 通知方法：
+  * 前置通知（@Before）：logStart：在目标方法（div）运行之前运行
+  * 后置通知（@After）：logEnd：在目标方法（div）运行结束之后运行
+  * 返回通知（@AfterReturning）：logReturn：在目标方法（div）正常返回之后运行
+  * 异常通知（@AfterThrowing）：logException：在目标方法（div）出现异常以后运行
+  * 环绕通知（@Around）：动态代理：手动推进目标方法运行（joinPoint.procced()）
+
+```java
+@Aspect
+public class LogAspects {
+
+    public void logStart(){
+        System.out.println("除法运行。。。。参数列表是：{}");
+    }
+
+    public void logEnd(){
+        System.out.println("除法结束。。。。");
+    }
+
+    public void logReturn(){
+        System.out.println("除法正常返回。。。。运行结果：{}");
+    }
+
+    public void logException(){
+        System.out.println("除法异常。。。。异常信息：{}");
+    }
+
+}
+```
+
+④、给切面类的目标方法标注方法何时何地运行（通知注解）
+
+⑤、将切面类和业务逻辑类（目标方法所在类）都放入到容器中
+
+⑥、必须告诉Spring哪个类是切面类（给切面类上加一个注解：@Aspect）
+
+​	@Aspect：告诉Spring当前类是一个切面类
+
+⑦、给配置类中加@EnableAspectJAutoProxy【开启基于注解的aop模式】
+
+​	在Spring中很多的@Enablexxx;
+
+
+
+**三步：**
+
+​	**1）、将业务逻辑组件和切面类都加入到容器中；告诉Spring哪个是切面类（@Aspect）**
+
+​	**2）、在切面类上的每一个通知方法上标注通知注解，告诉Spring何时何地运行（切入点表达式）**
+
+​	**3）、开启基于注解的aop模式@EnableAspectJAutoProxy**
+
