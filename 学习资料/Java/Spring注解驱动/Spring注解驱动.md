@@ -323,3 +323,27 @@ public class LogAspects {
 
 ​	**3）、开启基于注解的aop模式@EnableAspectJAutoProxy**
 
+2.
+
+### 2.AOP原理【看给容器中注册了什么组件，这个组件什么时候工作，这个组件的功能是什么？】
+
+**@EnableAspectJAutoProxy**
+
+* @Import({AspectJAutoProxyRegistrar.class})
+
+  * 利用AspectJAutoProxyRegistrar自定义给容器中注册bean:
+
+    internalAutoProxyCreator=AnnotationAwareAspectJAutoProxyCreator
+
+    给容器中注册一个AnnotationAwareAspectJAutoProxyCreator;
+
+
+
+* AnnotationAwareAspectJAutoProxyCreator
+
+
+
+
+
+
+
