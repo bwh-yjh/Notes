@@ -30,8 +30,7 @@
 
 * [JVM上篇：内存与垃圾回收篇](/学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇.md)
   * [1.JVM与Java体系结构](/学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/JVM与Java体系结构.md)
-* [2.类加载子系统](/学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/JVM与Java体系结构.md)
-  
+  * [2.类加载子系统](/学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/类加载子系统.md)
 * [JVM中篇：字节码与类加载篇](/学习资料/Java/JVM（JAVA虚拟机）/JVM中篇：字节码与类加载篇.md)
 
 * [JVM下篇：性能监控与调优篇](/学习资料/Java/JVM（JAVA虚拟机）/JVM下篇：性能监控与调优篇.md)
