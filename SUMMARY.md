@@ -48,6 +48,7 @@
   * [7.方法区](/学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/方法区.md)
   * [8.对象实例化及直接内存](/学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/对象实例化及直接内存.md)
   * [9.执行引擎](/学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/执行引擎.md)
+  * [10.StringTable](/学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/StringTable.md)
 * [JVM中篇：字节码与类加载篇](/学习资料/Java/JVM（JAVA虚拟机）/JVM中篇：字节码与类加载篇.md)
 
 * [JVM下篇：性能监控与调优篇](/学习资料/Java/JVM（JAVA虚拟机）/JVM下篇：性能监控与调优篇.md)
