@@ -1,0 +1,1362 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.类加载子系统 · Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="B.W.H">
+        
+        
+    
+    <link rel="stylesheet" href="../../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="运行时数据区及程序计数器.html" />
+    
+    
+    <link rel="prev" href="JVM与Java体系结构.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">学习资料</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../../">
+            
+                <a href="../../../../">
+            
+                    
+                    资料
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../../Java.html">
+            
+                <a href="../../../Java.html">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1" data-path="../../juc并发编程/并发编程.html">
+            
+                <a href="../../juc并发编程/并发编程.html">
+            
+                    
+                    并发编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.1.2" data-path="../../Spring注解驱动/Spring注解驱动.html">
+            
+                <a href="../../Spring注解驱动/Spring注解驱动.html">
+            
+                    
+                    Spring注解驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../../../数据库.html">
+            
+                <a href="../../../数据库.html">
+            
+                    
+                    数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../../">
+            
+                <a href="../../../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Java基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../juc并发编程/并发编程.html">
+            
+                <a href="../../juc并发编程/并发编程.html">
+            
+                    
+                    并发编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../Spring注解驱动/Spring注解驱动.html">
+            
+                <a href="../../Spring注解驱动/Spring注解驱动.html">
+            
+                    
+                    Spring注解驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../juc并发编程/拓展/管程.html">
+            
+                <a href="../../juc并发编程/拓展/管程.html">
+            
+                    
+                    管程深入理解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">设计模式</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../设计模式/设计模式.html">
+            
+                <a href="../../设计模式/设计模式.html">
+            
+                    
+                    设计模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../设计模式/创建型模式/创建型模式.html">
+            
+                <a href="../../设计模式/创建型模式/创建型模式.html">
+            
+                    
+                    创建型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="../../设计模式/创建型模式/单例模式.html">
+            
+                <a href="../../设计模式/创建型模式/单例模式.html">
+            
+                    
+                    单例模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="../../设计模式/创建型模式/工厂模式.html">
+            
+                <a href="../../设计模式/创建型模式/工厂模式.html">
+            
+                    
+                    工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3" data-path="../../设计模式/创建型模式/抽象工厂模式.html">
+            
+                <a href="../../设计模式/创建型模式/抽象工厂模式.html">
+            
+                    
+                    抽象工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.4" data-path="../../设计模式/创建型模式/建造者模式.html">
+            
+                <a href="../../设计模式/创建型模式/建造者模式.html">
+            
+                    
+                    建造者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.5" data-path="../../设计模式/创建型模式/原型模式.html">
+            
+                <a href="../../设计模式/创建型模式/原型模式.html">
+            
+                    
+                    原型模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../设计模式/结构型模式/结构型模式.html">
+            
+                <a href="../../设计模式/结构型模式/结构型模式.html">
+            
+                    
+                    结构型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.2.1" data-path="../../设计模式/结构型模式/外观模式.html">
+            
+                <a href="../../设计模式/结构型模式/外观模式.html">
+            
+                    
+                    外观模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.2" data-path="../../设计模式/结构型模式/装饰器模式.html">
+            
+                <a href="../../设计模式/结构型模式/装饰器模式.html">
+            
+                    
+                    装饰器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.3" data-path="../../设计模式/结构型模式/组合模式.html">
+            
+                <a href="../../设计模式/结构型模式/组合模式.html">
+            
+                    
+                    组合模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.4" data-path="../../设计模式/结构型模式/享元模式.html">
+            
+                <a href="../../设计模式/结构型模式/享元模式.html">
+            
+                    
+                    享元模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.5" data-path="../../设计模式/结构型模式/代理模式.html">
+            
+                <a href="../../设计模式/结构型模式/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.6" data-path="../../设计模式/结构型模式/适配器模式.html">
+            
+                <a href="../../设计模式/结构型模式/适配器模式.html">
+            
+                    
+                    适配器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.7" data-path="../../设计模式/结构型模式/桥接模式.html">
+            
+                <a href="../../设计模式/结构型模式/桥接模式.html">
+            
+                    
+                    桥接模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../设计模式/行为型模式/行为型模式.html">
+            
+                <a href="../../设计模式/行为型模式/行为型模式.html">
+            
+                    
+                    行为型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.3.1" data-path="../../设计模式/行为型模式/策略模式.html">
+            
+                <a href="../../设计模式/行为型模式/策略模式.html">
+            
+                    
+                    策略模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.2" data-path="../../设计模式/行为型模式/中介者模式.html">
+            
+                <a href="../../设计模式/行为型模式/中介者模式.html">
+            
+                    
+                    中介者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.3" data-path="../../设计模式/行为型模式/责任链模式.html">
+            
+                <a href="../../设计模式/行为型模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.4" data-path="../../设计模式/行为型模式/观察者模式.html">
+            
+                <a href="../../设计模式/行为型模式/观察者模式.html">
+            
+                    
+                    观察者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.5" data-path="../../设计模式/行为型模式/迭代器模式.html">
+            
+                <a href="../../设计模式/行为型模式/迭代器模式.html">
+            
+                    
+                    迭代器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.6" data-path="../../设计模式/行为型模式/访问者模式.html">
+            
+                <a href="../../设计模式/行为型模式/访问者模式.html">
+            
+                    
+                    访问者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JVM（JAVA虚拟机）</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../JVM上篇：内存与垃圾回收篇.html">
+            
+                <a href="../JVM上篇：内存与垃圾回收篇.html">
+            
+                    
+                    JVM上篇：内存与垃圾回收篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="JVM与Java体系结构.html">
+            
+                <a href="JVM与Java体系结构.html">
+            
+                    
+                    1.JVM与Java体系结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.2" data-path="类加载子系统.html">
+            
+                <a href="类加载子系统.html">
+            
+                    
+                    2.类加载子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="运行时数据区及程序计数器.html">
+            
+                <a href="运行时数据区及程序计数器.html">
+            
+                    
+                    3.运行时数据区及程序计数器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="虚拟机栈.html">
+            
+                <a href="虚拟机栈.html">
+            
+                    
+                    4.虚拟机栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="本地方法接口和本地方法栈.html">
+            
+                <a href="本地方法接口和本地方法栈.html">
+            
+                    
+                    5.本地方法接口和本地方法栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="堆.html">
+            
+                <a href="堆.html">
+            
+                    
+                    6.堆
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="方法区.html">
+            
+                <a href="方法区.html">
+            
+                    
+                    7.方法区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="对象实例化及直接内存.html">
+            
+                <a href="对象实例化及直接内存.html">
+            
+                    
+                    8.对象实例化及直接内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="执行引擎.html">
+            
+                <a href="执行引擎.html">
+            
+                    
+                    9.执行引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.10" data-path="StringTable.html">
+            
+                <a href="StringTable.html">
+            
+                    
+                    10.StringTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.11" data-path="垃圾回收概述及算法.html">
+            
+                <a href="垃圾回收概述及算法.html">
+            
+                    
+                    11.垃圾回收概述及算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.12" data-path="垃圾回收相关概念.html">
+            
+                <a href="垃圾回收相关概念.html">
+            
+                    
+                    12.垃圾回收相关概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.13" data-path="垃圾回收器.html">
+            
+                <a href="垃圾回收器.html">
+            
+                    
+                    13.垃圾回收器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../JVM中篇：字节码与类加载篇.html">
+            
+                <a href="../JVM中篇：字节码与类加载篇.html">
+            
+                    
+                    JVM中篇：字节码与类加载篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../JVM下篇：性能监控与调优篇.html">
+            
+                <a href="../JVM下篇：性能监控与调优篇.html">
+            
+                    
+                    JVM下篇：性能监控与调优篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linux</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../../Linux/CentOS7安装.html">
+            
+                <a href="../../../Linux/CentOS7安装.html">
+            
+                    
+                    CentOS7安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Maven</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../../Maven/Maven插件.html">
+            
+                <a href="../../../Maven/Maven插件.html">
+            
+                    
+                    Maven插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">扩展知识</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../../扩展知识/UML类图/UML类图.html">
+            
+                <a href="../../../扩展知识/UML类图/UML类图.html">
+            
+                    
+                    UML类图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../../扩展知识/JVM分层编译/JVM分层编译.html">
+            
+                <a href="../../../扩展知识/JVM分层编译/JVM分层编译.html">
+            
+                    
+                    JVM分层编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../../扩展知识/集合类容器类/集合类容器类.html">
+            
+                <a href="../../../扩展知识/集合类容器类/集合类容器类.html">
+            
+                    
+                    集合类容器类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">旅行攻略</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../../../旅行攻略/昆明-大理-丽江.html">
+            
+                <a href="../../../旅行攻略/昆明-大理-丽江.html">
+            
+                    
+                    昆明-大理-丽江
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../../.." >2.类加载子系统</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><ul>
+<li><div><a href="#2-&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;">2. &#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#21-&#x5185;&#x5B58;&#x7ED3;&#x6784;&#x6982;&#x8FF0;">2.1. &#x5185;&#x5B58;&#x7ED3;&#x6784;&#x6982;&#x8FF0;</a><i></i></div></li>
+<li><div><a href="#22-&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x4E0E;&#x7C7B;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;">2.2. &#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x4E0E;&#x7C7B;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#x52A0;&#x8F7D;&#x9636;&#x6BB5;">&#x52A0;&#x8F7D;&#x9636;&#x6BB5;</a><i></i></div></li>
+<li><div><a href="#&#x94FE;&#x63A5;&#x9636;&#x6BB5;">&#x94FE;&#x63A5;&#x9636;&#x6BB5;</a><i></i></div></li>
+<li><div><a href="#&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;">&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#23-&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5206;&#x7C7B;">2.3. &#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5206;&#x7C7B;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#231-&#x865A;&#x62DF;&#x673A;&#x81EA;&#x5E26;&#x7684;&#x52A0;&#x8F7D;&#x5668;">2.3.1. &#x865A;&#x62DF;&#x673A;&#x81EA;&#x5E26;&#x7684;&#x52A0;&#x8F7D;&#x5668;</a><i></i></div></li>
+<li><div><a href="#232-&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;">2.3.2. &#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#24-classloader&#x7684;&#x4F7F;&#x7528;&#x8BF4;&#x660E;">2.4. ClassLoader&#x7684;&#x4F7F;&#x7528;&#x8BF4;&#x660E;</a><i></i></div></li>
+<li><div><a href="#25-&#x53CC;&#x4EB2;&#x59D4;&#x6D3E;&#x673A;&#x5236;">2.5. &#x53CC;&#x4EB2;&#x59D4;&#x6D3E;&#x673A;&#x5236;</a><i></i></div></li>
+<li><div><a href="#26-&#x5176;&#x4ED6;">2.6. &#x5176;&#x4ED6;</a><i></i></div></li>
+</ul></li>
+</ul>
+</div>
+
+<h1 id="2-&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;">2. &#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;</h1>
+<h2 id="21-&#x5185;&#x5B58;&#x7ED3;&#x6784;&#x6982;&#x8FF0;">2.1. &#x5185;&#x5B58;&#x7ED3;&#x6784;&#x6982;&#x8FF0;</h2>
+<ul>
+<li><p>Class&#x6587;&#x4EF6;</p>
+</li>
+<li><p>&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;</p>
+</li>
+<li><p>&#x8FD0;&#x884C;&#x65F6;&#x6570;&#x636E;&#x533A; </p>
+</li>
+<li><ul>
+<li>&#x65B9;&#x6CD5;&#x533A;</li>
+</ul>
+</li>
+<li><ul>
+<li>&#x5806;</li>
+</ul>
+</li>
+<li><ul>
+<li>&#x7A0B;&#x5E8F;&#x8BA1;&#x6570;&#x5668;</li>
+</ul>
+</li>
+<li><ul>
+<li>&#x865A;&#x62DF;&#x673A;&#x6808;</li>
+</ul>
+</li>
+<li><ul>
+<li>&#x672C;&#x5730;&#x65B9;&#x6CD5;&#x6808;</li>
+</ul>
+</li>
+<li><p>&#x6267;&#x884C;&#x5F15;&#x64CE;</p>
+</li>
+<li><p>&#x672C;&#x5730;&#x65B9;&#x6CD5;&#x63A5;&#x53E3;</p>
+</li>
+<li><p>&#x672C;&#x5730;&#x65B9;&#x6CD5;&#x5E93;</p>
+</li>
+</ul>
+<p><img src="&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;.assets/image-20220212185024200.png" alt="image-20220212185024200"></p>
+<p><img src="&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;.assets/image-20220212185036639.png" alt="image-20220212185036639"></p>
+<p>&#x5982;&#x679C;&#x81EA;&#x5DF1;&#x60F3;&#x624B;&#x5199;&#x4E00;&#x4E2A;Java&#x865A;&#x62DF;&#x673A;&#x7684;&#x8BDD;&#xFF0C;&#x4E3B;&#x8981;&#x8003;&#x8651;&#x54EA;&#x4E9B;&#x7ED3;&#x6784;&#x5462;&#xFF1F;</p>
+<ul>
+<li><p>&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</p>
+</li>
+<li><p>&#x6267;&#x884C;&#x5F15;&#x64CE;</p>
+</li>
+</ul>
+<h2 id="22-&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x4E0E;&#x7C7B;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;">2.2. &#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x4E0E;&#x7C7B;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;</h2>
+<p><strong>&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B50;&#x7CFB;&#x7EDF;&#x4F5C;&#x7528;</strong></p>
+<p><img src="&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;.assets/image-20220212185100138.png" alt="image-20220212185100138"></p>
+<ul>
+<li><p>&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B50;&#x7CFB;&#x7EDF;&#x8D1F;&#x8D23;&#x4ECE;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x6216;&#x8005;&#x7F51;&#x7EDC;&#x4E2D;&#x52A0;&#x8F7D;Class&#x6587;&#x4EF6;&#xFF0C;class&#x6587;&#x4EF6;&#x5728;&#x6587;&#x4EF6;&#x5F00;&#x5934;&#x6709;&#x7279;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x6807;&#x8BC6;&#x3002;</p>
+</li>
+<li><p>ClassLoader&#x53EA;&#x8D1F;&#x8D23;class&#x6587;&#x4EF6;&#x7684;&#x52A0;&#x8F7D;&#xFF0C;&#x81F3;&#x4E8E;&#x5B83;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#xFF0C;&#x5219;&#x7531;Execution Engine&#x51B3;&#x5B9A;&#x3002;</p>
+</li>
+<li><p>&#x52A0;&#x8F7D;&#x7684;&#x7C7B;&#x4FE1;&#x606F;&#x5B58;&#x653E;&#x4E8E;&#x4E00;&#x5757;&#x79F0;&#x4E3A;&#x65B9;&#x6CD5;&#x533A;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x3002;&#x9664;&#x4E86;&#x7C7B;&#x7684;&#x4FE1;&#x606F;&#x5916;&#xFF0C;&#x65B9;&#x6CD5;&#x533A;&#x4E2D;&#x8FD8;&#x4F1A;&#x5B58;&#x653E;&#x8FD0;&#x884C;&#x65F6;&#x5E38;&#x91CF;&#x6C60;&#x4FE1;&#x606F;&#xFF0C;&#x53EF;&#x80FD;&#x8FD8;&#x5305;&#x62EC;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x9762;&#x91CF;&#x548C;&#x6570;&#x5B57;&#x5E38;&#x91CF;&#xFF08;&#x8FD9;&#x90E8;&#x5206;&#x5E38;&#x91CF;&#x4FE1;&#x606F;&#x662F;Class&#x6587;&#x4EF6;&#x4E2D;&#x5E38;&#x91CF;&#x6C60;&#x90E8;&#x5206;&#x7684;&#x5185;&#x5B58;&#x6620;&#x5C04;&#xFF09;</p>
+</li>
+</ul>
+<p><strong>&#x7C7B;&#x52A0;&#x8F7D;&#x5668;ClasLoader&#x89D2;&#x8272;</strong></p>
+<p><img src="&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;.assets/image-20220212185134272.png" alt="image-20220212185134272"></p>
+<ul>
+<li><p>class file&#x5B58;&#x5728;&#x4E8E;&#x672C;&#x5730;&#x786C;&#x76D8;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x8BBE;&#x8BA1;&#x5E08;&#x753B;&#x5728;&#x7EB8;&#x4E0A;&#x7684;&#x6A21;&#x677F;&#xFF0C;&#x800C;&#x6700;&#x7EC8;&#x8FD9;&#x4E2A;&#x6A21;&#x677F;&#x5728;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#x662F;&#x8981;&#x52A0;&#x8F7D;&#x5230;JVM&#x5F53;&#x4E2D;&#x6765;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5B9E;&#x4F8B;&#x5316;&#x51FA;n&#x4E2A;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#x7684;&#x5B9E;&#x4F8B;&#x3002;</p>
+</li>
+<li><p>class file&#x52A0;&#x8F7D;&#x5230;JVM&#x4E2D;&#xFF0C;&#x88AB;&#x79F0;&#x4E3A;DNA&#x5143;&#x6570;&#x636E;&#x6A21;&#x677F;&#xFF0C;&#x653E;&#x5728;&#x65B9;&#x6CD5;&#x533A;&#x3002;</p>
+</li>
+<li><p>&#x5728;.class&#x6587;&#x4EF6;-&gt;JVM-&gt;&#x6700;&#x7EC8;&#x6210;&#x4E3A;&#x5143;&#x6570;&#x636E;&#x6A21;&#x677F;&#xFF0C;&#x6B64;&#x8FC7;&#x7A0B;&#x5C31;&#x8981;&#x4E00;&#x4E2A;&#x8FD0;&#x8F93;&#x5DE5;&#x5177;&#xFF08;&#x7C7B;&#x88C5;&#x8F7D;&#x5668;Class Loader&#xFF09;&#xFF0C;&#x626E;&#x6F14;&#x4E00;&#x4E2A;&#x5FEB;&#x9012;&#x5458;&#x7684;&#x89D2;&#x8272;&#x3002;</p>
+</li>
+</ul>
+<p><strong>&#x7C7B;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;</strong></p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ *&#x793A;&#x4F8B;&#x4EE3;&#x7801;
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloLoader</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>);
+    }
+}
+</code></pre>
+<p>&#x7528;&#x6D41;&#x7A0B;&#x56FE;&#x8868;&#x793A;&#x4E0A;&#x8FF0;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<p><img src="&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;.assets/image-20220212185205961.png" alt="image-20220212185205961"></p>
+<h3 id="&#x52A0;&#x8F7D;&#x9636;&#x6BB5;">&#x52A0;&#x8F7D;&#x9636;&#x6BB5;</h3>
+<p><img src="&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;.assets/image-20220212185232812.png" alt="image-20220212185232812"></p>
+<ul>
+<li><strong>&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5168;&#x9650;&#x5B9A;&#x540D;&#x83B7;&#x53D6;&#x5B9A;&#x4E49;&#x6B64;&#x7C7B;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x5B57;&#x8282;&#x6D41;</strong></li>
+<li><strong>&#x5C06;&#x8FD9;&#x4E2A;&#x5B57;&#x8282;&#x6D41;&#x6240;&#x4EE3;&#x8868;&#x7684;&#x9759;&#x6001;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x8F6C;&#x5316;&#x4E3A;&#x65B9;&#x6CD5;&#x533A;&#x7684;&#x8FD0;&#x884C;&#x65F6;&#x6570;&#x636E;&#x7ED3;&#x6784;</strong></li>
+<li><strong>&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x4EE3;&#x8868;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;java.lang.Class&#x5BF9;&#x8C61;&#xFF0C;&#x4F5C;&#x4E3A;&#x65B9;&#x6CD5;&#x533A;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x5404;&#x79CD;&#x6570;&#x636E;&#x7684;&#x8BBF;&#x95EE;&#x5165;&#x53E3;</strong></li>
+</ul>
+<p><strong>&#x8865;&#x5145;&#xFF1A;&#x52A0;&#x8F7D;class&#x6587;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;</strong></p>
+<ul>
+<li><p>&#x4ECE;<font style="background:yellow">&#x672C;&#x5730;&#x7CFB;&#x7EDF;</font>&#x4E2D;&#x76F4;&#x63A5;&#x52A0;&#x8F7D;</p>
+</li>
+<li><p>&#x901A;&#x8FC7;<font style="background:yellow">&#x7F51;&#x7EDC;</font>&#x83B7;&#x53D6;&#xFF0C;&#x5178;&#x578B;&#x573A;&#x666F;&#xFF1A;Web Applet</p>
+</li>
+<li><p>&#x4ECE;zip<font style="background:yellow">&#x538B;&#x7F29;&#x5305;</font>&#x4E2D;&#x8BFB;&#x53D6;&#xFF0C;&#x6210;&#x4E3A;&#x65E5;&#x540E;jar&#x3001;war&#x683C;&#x5F0F;&#x7684;&#x57FA;&#x7840;</p>
+</li>
+<li><p>&#x8FD0;&#x884C;&#x65F6;&#x8BA1;&#x7B97;&#x751F;&#x6210;&#xFF0C;&#x4F7F;&#x7528;&#x6700;&#x591A;&#x7684;&#x662F;&#xFF1A;<font style="background:yellow">&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x6280;&#x672F;</font></p>
+</li>
+<li><p>&#x7531;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x751F;&#x6210;&#xFF0C;&#x5178;&#x578B;&#x573A;&#x666F;&#xFF1A;<font style="background:yellow">JSP&#x5E94;&#x7528;</font></p>
+</li>
+<li><p>&#x4ECE;&#x4E13;&#x6709;<font style="background:yellow">&#x6570;&#x636E;&#x5E93;</font>&#x4E2D;&#x63D0;&#x53D6;.class&#x6587;&#x4EF6;&#xFF0C;&#x6BD4;&#x8F83;&#x5C11;&#x89C1;</p>
+</li>
+<li><p>&#x4ECE;<font style="background:yellow">&#x52A0;&#x5BC6;&#x6587;&#x4EF6;</font>&#x4E2D;&#x83B7;&#x53D6;&#xFF0C;&#x5178;&#x578B;&#x7684;&#x9632;Class&#x6587;&#x4EF6;&#x88AB;&#x53CD;&#x7F16;&#x8BD1;&#x7684;&#x4FDD;&#x62A4;&#x63AA;&#x65BD;</p>
+</li>
+</ul>
+<h3 id="&#x94FE;&#x63A5;&#x9636;&#x6BB5;">&#x94FE;&#x63A5;&#x9636;&#x6BB5;</h3>
+<ul>
+<li><p><strong>&#x9A8C;&#x8BC1;&#xFF08;Verify&#xFF09;</strong>&#xFF1A; </p>
+</li>
+<li><ul>
+<li>&#x76EE;&#x7684;&#x5728;&#x5B50;&#x786E;&#x4FDD;Class&#x6587;&#x4EF6;&#x7684;&#x5B57;&#x8282;&#x6D41;&#x4E2D;&#x5305;&#x542B;&#x4FE1;&#x606F;&#x7B26;&#x5408;&#x5F53;&#x524D;&#x865A;&#x62DF;&#x673A;&#x8981;&#x6C42;&#xFF0C;&#x4FDD;&#x8BC1;&#x88AB;&#x52A0;&#x8F7D;&#x7C7B;&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x4E0D;&#x4F1A;&#x5371;&#x5BB3;&#x865A;&#x62DF;&#x673A;&#x81EA;&#x8EAB;&#x5B89;&#x5168;&#x3002;</li>
+</ul>
+</li>
+<li><ul>
+<li>&#x4E3B;&#x8981;&#x5305;&#x62EC;&#x56DB;&#x79CD;&#x9A8C;&#x8BC1;&#xFF0C;<font style="background:yellow">&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x9A8C;&#x8BC1;&#xFF0C;&#x5143;&#x6570;&#x636E;&#x9A8C;&#x8BC1;&#xFF0C;&#x5B57;&#x8282;&#x7801;&#x9A8C;&#x8BC1;&#xFF0C;&#x7B26;&#x53F7;&#x5F15;&#x7528;&#x9A8C;&#x8BC1;</font>&#x3002;</li>
+</ul>
+</li>
+<li><p><strong>&#x51C6;&#x5907;&#xFF08;Prepare&#xFF09;</strong>&#xFF1A; </p>
+</li>
+<li><ul>
+<li>&#x4E3A;&#x7C7B;&#x53D8;&#x91CF;&#x5206;&#x914D;&#x5185;&#x5B58;&#x5E76;&#x4E14;&#x8BBE;&#x7F6E;&#x8BE5;&#x7C7B;&#x53D8;&#x91CF;&#x7684;&#x9ED8;&#x8BA4;&#x521D;&#x59CB;&#x503C;&#xFF0C;&#x5373;&#x96F6;&#x503C;&#x3002;</li>
+</ul>
+</li>
+<li><ul>
+<li><font style="background:yellow">&#x8FD9;&#x91CC;&#x4E0D;&#x5305;&#x542B;&#x7528;final&#x4FEE;&#x9970;&#x7684;static&#xFF0C;&#x56E0;&#x4E3A;final&#x5728;&#x7F16;&#x8BD1;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x5206;&#x914D;&#x4E86;&#xFF0C;&#x51C6;&#x5907;&#x9636;&#x6BB5;&#x4F1A;&#x663E;&#x5F0F;&#x521D;&#x59CB;&#x5316;</font>&#xFF1B;</li>
+</ul>
+</li>
+<li><ul>
+<li><font style="background:yellow">&#x8FD9;&#x91CC;&#x4E0D;&#x4F1A;&#x4E3A;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x5206;&#x914D;&#x521D;&#x59CB;&#x5316;</font>&#xFF0C;&#x7C7B;&#x53D8;&#x91CF;&#x4F1A;&#x5206;&#x914D;&#x5728;&#x65B9;&#x6CD5;&#x533A;&#x4E2D;&#xFF0C;&#x800C;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x662F;&#x4F1A;&#x968F;&#x7740;&#x5BF9;&#x8C61;&#x4E00;&#x8D77;&#x5206;&#x914D;&#x5230;Java&#x5806;&#x4E2D;&#x3002;</li>
+</ul>
+</li>
+<li><p><strong>&#x89E3;&#x6790;&#xFF08;Resolve&#xFF09;</strong>&#xFF1A; </p>
+</li>
+<li><ul>
+<li>&#x5C06;&#x5E38;&#x91CF;&#x6C60;&#x5185;&#x7684;<font style="background:yellow">&#x7B26;&#x53F7;&#x5F15;&#x7528;&#x8F6C;&#x6362;&#x4E3A;&#x76F4;&#x63A5;&#x5F15;&#x7528;</font>&#x7684;&#x8FC7;&#x7A0B;&#x3002;</li>
+</ul>
+</li>
+<li><ul>
+<li>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x89E3;&#x6790;&#x64CD;&#x4F5C;&#x5F80;&#x5F80;&#x4F1A;&#x4F34;&#x968F;&#x7740;JVM&#x5728;&#x6267;&#x884C;&#x5B8C;&#x521D;&#x59CB;&#x5316;&#x4E4B;&#x540E;&#x518D;&#x6267;&#x884C;&#x3002;</li>
+</ul>
+</li>
+<li><ul>
+<li>&#x7B26;&#x53F7;&#x5F15;&#x7528;&#x5C31;&#x662F;&#x4E00;&#x7EC4;&#x7B26;&#x53F7;&#x6765;&#x63CF;&#x8FF0;&#x6240;&#x5F15;&#x7528;&#x7684;&#x76EE;&#x6807;&#x3002;&#x7B26;&#x53F7;&#x5F15;&#x7528;&#x7684;&#x5B57;&#x9762;&#x91CF;&#x5F62;&#x5F0F;&#x660E;&#x786E;&#x5B9A;&#x4E49;&#x5728;&#x300A;java&#x865A;&#x62DF;&#x673A;&#x89C4;&#x8303;&#x300B;&#x7684;Class&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x4E2D;&#x3002;&#x76F4;&#x63A5;&#x5F15;&#x7528;&#x5C31;&#x662F;&#x76F4;&#x63A5;&#x6307;&#x5411;&#x76EE;&#x6807;&#x7684;&#x6307;&#x9488;&#x3001;&#x76F8;&#x5BF9;&#x504F;&#x79FB;&#x91CF;&#x6216;&#x4E00;&#x4E2A;&#x95F4;&#x63A5;&#x5B9A;&#x4F4D;&#x5230;&#x76EE;&#x6807;&#x7684;&#x53E5;&#x67C4;&#x3002;</li>
+</ul>
+</li>
+<li><ul>
+<li>&#x89E3;&#x6790;&#x52A8;&#x4F5C;&#x4E3B;&#x8981;&#x9488;&#x5BF9;&#x7C7B;&#x6216;&#x63A5;&#x53E3;&#x3001;&#x5B57;&#x6BB5;&#x3001;&#x7C7B;&#x65B9;&#x6CD5;&#x3001;&#x63A5;&#x53E3;&#x65B9;&#x6CD5;&#x3001;&#x65B9;&#x6CD5;&#x7C7B;&#x578B;&#x7B49;&#x3002;&#x5BF9;&#x5E94;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x7684;CONSTANT_Class_info&#xFF0C;CONSTANT_Fieldref_info&#x3001;CONSTANT_Methodref_info&#x7B49;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;">&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;</h3>
+<ul>
+<li><font style="background:yellow">&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;&#x5C31;&#x662F;&#x6267;&#x884C;&#x7C7B;&#x6784;&#x9020;&#x5668;&#x65B9;&#x6CD5;<code>&lt;clinit&gt;()</code>&#x7684;&#x8FC7;&#x7A0B;</font>&#x3002;</li>
+<li>&#x6B64;&#x65B9;&#x6CD5;&#x4E0D;&#x9700;&#x5B9A;&#x4E49;&#xFF0C;&#x662F;javac&#x7F16;&#x8BD1;&#x5668;&#x81EA;&#x52A8;&#x6536;&#x96C6;&#x7C7B;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x7C7B;&#x53D8;&#x91CF;&#x7684;&#x8D4B;&#x503C;&#x52A8;&#x4F5C;&#x548C;&#x9759;&#x6001;&#x4EE3;&#x7801;&#x5757;&#x4E2D;&#x7684;&#x8BED;&#x53E5;&#x5408;&#x5E76;&#x800C;&#x6765;&#x3002;</li>
+<li>&#x6784;&#x9020;&#x5668;&#x65B9;&#x6CD5;&#x4E2D;&#x6307;&#x4EE4;&#x6309;&#x8BED;&#x53E5;&#x5728;&#x6E90;&#x6587;&#x4EF6;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x3002;</li>
+<li><font style="background:yellow"><code>&lt;clinit&gt;()</code>&#x4E0D;&#x540C;&#x4E8E;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x5668;</font>&#x3002;&#xFF08;&#x5173;&#x8054;&#xFF1A;&#x6784;&#x9020;&#x5668;&#x662F;&#x865A;&#x62DF;&#x673A;&#x89C6;&#x89D2;&#x4E0B;&#x7684;<code>&lt;init&gt;()</code></li>
+<li>&#x82E5;&#x8BE5;&#x7C7B;&#x5177;&#x6709;&#x7236;&#x7C7B;&#xFF0C;JVM&#x4F1A;&#x4FDD;&#x8BC1;&#x5B50;&#x7C7B;&#x7684;<code>&lt;clinit&gt;()</code>&#x6267;&#x884C;&#x524D;&#xFF0C;&#x7236;&#x7C7B;&#x7684;<code>&lt;clinit&gt;()</code>&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x3002;</li>
+<li>&#x865A;&#x62DF;&#x673A;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;<code>&lt;clinit&gt;()</code>&#x65B9;&#x6CD5;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x4E0B;&#x88AB;&#x540C;&#x6B65;&#x52A0;&#x9501;&#x3002;</li>
+</ul>
+<h2 id="23-&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5206;&#x7C7B;">2.3. &#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5206;&#x7C7B;</h2>
+<p>JVM&#x652F;&#x6301;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668; &#x3002;&#x5206;&#x522B;&#x4E3A;<font style="background:yellow">&#x5F15;&#x5BFC;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;Bootstrap ClassLoader&#xFF09;</font>&#x548C;<font style="background:yellow">&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;User-Defined ClassLoader&#xFF09;</font>&#x3002;</p>
+<p>&#x65E0;&#x8BBA;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x7C7B;&#x578B;&#x5982;&#x4F55;&#x5212;&#x5206;&#xFF0C;&#x5728;&#x7A0B;&#x5E8F;&#x4E2D;&#x6211;&#x4EEC;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x59CB;&#x7EC8;&#x53EA;&#x6709;3&#x4E2A;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;.assets/image-20220212192418630.png" alt="image-20220212192418630"></p>
+<p>&#x8FD9;&#x91CC;&#x7684;&#x56DB;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x662F;&#x5305;&#x542B;&#x5173;&#x7CFB;&#x3002;&#x4E0D;&#x662F;&#x4E0A;&#x5C42;&#x4E0B;&#x5C42;&#xFF0C;&#x4E5F;&#x4E0D;&#x662F;&#x5B50;&#x7236;&#x7C7B;&#x7684;&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#x3002;</p>
+<h3 id="231-&#x865A;&#x62DF;&#x673A;&#x81EA;&#x5E26;&#x7684;&#x52A0;&#x8F7D;&#x5668;">2.3.1. &#x865A;&#x62DF;&#x673A;&#x81EA;&#x5E26;&#x7684;&#x52A0;&#x8F7D;&#x5668;</h3>
+<p><strong>&#x542F;&#x52A8;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;&#x5F15;&#x5BFC;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;Bootstrap ClassLoader&#xFF09;</strong></p>
+<ul>
+<li><p>&#x8FD9;&#x4E2A;&#x7C7B;&#x52A0;&#x8F7D;&#x4F7F;&#x7528;C/C++&#x8BED;&#x8A00;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x5D4C;&#x5957;&#x5728;JVM&#x5185;&#x90E8;&#x3002;</p>
+</li>
+<li><p>&#x5B83;&#x7528;&#x6765;&#x52A0;&#x8F7D;Java&#x7684;&#x6838;&#x5FC3;&#x5E93;&#xFF08;JAVA_HOME/jre/lib/rt.jar&#x3001;resources.jar&#x6216;sun.boot.class.path&#x8DEF;&#x5F84;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#xFF09;&#xFF0C;&#x7528;&#x4E8E;&#x63D0;&#x4F9B;JVM&#x81EA;&#x8EAB;&#x9700;&#x8981;&#x7684;&#x7C7B;</p>
+</li>
+<li><p>&#x5E76;&#x4E0D;&#x7EE7;&#x627F;&#x81EA;ava.lang.ClassLoader&#xFF0C;&#x6CA1;&#x6709;&#x7236;&#x52A0;&#x8F7D;&#x5668;&#x3002;</p>
+</li>
+<li><p>&#x52A0;&#x8F7D;&#x6269;&#x5C55;&#x7C7B;&#x548C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x5E76;&#x6307;&#x5B9A;&#x4E3A;&#x4ED6;&#x4EEC;&#x7684;&#x7236;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x3002;</p>
+</li>
+<li><p>&#x51FA;&#x4E8E;&#x5B89;&#x5168;&#x8003;&#x8651;&#xFF0C;Bootstrap&#x542F;&#x52A8;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x53EA;&#x52A0;&#x8F7D;&#x5305;&#x540D;&#x4E3A;java&#x3001;javax&#x3001;sun&#x7B49;&#x5F00;&#x5934;&#x7684;&#x7C7B;</p>
+</li>
+</ul>
+<p><strong>&#x6269;&#x5C55;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;Extension ClassLoader&#xFF09;</strong></p>
+<ul>
+<li><p>Java&#x8BED;&#x8A00;&#x7F16;&#x5199;&#xFF0C;&#x7531;sun.misc.Launcher$ExtClassLoader&#x5B9E;&#x73B0;&#x3002;</p>
+</li>
+<li><p>&#x6D3E;&#x751F;&#x4E8E;ClassLoader&#x7C7B;</p>
+</li>
+<li><p>&#x7236;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x4E3A;&#x542F;&#x52A8;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</p>
+</li>
+<li><p>&#x4ECE;java.ext.dirs&#x7CFB;&#x7EDF;&#x5C5E;&#x6027;&#x6240;&#x6307;&#x5B9A;&#x7684;&#x76EE;&#x5F55;&#x4E2D;&#x52A0;&#x8F7D;&#x7C7B;&#x5E93;&#xFF0C;&#x6216;&#x4ECE;JDK&#x7684;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x7684;jre/1ib/ext&#x5B50;&#x76EE;&#x5F55;&#xFF08;&#x6269;&#x5C55;&#x76EE;&#x5F55;&#xFF09;&#x4E0B;&#x52A0;&#x8F7D;&#x7C7B;&#x5E93;&#x3002;&#x5982;&#x679C;&#x7528;&#x6237;&#x521B;&#x5EFA;&#x7684;JAR&#x653E;&#x5728;&#x6B64;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x4E5F;&#x4F1A;&#x81EA;&#x52A8;&#x7531;&#x6269;&#x5C55;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x52A0;&#x8F7D;&#x3002;</p>
+</li>
+</ul>
+<p><strong>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF08;&#x7CFB;&#x7EDF;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;AppClassLoader&#xFF09;</strong></p>
+<ul>
+<li><p>java&#x8BED;&#x8A00;&#x7F16;&#x5199;&#xFF0C;&#x7531;sun.misc.LaunchersAppClassLoader&#x5B9E;&#x73B0;</p>
+</li>
+<li><p>&#x6D3E;&#x751F;&#x4E8E;ClassLoader&#x7C7B;</p>
+</li>
+<li><p>&#x7236;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x4E3A;&#x6269;&#x5C55;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</p>
+</li>
+<li><p>&#x5B83;&#x8D1F;&#x8D23;&#x52A0;&#x8F7D;&#x73AF;&#x5883;&#x53D8;&#x91CF;classpath&#x6216;&#x7CFB;&#x7EDF;&#x5C5E;&#x6027;java.class.path&#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#x4E0B;&#x7684;&#x7C7B;&#x5E93;</p>
+</li>
+<li><p><font style="background:yellow">&#x8BE5;&#x7C7B;&#x52A0;&#x8F7D;&#x662F;&#x7A0B;&#x5E8F;&#x4E2D;&#x9ED8;&#x8BA4;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</font>&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;Java&#x5E94;&#x7528;&#x7684;&#x7C7B;&#x90FD;&#x662F;&#x7531;&#x5B83;&#x6765;&#x5B8C;&#x6210;&#x52A0;&#x8F7D;</p>
+</li>
+<li><p>&#x901A;&#x8FC7;ClassLoader#getSystemclassLoader() &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x8BE5;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</p>
+</li>
+</ul>
+<h3 id="232-&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;">2.3.2. &#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</h3>
+<p>&#x5728;Java&#x7684;&#x65E5;&#x5E38;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x7C7B;&#x7684;&#x52A0;&#x8F7D;&#x51E0;&#x4E4E;&#x662F;&#x7531;&#x4E0A;&#x8FF0;3&#x79CD;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x76F8;&#x4E92;&#x914D;&#x5408;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x5728;&#x5FC5;&#x8981;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x6765;&#x5B9A;&#x5236;&#x7C7B;&#x7684;&#x52A0;&#x8F7D;&#x65B9;&#x5F0F;&#x3002; &#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF1F;</p>
+<ul>
+<li><p>&#x9694;&#x79BB;&#x52A0;&#x8F7D;&#x7C7B;</p>
+</li>
+<li><p>&#x4FEE;&#x6539;&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x65B9;&#x5F0F;</p>
+</li>
+<li><p>&#x6269;&#x5C55;&#x52A0;&#x8F7D;&#x6E90;</p>
+</li>
+<li><p>&#x9632;&#x6B62;&#x6E90;&#x7801;&#x6CC4;&#x6F0F;</p>
+</li>
+</ul>
+<p>&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B9E;&#x73B0;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ol>
+<li><p>&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7EE7;&#x627F;&#x62BD;&#x8C61;&#x7C7B;ava.lang.ClassLoader&#x7C7B;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5B9E;&#x73B0;&#x81EA;&#x5DF1;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x4EE5;&#x6EE1;&#x8DB3;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x7684;&#x9700;&#x6C42;</p>
+</li>
+<li><p>&#x5728;JDK1.2&#x4E4B;&#x524D;&#xFF0C;&#x5728;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x65F6;&#xFF0C;&#x603B;&#x4F1A;&#x53BB;&#x7EE7;&#x627F;ClassLoader&#x7C7B;&#x5E76;&#x91CD;&#x5199;loadClass() &#x65B9;&#x6CD5;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x7C7B;&#xFF0C;&#x4F46;&#x662F;&#x5728;JDK1.2&#x4E4B;&#x540E;&#x5DF2;&#x4E0D;&#x518D;&#x5EFA;&#x8BAE;&#x7528;&#x6237;&#x53BB;&#x8986;&#x76D6;loadclass() &#x65B9;&#x6CD5;&#xFF0C;&#x800C;&#x662F;&#x5EFA;&#x8BAE;&#x628A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x903B;&#x8F91;&#x5199;&#x5728;findClass()&#x65B9;&#x6CD5;&#x4E2D;</p>
+</li>
+<li><p>&#x5728;&#x7F16;&#x5199;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x592A;&#x8FC7;&#x4E8E;&#x590D;&#x6742;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7EE7;&#x627F;URLClassLoader&#x7C7B;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x81EA;&#x5DF1;&#x53BB;&#x7F16;&#x5199;findClass()  &#x65B9;&#x6CD5;&#x53CA;&#x5176;&#x83B7;&#x53D6;&#x5B57;&#x8282;&#x7801;&#x6D41;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4F7F;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x7F16;&#x5199;&#x66F4;&#x52A0;&#x7B80;&#x6D01;&#x3002;</p>
+</li>
+</ol>
+<h2 id="24-classloader&#x7684;&#x4F7F;&#x7528;&#x8BF4;&#x660E;">2.4. ClassLoader&#x7684;&#x4F7F;&#x7528;&#x8BF4;&#x660E;</h2>
+<p>ClassLoader&#x7C7B;&#x662F;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x5176;&#x540E;&#x6240;&#x6709;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x90FD;&#x7EE7;&#x627F;&#x81EA;ClassLoader&#xFF08;&#x4E0D;&#x5305;&#x62EC;&#x542F;&#x52A8;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF09;</p>
+<p><img src="&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;.assets/image-20220214212240766.png" alt="image-20220214212240766"></p>
+<p>sun.misc.Launcher &#x5B83;&#x662F;&#x4E00;&#x4E2A;java&#x865A;&#x62DF;&#x673A;&#x7684;&#x5165;&#x53E3;&#x5E94;&#x7528;</p>
+<p><img src="&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;.assets/image-20220214212506106.png" alt="image-20220214212506106"></p>
+<p><strong>&#x83B7;&#x53D6;ClassLoader&#x7684;&#x9014;&#x5F84;</strong></p>
+<ul>
+<li>&#x65B9;&#x5F0F;&#x4E00;&#xFF1A;&#x83B7;&#x53D6;&#x5F53;&#x524D;ClassLoader  </li>
+</ul>
+<pre><code class="lang-java">clazz.getClassLoader()
+</code></pre>
+<ul>
+<li>&#x65B9;&#x5F0F;&#x4E8C;&#xFF1A;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4E0A;&#x4E0B;&#x6587;&#x7684;ClassLoader  </li>
+</ul>
+<pre><code class="lang-java">Thread.currentThread().getContextClassLoader()
+</code></pre>
+<ul>
+<li>&#x65B9;&#x5F0F;&#x4E09;&#xFF1A;&#x83B7;&#x53D6;&#x7CFB;&#x7EDF;&#x7684;ClassLoader  </li>
+</ul>
+<pre><code class="lang-java">ClassLoader.getSystemClassLoader()
+</code></pre>
+<ul>
+<li>&#x65B9;&#x5F0F;&#x56DB;&#xFF1A;&#x83B7;&#x53D6;&#x8C03;&#x7528;&#x8005;&#x7684;ClassLoader  </li>
+</ul>
+<pre><code class="lang-java">DriverManager.getCallerClassLoader()
+</code></pre>
+<h2 id="25-&#x53CC;&#x4EB2;&#x59D4;&#x6D3E;&#x673A;&#x5236;">2.5. &#x53CC;&#x4EB2;&#x59D4;&#x6D3E;&#x673A;&#x5236;</h2>
+<p>Java&#x865A;&#x62DF;&#x673A;&#x5BF9;class&#x6587;&#x4EF6;&#x91C7;&#x7528;&#x7684;&#x662F;<font style="background:yellow">&#x6309;&#x9700;&#x52A0;&#x8F7D;</font>&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5F53;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x8BE5;&#x7C7B;&#x65F6;&#x624D;&#x4F1A;&#x5C06;&#x5B83;&#x7684;class&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x751F;&#x6210;class&#x5BF9;&#x8C61;&#x3002;&#x800C;&#x4E14;&#x52A0;&#x8F7D;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;class&#x6587;&#x4EF6;&#x65F6;&#xFF0C;Java&#x865A;&#x62DF;&#x673A;&#x91C7;&#x7528;&#x7684;&#x662F;<font style="background:yellow">&#x53CC;&#x4EB2;&#x59D4;&#x6D3E;&#x6A21;&#x5F0F;</font>&#xFF0C;&#x5373;&#x628A;&#x8BF7;&#x6C42;&#x4EA4;&#x7531;&#x7236;&#x7C7B;&#x5904;&#x7406;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x79CD;&#x4EFB;&#x52A1;&#x59D4;&#x6D3E;&#x6A21;&#x5F0F;&#x3002;</p>
+<p><strong>&#x5DE5;&#x4F5C;&#x539F;&#x7406;</strong></p>
+<ul>
+<li><p>1&#xFF09;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x6536;&#x5230;&#x4E86;&#x7C7B;&#x52A0;&#x8F7D;&#x8BF7;&#x6C42;&#xFF0C;&#x5B83;&#x5E76;&#x4E0D;&#x4F1A;&#x81EA;&#x5DF1;&#x5148;&#x53BB;&#x52A0;&#x8F7D;&#xFF0C;&#x800C;&#x662F;&#x628A;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x59D4;&#x6258;&#x7ED9;&#x7236;&#x7C7B;&#x7684;&#x52A0;&#x8F7D;&#x5668;&#x53BB;&#x6267;&#x884C;&#xFF1B;</p>
+</li>
+<li><p>2&#xFF09;&#x5982;&#x679C;&#x7236;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x8FD8;&#x5B58;&#x5728;&#x5176;&#x7236;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x5219;&#x8FDB;&#x4E00;&#x6B65;&#x5411;&#x4E0A;&#x59D4;&#x6258;&#xFF0C;&#x4F9D;&#x6B21;&#x9012;&#x5F52;&#xFF0C;&#x8BF7;&#x6C42;&#x6700;&#x7EC8;&#x5C06;&#x5230;&#x8FBE;&#x9876;&#x5C42;&#x7684;&#x542F;&#x52A8;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#xFF1B;</p>
+</li>
+<li><p>3&#xFF09;&#x5982;&#x679C;&#x7236;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x7C7B;&#x52A0;&#x8F7D;&#x4EFB;&#x52A1;&#xFF0C;&#x5C31;&#x6210;&#x529F;&#x8FD4;&#x56DE;&#xFF0C;&#x5018;&#x82E5;&#x7236;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x6B64;&#x52A0;&#x8F7D;&#x4EFB;&#x52A1;&#xFF0C;&#x5B50;&#x52A0;&#x8F7D;&#x5668;&#x624D;&#x4F1A;&#x5C1D;&#x8BD5;&#x81EA;&#x5DF1;&#x53BB;&#x52A0;&#x8F7D;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x53CC;&#x4EB2;&#x59D4;&#x6D3E;&#x6A21;&#x5F0F;&#x3002;</p>
+</li>
+</ul>
+<p><img src="&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;.assets/image-20220214212916175.png" alt="image-20220214212916175"></p>
+<p><strong>&#x4E3E;&#x4F8B;</strong></p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x52A0;&#x8F7D;jdbc.jar &#x7528;&#x4E8E;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x77E5;&#x9053;&#x7684;&#x662F; jdbc.jar&#x662F;&#x57FA;&#x4E8E;SPI&#x63A5;&#x53E3;&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x52A0;&#x8F7D;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x8FDB;&#x884C;&#x53CC;&#x4EB2;&#x59D4;&#x6D3E;&#xFF0C;&#x6700;&#x7EC8;&#x4ECE;&#x6839;&#x52A0;&#x8F7D;&#x5668;&#x4E2D;&#x52A0;&#x8F7D; SPI&#x6838;&#x5FC3;&#x7C7B;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x52A0;&#x8F7D;SPI&#x63A5;&#x53E3;&#x7C7B;&#xFF0C;&#x63A5;&#x7740;&#x5728;&#x8FDB;&#x884C;&#x53CD;&#x5411;&#x59D4;&#x6D3E;&#xFF0C;&#x901A;&#x8FC7;&#x7EBF;&#x7A0B;&#x4E0A;&#x4E0B;&#x6587;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#x7C7B;jdbc.jar&#x7684;&#x52A0;&#x8F7D;&#x3002;</p>
+<p><img src="&#x7C7B;&#x52A0;&#x8F7D;&#x5B50;&#x7CFB;&#x7EDF;.assets/image-20220214212955325.png" alt="image-20220214212955325"></p>
+<p><strong>&#x4F18;&#x52BF;</strong></p>
+<ul>
+<li><p>&#x907F;&#x514D;&#x7C7B;&#x7684;&#x91CD;&#x590D;&#x52A0;&#x8F7D;</p>
+</li>
+<li><p>&#x4FDD;&#x62A4;&#x7A0B;&#x5E8F;&#x5B89;&#x5168;&#xFF0C;&#x9632;&#x6B62;&#x6838;&#x5FC3;API&#x88AB;&#x968F;&#x610F;&#x7BE1;&#x6539; </p>
+</li>
+<li><ul>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#xFF1A;java.lang.String</li>
+</ul>
+</li>
+<li><ul>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#xFF1A;java.lang.ShkStart&#xFF08;&#x62A5;&#x9519;&#xFF1A;&#x963B;&#x6B62;&#x521B;&#x5EFA; java.lang&#x5F00;&#x5934;&#x7684;&#x7C7B;&#xFF09;</li>
+</ul>
+</li>
+</ul>
+<p><strong>&#x6C99;&#x7BB1;&#x5B89;&#x5168;&#x673A;&#x5236;</strong></p>
+<p>&#x81EA;&#x5B9A;&#x4E49;String&#x7C7B;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x52A0;&#x8F7D;&#x81EA;&#x5B9A;&#x4E49;String&#x7C7B;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x7387;&#x5148;&#x4F7F;&#x7528;&#x5F15;&#x5BFC;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x52A0;&#x8F7D;&#xFF0C;&#x800C;&#x5F15;&#x5BFC;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5728;&#x52A0;&#x8F7D;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x5148;&#x52A0;&#x8F7D;jdk&#x81EA;&#x5E26;&#x7684;&#x6587;&#x4EF6;&#xFF08;rt.jar&#x5305;&#x4E2D;java\lang\String.class&#xFF09;&#xFF0C;&#x62A5;&#x9519;&#x4FE1;&#x606F;&#x8BF4;&#x6CA1;&#x6709;main&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x662F;&#x56E0;&#x4E3A;&#x52A0;&#x8F7D;&#x7684;&#x662F;rt.jar&#x5305;&#x4E2D;&#x7684;string&#x7C7B;&#x3002;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x5BF9;java&#x6838;&#x5FC3;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x4FDD;&#x62A4;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x6C99;&#x7BB1;&#x5B89;&#x5168;&#x673A;&#x5236;&#x3002;</p>
+<h2 id="26-&#x5176;&#x4ED6;">2.6. &#x5176;&#x4ED6;</h2>
+<p><strong>&#x5982;&#x4F55;&#x5224;&#x65AD;&#x4E24;&#x4E2A;class&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x76F8;&#x540C;</strong></p>
+<p>&#x5728;JVM&#x4E2D;&#x8868;&#x793A;&#x4E24;&#x4E2A;class&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x4E3A;&#x540C;&#x4E00;&#x4E2A;&#x7C7B;&#x5B58;&#x5728;&#x4E24;&#x4E2A;&#x5FC5;&#x8981;&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li><p>&#x7C7B;&#x7684;&#x5B8C;&#x6574;&#x7C7B;&#x540D;&#x5FC5;&#x987B;&#x4E00;&#x81F4;&#xFF0C;&#x5305;&#x62EC;&#x5305;&#x540D;&#x3002;</p>
+</li>
+<li><p>&#x52A0;&#x8F7D;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;ClassLoader&#xFF08;&#x6307;ClassLoader&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#xFF09;&#x5FC5;&#x987B;&#x76F8;&#x540C;&#x3002;</p>
+</li>
+</ul>
+<p>&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x5728;JVM&#x4E2D;&#xFF0C;&#x5373;&#x4F7F;&#x8FD9;&#x4E24;&#x4E2A;&#x7C7B;&#x5BF9;&#x8C61;&#xFF08;class&#x5BF9;&#x8C61;&#xFF09;&#x6765;&#x6E90;&#x540C;&#x4E00;&#x4E2A;Class&#x6587;&#x4EF6;&#xFF0C;&#x88AB;&#x540C;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x6240;&#x52A0;&#x8F7D;&#xFF0C;&#x4F46;&#x53EA;&#x8981;&#x52A0;&#x8F7D;&#x5B83;&#x4EEC;&#x7684;ClassLoader&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x4E0D;&#x540C;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E24;&#x4E2A;&#x7C7B;&#x5BF9;&#x8C61;&#x4E5F;&#x662F;&#x4E0D;&#x76F8;&#x7B49;&#x7684;&#x3002;</p>
+<p><strong>&#x5BF9;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x5F15;&#x7528;</strong></p>
+<p>JVM&#x5FC5;&#x987B;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x662F;&#x7531;&#x542F;&#x52A8;&#x52A0;&#x8F7D;&#x5668;&#x52A0;&#x8F7D;&#x7684;&#x8FD8;&#x662F;&#x7531;&#x7528;&#x6237;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x52A0;&#x8F7D;&#x7684;&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x662F;&#x7531;<font style="background:yellow">&#x7528;&#x6237;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x52A0;&#x8F7D;&#x7684;</font>&#xFF0C;&#x90A3;&#x4E48;JVM&#x4F1A;<font style="background:yellow">&#x5C06;&#x8FD9;&#x4E2A;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x4F5C;&#x4E3A;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x4FDD;&#x5B58;&#x5728;&#x65B9;&#x6CD5;&#x533A;&#x4E2D;</font>&#x3002;&#x5F53;&#x89E3;&#x6790;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x7684;&#x5F15;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;JVM&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x8FD9;&#x4E24;&#x4E2A;&#x7C7B;&#x578B;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;</p>
+<p><strong>&#x7C7B;&#x7684;&#x4E3B;&#x52A8;&#x4F7F;&#x7528;&#x548C;&#x88AB;&#x52A8;&#x4F7F;&#x7528;</strong></p>
+<p>Java&#x7A0B;&#x5E8F;&#x5BF9;&#x7C7B;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x5206;&#x4E3A;&#xFF1A;&#x4E3B;&#x52A8;&#x4F7F;&#x7528;&#x548C;&#x88AB;&#x52A8;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x4E3B;&#x52A8;&#x4F7F;&#x7528;&#xFF0C;&#x53C8;&#x5206;&#x4E3A;&#x4E03;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ul>
+<li><p>&#x521B;&#x5EFA;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B; </p>
+</li>
+<li><p>&#x8BBF;&#x95EE;&#x67D0;&#x4E2A;&#x7C7B;&#x6216;&#x63A5;&#x53E3;&#x7684;&#x9759;&#x6001;&#x53D8;&#x91CF;&#xFF0C;&#x6216;&#x8005;&#x5BF9;&#x8BE5;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x8D4B;&#x503C; </p>
+</li>
+<li><p>&#x8C03;&#x7528;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5; </p>
+</li>
+<li><p>&#x53CD;&#x5C04;&#xFF08;&#x6BD4;&#x5982;&#xFF1A;Class.forName&#xFF08;&quot;com.atguigu.Test&quot;&#xFF09;&#xFF09; </p>
+</li>
+<li><p>&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5B50;&#x7C7B; </p>
+</li>
+<li><p>Java&#x865A;&#x62DF;&#x673A;&#x542F;&#x52A8;&#x65F6;&#x88AB;&#x6807;&#x660E;&#x4E3A;&#x542F;&#x52A8;&#x7C7B;&#x7684;&#x7C7B; </p>
+</li>
+<li><p>JDK 7 &#x5F00;&#x59CB;&#x63D0;&#x4F9B;&#x7684;&#x52A8;&#x6001;&#x8BED;&#x8A00;&#x652F;&#x6301;&#xFF1A;
+java.lang.invoke.MethodHandle&#x5B9E;&#x4F8B;&#x7684;&#x89E3;&#x6790;&#x7ED3;&#x679C;
+REF_getStatic&#x3001;REF_putStatic&#x3001;REF_invokeStatic&#x53E5;&#x67C4;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;&#x6CA1;&#x6709;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5219;&#x521D;&#x59CB;&#x5316; </p>
+</li>
+</ul>
+<p>&#x9664;&#x4E86;&#x4EE5;&#x4E0A;&#x4E03;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x5176;&#x4ED6;&#x4F7F;&#x7528;Java&#x7C7B;&#x7684;&#x65B9;&#x5F0F;&#x90FD;&#x88AB;&#x770B;&#x4F5C;&#x662F;&#x5BF9;<font style="background:yellow">&#x7C7B;&#x7684;&#x88AB;&#x52A8;&#x4F7F;&#x7528;</font>&#xFF0C;&#x90FD;<font style="background:yellow">&#x4E0D;&#x4F1A;&#x5BFC;&#x81F4;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;</font>&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="JVM与Java体系结构.html" class="navigation navigation-prev " aria-label="Previous page: 1.JVM与Java体系结构">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="运行时数据区及程序计数器.html" class="navigation navigation-next " aria-label="Next page: 3.运行时数据区及程序计数器">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.类加载子系统","level":"4.1.2","depth":2,"next":{"title":"3.运行时数据区及程序计数器","level":"4.1.3","depth":2,"path":"学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/运行时数据区及程序计数器.md","ref":"学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/运行时数据区及程序计数器.md","articles":[]},"previous":{"title":"1.JVM与Java体系结构","level":"4.1.1","depth":2,"path":"学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/JVM与Java体系结构.md","ref":"学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/JVM与Java体系结构.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","code","copy-code-button","back-to-top-button","-lunr","-search","search-pro","chapter-fold","hide-element"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"","minHeaderCount":"2","minHeaderDeep":"6"},"chapter-fold":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link",".pull-right"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"B.W.H","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Notes","language":"zh-hans","gitbook":"*","description":"学习笔记"},"file":{"path":"学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/类加载子系统.md","mtime":"2022-05-19T01:19:17.457Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-05-19T01:20:09.695Z"},"basePath":"../../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../../gitbook/gitbook.js"></script>
+    <script src="../../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1565 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>10.StringTable · Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="B.W.H">
+        
+        
+    
+    <link rel="stylesheet" href="../../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="垃圾回收概述及算法.html" />
+    
+    
+    <link rel="prev" href="执行引擎.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">学习资料</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../../">
+            
+                <a href="../../../../">
+            
+                    
+                    资料
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../../Java.html">
+            
+                <a href="../../../Java.html">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1" data-path="../../juc并发编程/并发编程.html">
+            
+                <a href="../../juc并发编程/并发编程.html">
+            
+                    
+                    并发编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.1.2" data-path="../../Spring注解驱动/Spring注解驱动.html">
+            
+                <a href="../../Spring注解驱动/Spring注解驱动.html">
+            
+                    
+                    Spring注解驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../../../数据库.html">
+            
+                <a href="../../../数据库.html">
+            
+                    
+                    数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../../">
+            
+                <a href="../../../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Java基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../juc并发编程/并发编程.html">
+            
+                <a href="../../juc并发编程/并发编程.html">
+            
+                    
+                    并发编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../Spring注解驱动/Spring注解驱动.html">
+            
+                <a href="../../Spring注解驱动/Spring注解驱动.html">
+            
+                    
+                    Spring注解驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../juc并发编程/拓展/管程.html">
+            
+                <a href="../../juc并发编程/拓展/管程.html">
+            
+                    
+                    管程深入理解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">设计模式</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../设计模式/设计模式.html">
+            
+                <a href="../../设计模式/设计模式.html">
+            
+                    
+                    设计模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../设计模式/创建型模式/创建型模式.html">
+            
+                <a href="../../设计模式/创建型模式/创建型模式.html">
+            
+                    
+                    创建型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="../../设计模式/创建型模式/单例模式.html">
+            
+                <a href="../../设计模式/创建型模式/单例模式.html">
+            
+                    
+                    单例模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="../../设计模式/创建型模式/工厂模式.html">
+            
+                <a href="../../设计模式/创建型模式/工厂模式.html">
+            
+                    
+                    工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3" data-path="../../设计模式/创建型模式/抽象工厂模式.html">
+            
+                <a href="../../设计模式/创建型模式/抽象工厂模式.html">
+            
+                    
+                    抽象工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.4" data-path="../../设计模式/创建型模式/建造者模式.html">
+            
+                <a href="../../设计模式/创建型模式/建造者模式.html">
+            
+                    
+                    建造者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.5" data-path="../../设计模式/创建型模式/原型模式.html">
+            
+                <a href="../../设计模式/创建型模式/原型模式.html">
+            
+                    
+                    原型模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../设计模式/结构型模式/结构型模式.html">
+            
+                <a href="../../设计模式/结构型模式/结构型模式.html">
+            
+                    
+                    结构型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.2.1" data-path="../../设计模式/结构型模式/外观模式.html">
+            
+                <a href="../../设计模式/结构型模式/外观模式.html">
+            
+                    
+                    外观模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.2" data-path="../../设计模式/结构型模式/装饰器模式.html">
+            
+                <a href="../../设计模式/结构型模式/装饰器模式.html">
+            
+                    
+                    装饰器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.3" data-path="../../设计模式/结构型模式/组合模式.html">
+            
+                <a href="../../设计模式/结构型模式/组合模式.html">
+            
+                    
+                    组合模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.4" data-path="../../设计模式/结构型模式/享元模式.html">
+            
+                <a href="../../设计模式/结构型模式/享元模式.html">
+            
+                    
+                    享元模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.5" data-path="../../设计模式/结构型模式/代理模式.html">
+            
+                <a href="../../设计模式/结构型模式/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.6" data-path="../../设计模式/结构型模式/适配器模式.html">
+            
+                <a href="../../设计模式/结构型模式/适配器模式.html">
+            
+                    
+                    适配器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.7" data-path="../../设计模式/结构型模式/桥接模式.html">
+            
+                <a href="../../设计模式/结构型模式/桥接模式.html">
+            
+                    
+                    桥接模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../设计模式/行为型模式/行为型模式.html">
+            
+                <a href="../../设计模式/行为型模式/行为型模式.html">
+            
+                    
+                    行为型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.3.1" data-path="../../设计模式/行为型模式/策略模式.html">
+            
+                <a href="../../设计模式/行为型模式/策略模式.html">
+            
+                    
+                    策略模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.2" data-path="../../设计模式/行为型模式/中介者模式.html">
+            
+                <a href="../../设计模式/行为型模式/中介者模式.html">
+            
+                    
+                    中介者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.3" data-path="../../设计模式/行为型模式/责任链模式.html">
+            
+                <a href="../../设计模式/行为型模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.4" data-path="../../设计模式/行为型模式/观察者模式.html">
+            
+                <a href="../../设计模式/行为型模式/观察者模式.html">
+            
+                    
+                    观察者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.5" data-path="../../设计模式/行为型模式/迭代器模式.html">
+            
+                <a href="../../设计模式/行为型模式/迭代器模式.html">
+            
+                    
+                    迭代器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.6" data-path="../../设计模式/行为型模式/访问者模式.html">
+            
+                <a href="../../设计模式/行为型模式/访问者模式.html">
+            
+                    
+                    访问者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JVM（JAVA虚拟机）</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../JVM上篇：内存与垃圾回收篇.html">
+            
+                <a href="../JVM上篇：内存与垃圾回收篇.html">
+            
+                    
+                    JVM上篇：内存与垃圾回收篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="JVM与Java体系结构.html">
+            
+                <a href="JVM与Java体系结构.html">
+            
+                    
+                    1.JVM与Java体系结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="类加载子系统.html">
+            
+                <a href="类加载子系统.html">
+            
+                    
+                    2.类加载子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="运行时数据区及程序计数器.html">
+            
+                <a href="运行时数据区及程序计数器.html">
+            
+                    
+                    3.运行时数据区及程序计数器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="虚拟机栈.html">
+            
+                <a href="虚拟机栈.html">
+            
+                    
+                    4.虚拟机栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="本地方法接口和本地方法栈.html">
+            
+                <a href="本地方法接口和本地方法栈.html">
+            
+                    
+                    5.本地方法接口和本地方法栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="堆.html">
+            
+                <a href="堆.html">
+            
+                    
+                    6.堆
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="方法区.html">
+            
+                <a href="方法区.html">
+            
+                    
+                    7.方法区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="对象实例化及直接内存.html">
+            
+                <a href="对象实例化及直接内存.html">
+            
+                    
+                    8.对象实例化及直接内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="执行引擎.html">
+            
+                <a href="执行引擎.html">
+            
+                    
+                    9.执行引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.10" data-path="StringTable.html">
+            
+                <a href="StringTable.html">
+            
+                    
+                    10.StringTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.11" data-path="垃圾回收概述及算法.html">
+            
+                <a href="垃圾回收概述及算法.html">
+            
+                    
+                    11.垃圾回收概述及算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.12" data-path="垃圾回收相关概念.html">
+            
+                <a href="垃圾回收相关概念.html">
+            
+                    
+                    12.垃圾回收相关概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.13" data-path="垃圾回收器.html">
+            
+                <a href="垃圾回收器.html">
+            
+                    
+                    13.垃圾回收器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../JVM中篇：字节码与类加载篇.html">
+            
+                <a href="../JVM中篇：字节码与类加载篇.html">
+            
+                    
+                    JVM中篇：字节码与类加载篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../JVM下篇：性能监控与调优篇.html">
+            
+                <a href="../JVM下篇：性能监控与调优篇.html">
+            
+                    
+                    JVM下篇：性能监控与调优篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linux</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../../Linux/CentOS7安装.html">
+            
+                <a href="../../../Linux/CentOS7安装.html">
+            
+                    
+                    CentOS7安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Maven</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../../Maven/Maven插件.html">
+            
+                <a href="../../../Maven/Maven插件.html">
+            
+                    
+                    Maven插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">扩展知识</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../../扩展知识/UML类图/UML类图.html">
+            
+                <a href="../../../扩展知识/UML类图/UML类图.html">
+            
+                    
+                    UML类图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../../扩展知识/JVM分层编译/JVM分层编译.html">
+            
+                <a href="../../../扩展知识/JVM分层编译/JVM分层编译.html">
+            
+                    
+                    JVM分层编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../../扩展知识/集合类容器类/集合类容器类.html">
+            
+                <a href="../../../扩展知识/集合类容器类/集合类容器类.html">
+            
+                    
+                    集合类容器类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">旅行攻略</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../../../旅行攻略/昆明-大理-丽江.html">
+            
+                <a href="../../../旅行攻略/昆明-大理-丽江.html">
+            
+                    
+                    昆明-大理-丽江
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../../.." >10.StringTable</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><ul>
+<li><div><a href="#10-stringtable">10. StringTable</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#101-string&#x7684;&#x57FA;&#x672C;&#x7279;&#x6027;">10.1. String&#x7684;&#x57FA;&#x672C;&#x7279;&#x6027;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1011-string&#x5728;jdk9&#x4E2D;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x53D8;&#x66F4;">10.1.1. String&#x5728;jdk9&#x4E2D;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x53D8;&#x66F4;</a><i></i></div></li>
+<li><div><a href="#1012-string&#x7684;&#x57FA;&#x672C;&#x7279;&#x6027;">10.1.2. String&#x7684;&#x57FA;&#x672C;&#x7279;&#x6027;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#102-string&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;">10.2. String&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;</a><i></i></div></li>
+<li><div><a href="#103-string&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;">10.3. String&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</a><i></i></div></li>
+<li><div><a href="#104-&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;&#x64CD;&#x4F5C;">10.4. &#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;&#x64CD;&#x4F5C;</a><i></i></div></li>
+<li><div><a href="#105-intern&#x7684;&#x4F7F;&#x7528;">10.5. intern()&#x7684;&#x4F7F;&#x7528;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1051-intern&#x7684;&#x4F7F;&#x7528;&#xFF1A;jdk6-vs-jdk78">10.5.1. intern&#x7684;&#x4F7F;&#x7528;&#xFF1A;JDK6 vs JDK7/8</a><i></i></div></li>
+<li><div><a href="#1052-intern&#x7684;&#x6548;&#x7387;&#x6D4B;&#x8BD5;&#xFF1A;&#x7A7A;&#x95F4;&#x89D2;&#x5EA6;">10.5.2. intern&#x7684;&#x6548;&#x7387;&#x6D4B;&#x8BD5;&#xFF1A;&#x7A7A;&#x95F4;&#x89D2;&#x5EA6;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#106-stringtable&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;">10.6. StringTable&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;</a><i></i></div></li>
+<li><div><a href="#107-g1&#x4E2D;&#x7684;string&#x53BB;&#x91CD;&#x64CD;&#x4F5C;">10.7. G1&#x4E2D;&#x7684;String&#x53BB;&#x91CD;&#x64CD;&#x4F5C;</a><i></i></div></li>
+</ul></li>
+</ul>
+</div>
+
+<h1 id="10-stringtable">10. StringTable</h1>
+<h2 id="101-string&#x7684;&#x57FA;&#x672C;&#x7279;&#x6027;">10.1. String&#x7684;&#x57FA;&#x672C;&#x7279;&#x6027;</h2>
+<ul>
+<li><p>String&#xFF1A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4F7F;&#x7528;&#x4E00;&#x5BF9;&quot;&quot;&#x5F15;&#x8D77;&#x6765;&#x8868;&#x793A;</p>
+</li>
+<li><p>String&#x58F0;&#x660E;&#x4E3A;final&#x7684;&#xFF0C;&#x4E0D;&#x53EF;&#x88AB;&#x7EE7;&#x627F;</p>
+</li>
+<li><p>String&#x5B9E;&#x73B0;&#x4E86;Serializable&#x63A5;&#x53E3;&#xFF1A;&#x8868;&#x793A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x652F;&#x6301;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x3002;</p>
+</li>
+<li><p>String&#x5B9E;&#x73B0;&#x4E86;Comparable&#x63A5;&#x53E3;&#xFF1A;&#x8868;&#x793A;string&#x53EF;&#x4EE5;&#x6BD4;&#x8F83;&#x5927;&#x5C0F;</p>
+</li>
+<li><p>String&#x5728;jdk8&#x53CA;&#x4EE5;&#x524D;&#x5185;&#x90E8;&#x5B9A;&#x4E49;&#x4E86;final char[] value&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;&#x3002;JDK9&#x65F6;&#x6539;&#x4E3A;byte[]</p>
+</li>
+</ul>
+<h3 id="1011-string&#x5728;jdk9&#x4E2D;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x53D8;&#x66F4;">10.1.1. String&#x5728;jdk9&#x4E2D;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x53D8;&#x66F4;</h3>
+<p>&#x5B98;&#x7F51;&#x5730;&#x5740;&#xFF1A;<a href="http://openjdk.java.net/jeps/254" target="_blank">JEP 254: Compact Strings (java.net)</a></p>
+<blockquote>
+<h2 id="motivation">Motivation</h2>
+<p>The current implementation of the <code>String</code> class stores characters in a <code>char</code> array, using two bytes (sixteen bits) for each character. Data gathered from many different applications indicates that strings are a major component of heap usage and, moreover, that most <code>String</code> objects contain only Latin-1 characters. Such characters require only one byte of storage, hence half of the space in the internal <code>char</code> arrays of such <code>String</code> objects is going unused.</p>
+<h2 id="description">Description</h2>
+<p>We propose to change the internal representation of the <code>String</code> class from a UTF-16 <code>char</code> array to a <code>byte</code> array plus an encoding-flag field. The new <code>String</code> class will store characters encoded either as ISO-8859-1/Latin-1 (one byte per character), or as UTF-16 (two bytes per character), based upon the contents of the string. The encoding flag will indicate which encoding is used.</p>
+<p>String-related classes such as <code>AbstractStringBuilder</code>, <code>StringBuilder</code>, and <code>StringBuffer</code> will be updated to use the same representation, as will the HotSpot VM&apos;s intrinsic string operations.</p>
+<p>This is purely an implementation change, with no changes to existing public interfaces. There are no plans to add any new public APIs or other interfaces.</p>
+<p>The prototyping work done to date confirms the expected reduction in memory footprint, substantial reductions of GC activity, and minor performance regressions in some corner cases.</p>
+</blockquote>
+<p><strong>&#x52A8;&#x673A;</strong></p>
+<p>&#x76EE;&#x524D;String&#x7C7B;&#x7684;&#x5B9E;&#x73B0;&#x5C06;&#x5B57;&#x7B26;&#x5B58;&#x50A8;&#x5728;&#x4E00;&#x4E2A;char&#x6570;&#x7EC4;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x5B57;&#x7B26;&#x4F7F;&#x7528;&#x4E24;&#x4E2A;&#x5B57;&#x8282;&#xFF08;16&#x4F4D;&#xFF09;&#x3002;&#x4ECE;&#x8BB8;&#x591A;&#x4E0D;&#x540C;&#x7684;&#x5E94;&#x7528;&#x4E2D;&#x6536;&#x96C6;&#x5230;&#x7684;&#x6570;&#x636E;&#x8868;&#x660E;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5806;&#x4F7F;&#x7528;&#x7684;&#x4E3B;&#x8981;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#xFF0C;&#x6B64;&#x5916;&#xFF0C;&#x5927;&#x591A;&#x6570;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;&#x53EA;&#x5305;&#x542B;Latin-1&#x5B57;&#x7B26;&#x3002;&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#x53EA;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x90E8;&#x5B57;&#x7B26;&#x6570;&#x7EC4;&#x4E2D;&#x6709;&#x4E00;&#x534A;&#x7684;&#x7A7A;&#x95F4;&#x6CA1;&#x6709;&#x88AB;&#x4F7F;&#x7528;&#x3002;</p>
+<p><strong>&#x8BF4;&#x660E;</strong></p>
+<p>&#x6211;&#x4EEC;&#x5EFA;&#x8BAE;&#x5C06;String&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x8868;&#x793A;&#x65B9;&#x6CD5;&#x4ECE;UTF-16&#x5B57;&#x7B26;&#x6570;&#x7EC4;&#x6539;&#x4E3A;&#x5B57;&#x8282;&#x6570;&#x7EC4;&#x52A0;&#x7F16;&#x7801;&#x6807;&#x5FD7;&#x57DF;&#x3002;&#x65B0;&#x7684;String&#x7C7B;&#x5C06;&#x6839;&#x636E;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x4EE5;ISO-8859-1/Latin-1&#xFF08;&#x6BCF;&#x4E2A;&#x5B57;&#x7B26;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#xFF09;&#x6216;UTF-16&#xFF08;&#x6BCF;&#x4E2A;&#x5B57;&#x7B26;&#x4E24;&#x4E2A;&#x5B57;&#x8282;&#xFF09;&#x7684;&#x65B9;&#x5F0F;&#x5B58;&#x50A8;&#x5B57;&#x7B26;&#x7F16;&#x7801;&#x3002;&#x7F16;&#x7801;&#x6807;&#x5FD7;&#x5C06;&#x8868;&#x660E;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x54EA;&#x79CD;&#x7F16;&#x7801;&#x3002;</p>
+<hr>
+<p>&#x4E0E;&#x5B57;&#x7B26;&#x4E32;&#x76F8;&#x5173;&#x7684;&#x7C7B;&#xFF0C;&#x5982;<font style="background:yellow">AbstractStringBuilder&#x3001;StringBuilder&#x548C;StringBuffer&#x5C06;&#x88AB;&#x66F4;&#x65B0;&#x4EE5;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x8868;&#x793A;&#x65B9;&#x6CD5;&#xFF0C;HotSpot VM&#x7684;&#x5185;&#x5728;&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x4E5F;&#x662F;&#x5982;&#x6B64;</font>&#x3002;</p>
+<p>&#x8FD9;&#x7EAF;&#x7CB9;&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x4E0A;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x5BF9;&#x73B0;&#x6709;&#x7684;&#x516C;&#x5171;&#x63A5;&#x53E3;&#x6CA1;&#x6709;&#x53D8;&#x5316;&#x3002;&#x76EE;&#x524D;&#x6CA1;&#x6709;&#x8BA1;&#x5212;&#x589E;&#x52A0;&#x4EFB;&#x4F55;&#x65B0;&#x7684;&#x516C;&#x5171;API&#x6216;&#x5176;&#x4ED6;&#x63A5;&#x53E3;&#x3002;</p>
+<p>&#x8FC4;&#x4ECA;&#x4E3A;&#x6B62;&#x6240;&#x505A;&#x7684;&#x539F;&#x578B;&#x8BBE;&#x8BA1;&#x5DE5;&#x4F5C;&#x8BC1;&#x5B9E;&#x4E86;&#x5185;&#x5B58;&#x5360;&#x7528;&#x7684;&#x9884;&#x671F;&#x51CF;&#x5C11;&#xFF0C;GC&#x6D3B;&#x52A8;&#x7684;&#x5927;&#x5E45;&#x51CF;&#x5C11;&#xFF0C;&#x4EE5;&#x53CA;&#x5728;&#x67D0;&#x4E9B;&#x89D2;&#x843D;&#x60C5;&#x51B5;&#x4E0B;&#x7684;&#x8F7B;&#x5FAE;&#x6027;&#x80FD;&#x5012;&#x9000;&#x3002;</p>
+<p>&#x7ED3;&#x8BBA;&#xFF1A;String&#x518D;&#x4E5F;&#x4E0D;&#x7528;char[] &#x6765;&#x5B58;&#x50A8;&#x4E86;&#xFF0C;&#x6539;&#x6210;&#x4E86;byte [] &#x52A0;&#x4E0A;&#x7F16;&#x7801;&#x6807;&#x8BB0;&#xFF0C;&#x8282;&#x7EA6;&#x4E86;&#x4E00;&#x4E9B;&#x7A7A;&#x95F4;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">String</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">java</span>.<span class="hljs-title">io</span>.<span class="hljs-title">Serializable</span>, <span class="hljs-title">Comparable</span>&lt;<span class="hljs-title">String</span>&gt;, <span class="hljs-title">CharSequence</span> </span>{
+    <span class="hljs-meta">@Stable</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">byte</span>[] value;
+}
+</code></pre>
+<h3 id="1012-string&#x7684;&#x57FA;&#x672C;&#x7279;&#x6027;">10.1.2. String&#x7684;&#x57FA;&#x672C;&#x7279;&#x6027;</h3>
+<p>String&#xFF1A;&#x4EE3;&#x8868;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x5B57;&#x7B26;&#x5E8F;&#x5217;&#x3002;&#x7B80;&#x79F0;&#xFF1A;&#x4E0D;&#x53EF;&#x53D8;&#x6027;&#x3002;</p>
+<ul>
+<li>&#x5F53;&#x5BF9;&#x5B57;&#x7B26;&#x4E32;&#x91CD;&#x65B0;&#x8D4B;&#x503C;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x91CD;&#x5199;&#x6307;&#x5B9A;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x8D4B;&#x503C;&#xFF0C;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x539F;&#x6709;&#x7684;value&#x8FDB;&#x884C;&#x8D4B;&#x503C;&#x3002;</li>
+<li>&#x5F53;&#x5BF9;&#x73B0;&#x6709;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x6307;&#x5B9A;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x8D4B;&#x503C;&#xFF0C;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x539F;&#x6709;&#x7684;value&#x8FDB;&#x884C;&#x8D4B;&#x503C;&#x3002;</li>
+<li>&#x5F53;&#x8C03;&#x7528;string&#x7684;replace()&#x65B9;&#x6CD5;&#x4FEE;&#x6539;&#x6307;&#x5B9A;&#x5B57;&#x7B26;&#x6216;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x6307;&#x5B9A;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x8D4B;&#x503C;&#xFF0C;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x539F;&#x6709;&#x7684;value&#x8FDB;&#x884C;&#x8D4B;&#x503C;&#x3002;</li>
+</ul>
+<p>&#x901A;&#x8FC7;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x65B9;&#x5F0F;&#xFF08;&#x533A;&#x522B;&#x4E8E;new&#xFF09;&#x7ED9;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x8D4B;&#x503C;&#xFF0C;&#x6B64;&#x65F6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#x58F0;&#x660E;&#x5728;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x3002;</p>
+<font style="background:yellow">&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x662F;&#x4E0D;&#x4F1A;&#x5B58;&#x50A8;&#x76F8;&#x540C;&#x5185;&#x5BB9;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x7684;</font>
+
+<p>String&#x7684;String Pool&#x662F;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x5927;&#x5C0F;&#x7684;Hashtable&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x5927;&#x5C0F;&#x957F;&#x5EA6;&#x662F;1009&#x3002;&#x5982;&#x679C;&#x653E;&#x8FDB;String Pool&#x7684;String&#x975E;&#x5E38;&#x591A;&#xFF0C;&#x5C31;&#x4F1A;&#x9020;&#x6210;Hash&#x51B2;&#x7A81;&#x4E25;&#x91CD;&#xFF0C;&#x4ECE;&#x800C;&#x5BFC;&#x81F4;&#x94FE;&#x8868;&#x4F1A;&#x5F88;&#x957F;&#xFF0C;&#x800C;&#x94FE;&#x8868;&#x957F;&#x4E86;&#x540E;&#x76F4;&#x63A5;&#x4F1A;&#x9020;&#x6210;&#x7684;&#x5F71;&#x54CD;&#x5C31;&#x662F;&#x5F53;&#x8C03;&#x7528;String.intern&#x65F6;&#x6027;&#x80FD;&#x4F1A;&#x5927;&#x5E45;&#x4E0B;&#x964D;&#x3002;</p>
+<p>&#x4F7F;&#x7528;<code>-XX:StringTablesize</code>&#x53EF;&#x8BBE;&#x7F6E;StringTable&#x7684;&#x957F;&#x5EA6;</p>
+<ul>
+<li><p>&#x5728;jdk6&#x4E2D;StringTable&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x5C31;&#x662F;1009&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8FC7;&#x591A;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;&#x6548;&#x7387;&#x4E0B;&#x964D;&#x5F88;&#x5FEB;&#x3002;StringTablesize&#x8BBE;&#x7F6E;&#x6CA1;&#x6709;&#x8981;&#x6C42; </p>
+</li>
+<li><p>&#x5728;jdk7&#x4E2D;&#xFF0C;StringTable&#x7684;&#x957F;&#x5EA6;&#x9ED8;&#x8BA4;&#x503C;&#x662F;60013&#xFF0C;StringTablesize&#x8BBE;&#x7F6E;&#x6CA1;&#x6709;&#x8981;&#x6C42; </p>
+</li>
+<li><p>&#x5728;JDK8&#x4E2D;&#xFF0C;&#x8BBE;&#x7F6E;StringTable&#x957F;&#x5EA6;&#x7684;&#x8BDD;&#xFF0C;1009&#x662F;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x7684;&#x6700;&#x5C0F;&#x503C; </p>
+</li>
+</ul>
+<h2 id="102-string&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;">10.2. String&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;</h2>
+<p>&#x5728;Java&#x8BED;&#x8A00;&#x4E2D;&#x6709;8&#x79CD;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x548C;&#x4E00;&#x79CD;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684;&#x7C7B;&#x578B;String&#x3002;&#x8FD9;&#x4E9B;&#x7C7B;&#x578B;&#x4E3A;&#x4E86;&#x4F7F;&#x5B83;&#x4EEC;&#x5728;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x901F;&#x5EA6;&#x66F4;&#x5FEB;&#x3001;&#x66F4;&#x8282;&#x7701;&#x5185;&#x5B58;&#xFF0C;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x5E38;&#x91CF;&#x6C60;&#x7684;&#x6982;&#x5FF5;&#x3002;</p>
+<p>&#x5E38;&#x91CF;&#x6C60;&#x5C31;&#x7C7B;&#x4F3C;&#x4E00;&#x4E2A;Java&#x7CFB;&#x7EDF;&#x7EA7;&#x522B;&#x63D0;&#x4F9B;&#x7684;&#x7F13;&#x5B58;&#x3002;8&#x79CD;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x5E38;&#x91CF;&#x6C60;&#x90FD;&#x662F;&#x7CFB;&#x7EDF;&#x534F;&#x8C03;&#x7684;&#xFF0C;<font style="background:yellow">String&#x7C7B;&#x578B;&#x7684;&#x5E38;&#x91CF;&#x6C60;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x3002;&#x5B83;&#x7684;&#x4E3B;&#x8981;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x79CD;</font>&#x3002;</p>
+<ul>
+<li><p>&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x53CC;&#x5F15;&#x53F7;&#x58F0;&#x660E;&#x51FA;&#x6765;&#x7684;String&#x5BF9;&#x8C61;&#x4F1A;&#x76F4;&#x63A5;&#x5B58;&#x50A8;&#x5728;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x3002; </p>
+</li>
+<li><p>&#x5982;&#x679C;&#x4E0D;&#x662F;&#x7528;&#x53CC;&#x5F15;&#x53F7;&#x58F0;&#x660E;&#x7684;String&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;String&#x63D0;&#x4F9B;&#x7684;intern()&#x65B9;&#x6CD5;&#x3002;&#x8FD9;&#x4E2A;&#x540E;&#x9762;&#x91CD;&#x70B9;&#x8C08;</p>
+</li>
+</ul>
+<p>Java 6&#x53CA;&#x4EE5;&#x524D;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x5B58;&#x653E;&#x5728;&#x6C38;&#x4E45;&#x4EE3;</p>
+<p>Java 7&#x4E2D; Oracle&#x7684;&#x5DE5;&#x7A0B;&#x5E08;&#x5BF9;&#x5B57;&#x7B26;&#x4E32;&#x6C60;&#x7684;&#x903B;&#x8F91;&#x505A;&#x4E86;&#x5F88;&#x5927;&#x7684;&#x6539;&#x53D8;&#xFF0C;&#x5373;&#x5C06;<font style="background:yellow">&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x7684;&#x4F4D;&#x7F6E;&#x8C03;&#x6574;&#x5230;Java&#x5806;&#x5185;</font></p>
+<ul>
+<li><p>&#x6240;&#x6709;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x90FD;&#x4FDD;&#x5B58;&#x5728;&#x5806;&#xFF08;Heap&#xFF09;&#x4E2D;&#xFF0C;&#x548C;&#x5176;&#x4ED6;&#x666E;&#x901A;&#x5BF9;&#x8C61;&#x4E00;&#x6837;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x8BA9;&#x4F60;&#x5728;&#x8FDB;&#x884C;&#x8C03;&#x4F18;&#x5E94;&#x7528;&#x65F6;&#x4EC5;&#x9700;&#x8981;&#x8C03;&#x6574;&#x5806;&#x5927;&#x5C0F;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002; </p>
+</li>
+<li><p>&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x6982;&#x5FF5;&#x539F;&#x672C;&#x4F7F;&#x7528;&#x5F97;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x6539;&#x52A8;&#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x7406;&#x7531;&#x8BA9;&#x6211;&#x4EEC;&#x91CD;&#x65B0;&#x8003;&#x8651;&#x5728;Java 7&#x4E2D;&#x4F7F;&#x7528;<code>String.intern()</code>&#x3002; </p>
+</li>
+</ul>
+<p>Java 8&#x5143;&#x7A7A;&#x95F4;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x5728;&#x5806;</p>
+<p><img src="StringTable.assets/image-20220224213839190.png" alt="image-20220224213839190"></p>
+<p><img src="StringTable.assets/image-20220224213844121.png" alt="image-20220224213844121"></p>
+<p><strong>StringTable&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8C03;&#x6574;&#xFF1F;</strong></p>
+<p>&#x5B98;&#x7F51;&#x5730;&#x5740;&#xFF1A;<a href="https://www.oracle.com/java/technologies/javase/jdk7-relnotes.html#jdk7changes" target="_blank">Java SE 7 Features and Enhancements (oracle.com)</a></p>
+<blockquote>
+<p><strong>Synopsis:</strong> In JDK 7, interned strings are no longer allocated in the permanent generation of the Java heap, but are instead allocated in the main part of the Java heap (known as the young and old generations), along with the other objects created by the application. This change will result in more data residing in the main Java heap, and less data in the permanent generation, and thus may require heap sizes to be adjusted. Most applications will see only relatively small differences in heap usage due to this change, but larger applications that load many classes or make heavy use of the <code>String.intern()</code> method will see more significant differences.</p>
+</blockquote>
+<p>&#x7B80;&#x4ECB;&#xFF1A;&#x5728;JDK 7&#x4E2D;&#xFF0C;&#x5185;&#x90E8;&#x5B57;&#x7B26;&#x4E32;&#x4E0D;&#x518D;&#x5206;&#x914D;&#x5728;Java&#x5806;&#x7684;&#x6C38;&#x4E45;&#x4EE3;&#x4E2D;&#xFF0C;&#x800C;&#x662F;&#x5206;&#x914D;&#x5728;Java&#x5806;&#x7684;&#x4E3B;&#x8981;&#x90E8;&#x5206;&#xFF08;&#x79F0;&#x4E3A;&#x5E74;&#x8F7B;&#x4EE3;&#x548C;&#x8001;&#x5E74;&#x4EE3;&#xFF09;&#xFF0C;&#x4E0E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x521B;&#x5EFA;&#x7684;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x4E00;&#x8D77;&#x3002;&#x8FD9;&#x79CD;&#x53D8;&#x5316;&#x5C06;&#x5BFC;&#x81F4;&#x66F4;&#x591A;&#x7684;&#x6570;&#x636E;&#x9A7B;&#x7559;&#x5728;&#x4E3B;Java&#x5806;&#x4E2D;&#xFF0C;&#x800C;&#x66F4;&#x5C11;&#x7684;&#x6570;&#x636E;&#x5728;&#x6C38;&#x4E45;&#x4EE3;&#x4E2D;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x8C03;&#x6574;&#x5806;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x5927;&#x591A;&#x6570;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5C06;&#x770B;&#x5230;&#x7531;&#x4E8E;&#x8FD9;&#x4E00;&#x53D8;&#x5316;&#x800C;&#x5BFC;&#x81F4;&#x7684;&#x5806;&#x4F7F;&#x7528;&#x7684;&#x76F8;&#x5BF9;&#x8F83;&#x5C0F;&#x7684;&#x5DEE;&#x5F02;&#xFF0C;&#x4F46;<font style="background:yellow">&#x52A0;&#x8F7D;&#x8BB8;&#x591A;&#x7C7B;&#x6216;&#x5927;&#x91CF;&#x4F7F;&#x7528;String.intern()&#x65B9;&#x6CD5;&#x7684;&#x5927;&#x578B;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5C06;&#x770B;&#x5230;&#x66F4;&#x660E;&#x663E;&#x7684;&#x5DEE;&#x5F02;</font>&#x3002;</p>
+<h2 id="103-string&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;">10.3. String&#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StringTest</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        System.out.println();
+        System.out.println(<span class="hljs-string">&quot;1&quot;</span>); <span class="hljs-comment">//2166</span>
+        System.out.println(<span class="hljs-string">&quot;2&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;3&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;4&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;5&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;6&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;7&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;8&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;9&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;10&quot;</span>); <span class="hljs-comment">//2175</span>
+        System.out.println(<span class="hljs-string">&quot;1&quot;</span>); <span class="hljs-comment">//2176</span>
+        System.out.println(<span class="hljs-string">&quot;2&quot;</span>); <span class="hljs-comment">//2176</span>
+        System.out.println(<span class="hljs-string">&quot;3&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;4&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;5&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;6&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;7&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;8&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;9&quot;</span>);
+        System.out.println(<span class="hljs-string">&quot;10&quot;</span>);<span class="hljs-comment">//2176</span>
+    }
+
+}
+</code></pre>
+<p>Java&#x8BED;&#x8A00;&#x89C4;&#x8303;&#x91CC;&#x8981;&#x6C42;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x9762;&#x91CF;&#xFF0C;&#x5E94;&#x8BE5;&#x5305;&#x542B;&#x540C;&#x6837;&#x7684;Unicode&#x5B57;&#x7B26;&#x5E8F;&#x5217;&#xFF08;&#x5305;&#x542B;&#x540C;&#x4E00;&#x4EFD;&#x7801;&#x70B9;&#x5E8F;&#x5217;&#x7684;&#x5E38;&#x91CF;&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x5FC5;&#x987B;&#x662F;&#x6307;&#x5411;&#x540C;&#x4E00;&#x4E2A;String&#x7C7B;&#x5B9E;&#x4F8B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Memory</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{<span class="hljs-comment">//line 1</span>
+        <span class="hljs-keyword">int</span> i= <span class="hljs-number">1</span>;<span class="hljs-comment">//line 2</span>
+        Object obj = <span class="hljs-keyword">new</span> Object();<span class="hljs-comment">//line 3</span>
+        Memory mem = <span class="hljs-keyword">new</span> Memory();<span class="hljs-comment">//Line 4</span>
+        mem.foo(obj);<span class="hljs-comment">//Line 5</span>
+    }<span class="hljs-comment">//Line 9</span>
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(Object param)</span> </span>{<span class="hljs-comment">//line 6</span>
+        String str = param.toString();<span class="hljs-comment">//line 7</span>
+        System.out.println(str);
+    }<span class="hljs-comment">//Line 8</span>
+}
+</code></pre>
+<p><img src="StringTable.assets/image-20220224215736265.png" alt="image-20220224215736265"></p>
+<h2 id="104-&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;&#x64CD;&#x4F5C;">10.4. &#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;&#x64CD;&#x4F5C;</h2>
+<ul>
+<li><p>&#x5E38;&#x91CF;&#x4E0E;&#x5E38;&#x91CF;&#x7684;&#x62FC;&#x63A5;&#x7ED3;&#x679C;&#x5728;&#x5E38;&#x91CF;&#x6C60;&#xFF0C;&#x539F;&#x7406;&#x662F;&#x7F16;&#x8BD1;&#x671F;&#x4F18;&#x5316;</p>
+</li>
+<li><p>&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x4E0D;&#x4F1A;&#x5B58;&#x5728;&#x76F8;&#x540C;&#x5185;&#x5BB9;&#x7684;&#x53D8;&#x91CF;</p>
+</li>
+<li><p>&#x53EA;&#x8981;&#x5176;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x662F;&#x53D8;&#x91CF;&#xFF0C;&#x7ED3;&#x679C;&#x5C31;&#x5728;&#x5806;&#x4E2D;&#x3002;&#x53D8;&#x91CF;&#x62FC;&#x63A5;&#x7684;&#x539F;&#x7406;&#x662F;StringBuilder</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x62FC;&#x63A5;&#x7684;&#x7ED3;&#x679C;&#x8C03;&#x7528;intern()&#x65B9;&#x6CD5;&#xFF0C;&#x5219;&#x4E3B;&#x52A8;&#x5C06;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x8FD8;&#x6CA1;&#x6709;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;&#x653E;&#x5165;&#x6C60;&#x4E2D;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x6B64;&#x5BF9;&#x8C61;&#x5730;&#x5740;</p>
+</li>
+</ul>
+<p><strong>&#x4E3E;&#x4F8B;1</strong></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test1</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// &#x90FD;&#x662F;&#x5E38;&#x91CF;&#xFF0C;&#x524D;&#x7AEF;&#x7F16;&#x8BD1;&#x671F;&#x4F1A;&#x8FDB;&#x884C;&#x4EE3;&#x7801;&#x4F18;&#x5316;</span>
+    <span class="hljs-comment">// &#x901A;&#x8FC7;idea&#x76F4;&#x63A5;&#x770B;&#x5BF9;&#x5E94;&#x7684;&#x53CD;&#x7F16;&#x8BD1;&#x7684;class&#x6587;&#x4EF6;&#xFF0C;&#x4F1A;&#x663E;&#x793A; String s1 = &quot;abc&quot;; &#x8BF4;&#x660E;&#x505A;&#x4E86;&#x4EE3;&#x7801;&#x4F18;&#x5316;</span>
+    String s1 = <span class="hljs-string">&quot;a&quot;</span> + <span class="hljs-string">&quot;b&quot;</span> + <span class="hljs-string">&quot;c&quot;</span>;
+    String s2 = <span class="hljs-string">&quot;abc&quot;</span>;
+
+    <span class="hljs-comment">// true&#xFF0C;&#x6709;&#x4E0A;&#x8FF0;&#x53EF;&#x77E5;&#xFF0C;s1&#x548C;s2&#x5B9E;&#x9645;&#x4E0A;&#x6307;&#x5411;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x7684;&#x540C;&#x4E00;&#x4E2A;&#x503C;</span>
+    System.out.println(s1 == s2);<span class="hljs-comment">//true</span>
+}
+</code></pre>
+<p><strong>&#x4E3E;&#x4F8B;2</strong></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test2</span><span class="hljs-params">()</span> </span>{
+    String s1 = <span class="hljs-string">&quot;javaEE&quot;</span>;
+    String s2 = <span class="hljs-string">&quot;hadoop&quot;</span>;
+
+    String s3 = <span class="hljs-string">&quot;javaEEhadoop&quot;</span>;
+    String s4 = <span class="hljs-string">&quot;javaEE&quot;</span> + <span class="hljs-string">&quot;hadoop&quot;</span>;    
+    String s5 = s1 + <span class="hljs-string">&quot;hadoop&quot;</span>;
+    String s6 = <span class="hljs-string">&quot;javaEE&quot;</span> + s2;
+    String s7 = s1 + s2;
+
+    System.out.println(s3 == s4); <span class="hljs-comment">// true &#x7F16;&#x8BD1;&#x671F;&#x4F18;&#x5316;</span>
+    System.out.println(s3 == s5); <span class="hljs-comment">// false s1&#x662F;&#x53D8;&#x91CF;&#xFF0C;&#x4E0D;&#x80FD;&#x7F16;&#x8BD1;&#x671F;&#x4F18;&#x5316;</span>
+    System.out.println(s3 == s6); <span class="hljs-comment">// false s2&#x662F;&#x53D8;&#x91CF;&#xFF0C;&#x4E0D;&#x80FD;&#x7F16;&#x8BD1;&#x671F;&#x4F18;&#x5316;</span>
+    System.out.println(s3 == s7); <span class="hljs-comment">// false s1&#x3001;s2&#x90FD;&#x662F;&#x53D8;&#x91CF;</span>
+    System.out.println(s5 == s6); <span class="hljs-comment">// false s5&#x3001;s6 &#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;</span>
+    System.out.println(s5 == s7); <span class="hljs-comment">// false s5&#x3001;s7 &#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;</span>
+    System.out.println(s6 == s7); <span class="hljs-comment">// false s6&#x3001;s7 &#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;</span>
+
+    String s8 = s6.intern();
+    System.out.println(s3 == s8); <span class="hljs-comment">// true intern&#x4E4B;&#x540E;&#xFF0C;s8&#x548C;s3&#x4E00;&#x6837;&#xFF0C;&#x6307;&#x5411;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x7684;&quot;javaEEhadoop&quot;</span>
+}
+</code></pre>
+<p><strong>&#x4E3E;&#x4F8B;3</strong></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test3</span><span class="hljs-params">()</span></span>{
+    String s1 = <span class="hljs-string">&quot;a&quot;</span>;
+    String s2 = <span class="hljs-string">&quot;b&quot;</span>;
+    String s3 = <span class="hljs-string">&quot;ab&quot;</span>;
+    String s4 = s1 + s2;
+    System.out.println(s3==s4);<span class="hljs-comment">//false</span>
+}
+</code></pre>
+<p><strong>&#x4E3E;&#x4F8B;4</strong></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test4</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">final</span> String s1 = <span class="hljs-string">&quot;a&quot;</span>;
+    <span class="hljs-keyword">final</span> String s2 = <span class="hljs-string">&quot;b&quot;</span>;
+    String s3 = <span class="hljs-string">&quot;ab&quot;</span>;
+    String s4 = s1 + s2;
+    System.out.println(s3==s4);<span class="hljs-comment">//true</span>
+}
+</code></pre>
+<p><strong>&#x4E3E;&#x4F8B;5</strong></p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test6</span><span class="hljs-params">()</span></span>{
+    String s0 = <span class="hljs-string">&quot;beijing&quot;</span>;
+    String s1 = <span class="hljs-string">&quot;bei&quot;</span>;
+    String s2 = <span class="hljs-string">&quot;jing&quot;</span>;
+    String s3 = s1 + s2;
+    System.out.println(s0 == s3); <span class="hljs-comment">// false s3&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#xFF0C;s0&#x6307;&#x5411;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x7684;&quot;beijing&quot;</span>
+    String s7 = <span class="hljs-string">&quot;shanxi&quot;</span>;
+    <span class="hljs-keyword">final</span> String s4 = <span class="hljs-string">&quot;shan&quot;</span>;
+    <span class="hljs-keyword">final</span> String s5 = <span class="hljs-string">&quot;xi&quot;</span>;
+    String s6 = s4 + s5;
+    System.out.println(s6 == s7); <span class="hljs-comment">// true s4&#x548C;s5&#x662F;final&#x4FEE;&#x9970;&#x7684;&#xFF0C;&#x7F16;&#x8BD1;&#x671F;&#x5C31;&#x80FD;&#x786E;&#x5B9A;s6&#x7684;&#x503C;&#x4E86;</span>
+}
+</code></pre>
+<ul>
+<li><p>&#x4E0D;&#x4F7F;&#x7528;final&#x4FEE;&#x9970;&#xFF0C;&#x5373;&#x4E3A;&#x53D8;&#x91CF;&#x3002;&#x5982;s3&#x884C;&#x7684;s1&#x548C;s2&#xFF0C;&#x4F1A;&#x901A;&#x8FC7;new StringBuilder&#x8FDB;&#x884C;&#x62FC;&#x63A5;</p>
+</li>
+<li><p>&#x4F7F;&#x7528;final&#x4FEE;&#x9970;&#xFF0C;&#x5373;&#x4E3A;&#x5E38;&#x91CF;&#x3002;&#x4F1A;&#x5728;&#x7F16;&#x8BD1;&#x5668;&#x8FDB;&#x884C;&#x4EE3;&#x7801;&#x4F18;&#x5316;&#x3002;<font style="background:yellow">&#x5728;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x80FD;&#x591F;&#x4F7F;&#x7528;final&#x7684;&#xFF0C;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;</font></p>
+</li>
+</ul>
+<p><strong>&#x5B57;&#x8282;&#x7801;</strong></p>
+<p>&#x6211;&#x4EEC;&#x62FF;<strong>&#x4F8B;3</strong>&#x7684;&#x5B57;&#x8282;&#x7801;&#x8FDB;&#x884C;&#x67E5;&#x770B;&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;<code>s1 + s2</code>&#x5B9E;&#x9645;&#x4E0A;&#x662F;new&#x4E86;&#x4E00;&#x4E2A;StringBuilder&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x4E86;append&#x65B9;&#x6CD5;&#x5C06;s1&#x548C;s2&#x6DFB;&#x52A0;&#x8FDB;&#x6765;&#xFF0C;&#x6700;&#x540E;&#x8C03;&#x7528;&#x4E86;toString&#x65B9;&#x6CD5;&#x8D4B;&#x7ED9;s4</p>
+<pre><code class="lang-java"> 0 ldc #19 &lt;a&gt;
+ 2 astore_1
+ 3 ldc #20 &lt;b&gt;
+ 5 astore_2
+ 6 ldc #21 &lt;ab&gt;
+ 8 astore_3
+ 9 new #8 &lt;java/lang/StringBuilder&gt;
+12 dup
+13 invokespecial #9 &lt;java/lang/StringBuilder.&lt;init&gt; : ()V&gt;
+16 aload_1
+17 invokevirtual #10 &lt;java/lang/StringBuilder.append : (Ljava/lang/String;)Ljava/lang/StringBuilder;&gt;
+20 aload_2
+21 invokevirtual #10 &lt;java/lang/StringBuilder.append : (Ljava/lang/String;)Ljava/lang/StringBuilder;&gt;
+24 invokevirtual #11 &lt;java/lang/StringBuilder.toString : ()Ljava/lang/String;&gt;
+27 astore 4
+29 getstatic #3 &lt;java/lang/System.out : Ljava/io/PrintStream;&gt;
+32 aload_3
+33 aload 4
+35 if_acmpne 42 (+7)
+38 iconst_1
+39 goto 43 (+4)
+42 iconst_0
+43 invokevirtual #4 &lt;java/io/PrintStream.println : (Z)V&gt;
+46 return
+</code></pre>
+<p><strong>&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;&#x64CD;&#x4F5C;&#x6027;&#x80FD;&#x5BF9;&#x6BD4;</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>
+</span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> times = <span class="hljs-number">50000</span>;
+
+        <span class="hljs-comment">// String</span>
+        <span class="hljs-keyword">long</span> start = System.currentTimeMillis();
+        testString(times);
+        <span class="hljs-keyword">long</span> end = System.currentTimeMillis();
+        System.out.println(<span class="hljs-string">&quot;String: &quot;</span> + (end-start) + <span class="hljs-string">&quot;ms&quot;</span>);
+
+        <span class="hljs-comment">// StringBuilder</span>
+        start = System.currentTimeMillis();
+        testStringBuilder(times);
+        end = System.currentTimeMillis();
+        System.out.println(<span class="hljs-string">&quot;StringBuilder: &quot;</span> + (end-start) + <span class="hljs-string">&quot;ms&quot;</span>);
+
+        <span class="hljs-comment">// StringBuffer</span>
+        start = System.currentTimeMillis();
+        testStringBuffer(times);
+        end = System.currentTimeMillis();
+        System.out.println(<span class="hljs-string">&quot;StringBuffer: &quot;</span> + (end-start) + <span class="hljs-string">&quot;ms&quot;</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testString</span><span class="hljs-params">(<span class="hljs-keyword">int</span> times)</span> </span>{
+        String str = <span class="hljs-string">&quot;&quot;</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; times; i++) {
+            str += <span class="hljs-string">&quot;test&quot;</span>;
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringBuilder</span><span class="hljs-params">(<span class="hljs-keyword">int</span> times)</span> </span>{
+        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; times; i++) {
+            sb.append(<span class="hljs-string">&quot;test&quot;</span>);
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringBuffer</span><span class="hljs-params">(<span class="hljs-keyword">int</span> times)</span> </span>{
+        StringBuffer sb = <span class="hljs-keyword">new</span> StringBuffer();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; times; i++) {
+            sb.append(<span class="hljs-string">&quot;test&quot;</span>);
+        }
+    }
+}
+
+<span class="hljs-comment">// &#x7ED3;&#x679C;</span>
+String: <span class="hljs-number">3961</span>ms
+StringBuilder: <span class="hljs-number">1</span>ms
+StringBuffer: <span class="hljs-number">2</span>ms
+</code></pre>
+<p>&#x672C;&#x5B9E;&#x9A8C;&#x8FDB;&#x884C;5&#x4E07;&#x6B21;&#x5FAA;&#x73AF;&#xFF0C;String&#x62FC;&#x63A5;&#x65B9;&#x5F0F;&#x7684;&#x65F6;&#x95F4;&#x662F;StringBuilder.append&#x65B9;&#x5F0F;&#x7684;&#x7EA6;4000&#x500D;&#xFF0C;StringBuffer.append()&#x65B9;&#x5F0F;&#x7684;&#x65F6;&#x95F4;&#x662F;StringBuilder.append()&#x65B9;&#x5F0F;&#x7684;&#x7EA6;2&#x500D;</p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x901A;&#x8FC7;StringBuilder&#x7684;append&#x65B9;&#x5F0F;&#x7684;&#x901F;&#x5EA6;&#xFF0C;&#x8981;&#x6BD4;&#x76F4;&#x63A5;&#x5BF9;String&#x4F7F;&#x7528;&#x201C;+&#x201D;&#x62FC;&#x63A5;&#x7684;&#x65B9;&#x5F0F;<font style="background:yellow">&#x5FEB;&#x7684;&#x4E0D;&#x662F;&#x4E00;&#x70B9;&#x534A;&#x70B9;</font></p>
+<p>&#x90A3;&#x4E48;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x5BF9;&#x4E8E;&#x9700;&#x8981;<font style="background:yellow">&#x591A;&#x6B21;&#x6216;&#x5927;&#x91CF;&#x62FC;&#x63A5;</font>&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5728;<font style="background:yellow">&#x4E0D;&#x8003;&#x8651;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x95EE;&#x9898;</font>&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x5E94;&#x8BE5;<font style="background:yellow">&#x5C3D;&#x53EF;&#x80FD;&#x4F7F;&#x7528;StringBuilder&#x8FDB;&#x884C;append&#x64CD;&#x4F5C;&#x3002;</font></p>
+<blockquote>
+<p>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x90A3;&#x4E9B;&#x64CD;&#x4F5C;&#x80FD;&#x591F;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x63D0;&#x9AD8;&#x5B57;&#x7B26;&#x4E32;&#x65B9;&#x9762;&#x7684;&#x8FD0;&#x884C;&#x6548;&#x7387;&#x5462;&#xFF1F; </p>
+</blockquote>
+<p>StringBuilder&#x7A7A;&#x53C2;&#x6784;&#x9020;&#x5668;&#x7684;&#x521D;&#x59CB;&#x5316;&#x5927;&#x5C0F;&#x4E3A;16&#x3002;&#x90A3;&#x4E48;&#xFF0C;&#x5982;&#x679C;&#x63D0;&#x524D;&#x77E5;&#x9053;&#x9700;&#x8981;&#x62FC;&#x63A5;String&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x5C31;&#x5E94;&#x8BE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5E26;&#x53C2;&#x6784;&#x9020;&#x5668;&#x6307;&#x5B9A;capacity&#xFF0C;&#x4EE5;&#x51CF;&#x5C11;&#x6269;&#x5BB9;&#x7684;&#x6B21;&#x6570;&#xFF08;&#x6269;&#x5BB9;&#x7684;&#x903B;&#x8F91;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x67E5;&#x770B;&#x6E90;&#x4EE3;&#x7801;&#xFF09;</p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Constructs a string builder with no characters in it and an
+ * initial capacity of 16 characters.
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">StringBuilder</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">super</span>(<span class="hljs-number">16</span>);
+}
+
+<span class="hljs-comment">/**
+ * Constructs a string builder with no characters in it and an
+ * initial capacity specified by the {<span class="hljs-doctag">@code</span> capacity} argument.
+ *
+ * <span class="hljs-doctag">@param</span>      capacity  the initial capacity.
+ * <span class="hljs-doctag">@throws</span>     NegativeArraySizeException  if the {<span class="hljs-doctag">@code</span> capacity}
+ *               argument is less than {<span class="hljs-doctag">@code</span> 0}.
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">StringBuilder</span><span class="hljs-params">(<span class="hljs-keyword">int</span> capacity)</span> </span>{
+    <span class="hljs-keyword">super</span>(capacity);
+}
+</code></pre>
+<hr>
+<h2 id="105-intern&#x7684;&#x4F7F;&#x7528;">10.5. intern()&#x7684;&#x4F7F;&#x7528;</h2>
+<p>&#x5B98;&#x65B9;API&#x6587;&#x6863;&#x4E2D;&#x7684;&#x89E3;&#x91CA;</p>
+<blockquote>
+<p>public String intern()</p>
+<p>Returns a canonical representation for the string object.</p>
+<p>A pool of strings, initially empty, is maintained privately by the class <code>String</code>.</p>
+<p>When the intern method is invoked, if the pool already contains a string equal to this <code>String</code> object as determined by the <code>equals(Object)</code> method, then the string from the pool is returned. Otherwise, this <code>String</code> object is added to the pool and a reference to this <code>String</code> object is returned.</p>
+<p>It follows that for any two strings <code>s</code> and <code>t</code>, <code>s.intern() == t.intern()</code> is <code>true</code> if and only if <code>s.equals(t)</code> is <code>true</code>.</p>
+<p>All literal strings and string-valued constant expressions are interned. String literals are defined in section 3.10.5 of the The Java&#x2122; Language Specification.</p>
+<ul>
+<li><strong>Returns:</strong>
+a string that has the same contents as this string, but is guaranteed to be from a pool of unique strings. </li>
+</ul>
+</blockquote>
+<p>&#x5F53;&#x8C03;&#x7528;intern&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6C60;&#x5B50;&#x91CC;&#x5DF2;&#x7ECF;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;&#x4E0E;&#x8FD9;&#x4E2A;String&#x5BF9;&#x8C61;&#x76F8;&#x7B49;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6B63;&#x5982;equals(Object)&#x65B9;&#x6CD5;&#x6240;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6C60;&#x5B50;&#x91CC;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4F1A;&#x88AB;&#x8FD4;&#x56DE;&#x3002;&#x5426;&#x5219;&#xFF0C;&#x8FD9;&#x4E2A;String&#x5BF9;&#x8C61;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x6C60;&#x4E2D;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;String&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x3002;</p>
+<p>&#x7531;&#x6B64;&#x53EF;&#x89C1;&#xFF0C;&#x5BF9;&#x4E8E;&#x4EFB;&#x4F55;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;s&#x548C;t&#xFF0C;&#x5F53;&#x4E14;&#x4EC5;&#x5F53;s.equals(t)&#x4E3A;&#x771F;&#x65F6;&#xFF0C;s.intern() == t.intern()&#x4E3A;&#x771F;&#x3002;</p>
+<p>&#x6240;&#x6709;&#x5B57;&#x9762;&#x5B57;&#x7B26;&#x4E32;&#x548C;&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x4E3A;&#x503C;&#x7684;&#x5E38;&#x91CF;&#x8868;&#x8FBE;&#x5F0F;&#x90FD;&#x662F;interned&#x3002;</p>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x4E0E;&#x6B64;&#x5B57;&#x7B26;&#x4E32;&#x5185;&#x5BB9;&#x76F8;&#x540C;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4F46;&#x4FDD;&#x8BC1;&#x662F;&#x6765;&#x81EA;&#x4E00;&#x4E2A;&#x552F;&#x4E00;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6C60;&#x3002;</p>
+<hr>
+<p>intern&#x662F;&#x4E00;&#x4E2A;native&#x65B9;&#x6CD5;&#xFF0C;&#x8C03;&#x7528;&#x7684;&#x662F;&#x5E95;&#x5C42;C&#x7684;&#x65B9;&#x6CD5;</p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+  * Returns a canonical representation for the string object.
+  * &lt;p&gt;
+  * A pool of strings, initially empty, is maintained privately by the
+  * class {<span class="hljs-doctag">@code</span> String}.
+  * &lt;p&gt;
+  * When the intern method is invoked, if the pool already contains a
+  * string equal to this {<span class="hljs-doctag">@code</span> String} object as determined by
+  * the {<span class="hljs-doctag">@link</span> #equals(Object)} method, then the string from the pool is
+  * returned. Otherwise, this {<span class="hljs-doctag">@code</span> String} object is added to the
+  * pool and a reference to this {<span class="hljs-doctag">@code</span> String} object is returned.
+  * &lt;p&gt;
+  * It follows that for any two strings {<span class="hljs-doctag">@code</span> s} and {<span class="hljs-doctag">@code</span> t},
+  * {<span class="hljs-doctag">@code</span> s.intern() == t.intern()} is {<span class="hljs-doctag">@code</span> true}
+  * if and only if {<span class="hljs-doctag">@code</span> s.equals(t)} is {<span class="hljs-doctag">@code</span> true}.
+  * &lt;p&gt;
+  * All literal strings and string-valued constant expressions are
+  * interned. String literals are defined in section 3.10.5 of the
+  * &lt;cite&gt;The Java&amp;trade; Language Specification&lt;/cite&gt;.
+  *
+  * <span class="hljs-doctag">@return</span>  a string that has the same contents as this string, but is
+  *          guaranteed to be from a pool of unique strings.
+  */</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">native</span> String <span class="hljs-title">intern</span><span class="hljs-params">()</span></span>;
+</code></pre>
+<p>&#x5982;&#x679C;&#x4E0D;&#x662F;&#x7528;&#x53CC;&#x5F15;&#x53F7;&#x58F0;&#x660E;&#x7684;String&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;String&#x63D0;&#x4F9B;&#x7684;intern&#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x4F1A;&#x4ECE;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x67E5;&#x8BE2;&#x5F53;&#x524D;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x82E5;&#x4E0D;&#x5B58;&#x5728;&#x5C31;&#x4F1A;&#x5C06;&#x5F53;&#x524D;&#x5B57;&#x7B26;&#x4E32;&#x653E;&#x5165;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x3002;</p>
+<pre><code class="lang-java">String myInfo = <span class="hljs-keyword">new</span> string(<span class="hljs-string">&quot;I love atguigu&quot;</span>).intern();
+</code></pre>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#x4E32;&#x4E0A;&#x8C03;&#x7528;String.intern&#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x6240;&#x6307;&#x5411;&#x7684;&#x90A3;&#x4E2A;&#x7C7B;&#x5B9E;&#x4F8B;&#xFF0C;&#x5FC5;&#x987B;&#x548C;&#x76F4;&#x63A5;&#x4EE5;&#x5E38;&#x91CF;&#x5F62;&#x5F0F;&#x51FA;&#x73B0;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5B9E;&#x4F8B;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4E0B;&#x5217;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#x5FC5;&#x5B9A;&#x662F;true</p>
+<pre><code class="lang-java">(<span class="hljs-string">&quot;a&quot;</span>+<span class="hljs-string">&quot;b&quot;</span>+<span class="hljs-string">&quot;c&quot;</span>).intern() == <span class="hljs-string">&quot;abc&quot;</span>
+</code></pre>
+<p>&#x901A;&#x4FD7;&#x70B9;&#x8BB2;&#xFF0C;Interned string&#x5C31;&#x662F;&#x786E;&#x4FDD;&#x5B57;&#x7B26;&#x4E32;&#x5728;&#x5185;&#x5B58;&#x91CC;&#x53EA;&#x6709;&#x4E00;&#x4EFD;&#x62F7;&#x8D1D;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x8282;&#x7EA6;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x52A0;&#x5FEB;&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x4EFB;&#x52A1;&#x7684;&#x6267;&#x884C;&#x901F;&#x5EA6;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x4F1A;&#x88AB;&#x5B58;&#x653E;&#x5728;&#x5B57;&#x7B26;&#x4E32;&#x5185;&#x90E8;&#x6C60;&#xFF08;String Intern Pool&#xFF09;</p>
+<p><img src="StringTable.assets/image-20220224222705774.png" alt="image-20220224222705774"></p>
+<h3 id="1051-intern&#x7684;&#x4F7F;&#x7528;&#xFF1A;jdk6-vs-jdk78">10.5.1. intern&#x7684;&#x4F7F;&#x7528;&#xFF1A;JDK6 vs JDK7/8</h3>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * &#x2460; String s = new String(&quot;1&quot;)
+ * &#x521B;&#x5EFA;&#x4E86;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;
+ *         &#x5806;&#x7A7A;&#x95F4;&#x4E2D;&#x4E00;&#x4E2A;new&#x5BF9;&#x8C61;
+ *         &#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&quot;1&quot;&#xFF08;&#x6CE8;&#x610F;&#xFF1A;&#x6B64;&#x65F6;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x5DF2;&#x6709;&quot;1&quot;&#xFF09;
+ * &#x2461; s.intern()&#x7531;&#x4E8E;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x5DF2;&#x5B58;&#x5728;&quot;1&quot;
+ * 
+ * s  &#x6307;&#x5411;&#x7684;&#x662F;&#x5806;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x5730;&#x5740;
+ * s2 &#x6307;&#x5411;&#x7684;&#x662F;&#x5806;&#x7A7A;&#x95F4;&#x4E2D;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&quot;1&quot;&#x7684;&#x5730;&#x5740;
+ * &#x6240;&#x4EE5;&#x4E0D;&#x76F8;&#x7B49;
+ */</span>
+String s = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;1&quot;</span>);
+s.intern();
+String s2 = <span class="hljs-string">&quot;1&quot;</span>;
+System.out.println(s==s2); <span class="hljs-comment">// jdk1.6 false jdk7/8 false</span>
+
+<span class="hljs-comment">/*
+ * &#x2460; String s3 = new String(&quot;1&quot;) + new String(&quot;1&quot;)
+ * &#x7B49;&#x4EF7;&#x4E8E;new String&#xFF08;&quot;11&quot;&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x5E76;&#x4E0D;&#x751F;&#x6210;&#x5B57;&#x7B26;&#x4E32;&quot;11&quot;&#xFF1B;
+ *
+ * &#x2461; s3.intern()
+ * &#x7531;&#x4E8E;&#x6B64;&#x65F6;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x5E76;&#x65E0;&quot;11&quot;&#xFF0C;&#x6240;&#x4EE5;&#x628A;s3&#x4E2D;&#x8BB0;&#x5F55;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#x5B58;&#x5165;&#x5E38;&#x91CF;&#x6C60;
+ * &#x6240;&#x4EE5;s3 &#x548C; s4 &#x6307;&#x5411;&#x7684;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x5730;&#x5740;
+*/</span>
+String s3 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;1&quot;</span>) + <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;1&quot;</span>);
+s3.intern();
+String s4 = <span class="hljs-string">&quot;11&quot;</span>;
+System.out.println(s3==s4); <span class="hljs-comment">//jdk1.6 false jdk7/8 true</span>
+</code></pre>
+<p><img src="StringTable.assets/image-20220224224726054.png" alt="image-20220224224726054"></p>
+<p><img src="StringTable.assets/image-20220224230854399.png" alt="image-20220224230854399"></p>
+<p>&#x603B;&#x7ED3;String&#x7684;intern()&#x7684;&#x4F7F;&#x7528;&#xFF1A;</p>
+<p>JDK1.6&#x4E2D;&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;&#x5C1D;&#x8BD5;&#x653E;&#x5165;&#x4E32;&#x6C60;&#x3002;</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x4E32;&#x6C60;&#x4E2D;&#x6709;&#xFF0C;&#x5219;&#x5E76;&#x4E0D;&#x4F1A;&#x653E;&#x5165;&#x3002;&#x8FD4;&#x56DE;&#x5DF2;&#x6709;&#x7684;&#x4E32;&#x6C60;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x4F1A;&#x628A;&#x6B64;<font style="background:yellow">&#x5BF9;&#x8C61;&#x590D;&#x5236;&#x4E00;&#x4EFD;</font>&#xFF0C;&#x653E;&#x5165;&#x4E32;&#x6C60;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x4E32;&#x6C60;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x5730;&#x5740;</p>
+</li>
+</ul>
+<p>JDK1.7&#x8D77;&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;&#x5C1D;&#x8BD5;&#x653E;&#x5165;&#x4E32;&#x6C60;&#x3002;</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x4E32;&#x6C60;&#x4E2D;&#x6709;&#xFF0C;&#x5219;&#x5E76;&#x4E0D;&#x4F1A;&#x653E;&#x5165;&#x3002;&#x8FD4;&#x56DE;&#x5DF2;&#x6709;&#x7684;&#x4E32;&#x6C60;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x5219;&#x4F1A;&#x628A;<font style="background:yellow">&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x5730;&#x5740;&#x590D;&#x5236;&#x4E00;&#x4EFD;</font>&#xFF0C;&#x653E;&#x5165;&#x4E32;&#x6C60;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x4E32;&#x6C60;&#x4E2D;&#x7684;&#x5F15;&#x7528;&#x5730;&#x5740;</p>
+</li>
+</ul>
+<p><strong>&#x7EC3;&#x4E60;1</strong></p>
+<p><img src="StringTable.assets/image-20220224230951359.png" alt="image-20220224230951359"></p>
+<p><img src="StringTable.assets/image-20220224230956261.png" alt="image-20220224230956261"></p>
+<p><strong>&#x7EC3;&#x4E60;2</strong></p>
+<p><img src="StringTable.assets/image-20220224231004045.png" alt="image-20220224231004045"></p>
+<h3 id="1052-intern&#x7684;&#x6548;&#x7387;&#x6D4B;&#x8BD5;&#xFF1A;&#x7A7A;&#x95F4;&#x89D2;&#x5EA6;">10.5.2. intern&#x7684;&#x6548;&#x7387;&#x6D4B;&#x8BD5;&#xFF1A;&#x7A7A;&#x95F4;&#x89D2;&#x5EA6;</h3>
+<p>&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x6D4B;&#x8BD5;&#x4E00;&#x4E0B;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;intern&#x548C;&#x4E0D;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x5B9E;&#x76F8;&#x5DEE;&#x8FD8;&#x633A;&#x591A;&#x7684;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StringIntern2</span> </span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> MAX_COUNT = <span class="hljs-number">1000</span> * <span class="hljs-number">10000</span>;
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String[] arr = <span class="hljs-keyword">new</span> String[MAX_COUNT];
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        Integer [] data = <span class="hljs-keyword">new</span> Integer[]{<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>};
+        <span class="hljs-keyword">long</span> start = System.currentTimeMillis();
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; MAX_COUNT; i++) {
+            <span class="hljs-comment">// arr[i] = new String(String.valueOf(data[i%data.length]));</span>
+            arr[i] = <span class="hljs-keyword">new</span> String(String.valueOf(data[i%data.length])).intern();
+        }
+        <span class="hljs-keyword">long</span> end = System.currentTimeMillis();
+        System.out.println(<span class="hljs-string">&quot;&#x82B1;&#x8D39;&#x7684;&#x65F6;&#x95F4;&#x4E3A;&#xFF1A;&quot;</span> + (end - start));
+
+        <span class="hljs-keyword">try</span> {
+            Thread.sleep(<span class="hljs-number">1000000</span>);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            e.getStackTrace();
+        }
+    }
+}
+
+<span class="hljs-comment">// &#x8FD0;&#x884C;&#x7ED3;&#x679C;</span>
+&#x4E0D;&#x4F7F;&#x7528;intern&#xFF1A;<span class="hljs-number">4760</span>ms
+&#x4F7F;&#x7528;intern&#xFF1A;<span class="hljs-number">874</span>ms
+</code></pre>
+<p><strong>&#x7ED3;&#x8BBA;</strong>&#xFF1A;&#x5BF9;&#x4E8E;&#x7A0B;&#x5E8F;&#x4E2D;&#x5927;&#x91CF;&#x4F7F;&#x7528;&#x5B58;&#x5728;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#xFF0C;&#x5C24;&#x5176;&#x5B58;&#x5728;&#x5F88;&#x591A;&#x5DF2;&#x7ECF;&#x91CD;&#x590D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;intern()&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x8282;&#x7701;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x3002;</p>
+<p>&#x5927;&#x7684;&#x7F51;&#x7AD9;&#x5E73;&#x53F0;&#xFF0C;&#x9700;&#x8981;&#x5185;&#x5B58;&#x4E2D;&#x5B58;&#x50A8;&#x5927;&#x91CF;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x6BD4;&#x5982;&#x793E;&#x4EA4;&#x7F51;&#x7AD9;&#xFF0C;&#x5F88;&#x591A;&#x4EBA;&#x90FD;&#x5B58;&#x50A8;&#xFF1A;&#x5317;&#x4EAC;&#x5E02;&#x3001;&#x6D77;&#x6DC0;&#x533A;&#x7B49;&#x4FE1;&#x606F;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x5982;&#x679C;&#x5B57;&#x7B26;&#x4E32;&#x90FD;&#x8C03;&#x7528;intern()&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x4F1A;&#x5F88;&#x660E;&#x663E;&#x964D;&#x4F4E;&#x5185;&#x5B58;&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+<h2 id="106-stringtable&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;">10.6. StringTable&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StringGCTest</span> </span>{
+    <span class="hljs-comment">/**
+     * -Xms15m -Xmx15m -XX:+PrintGCDetails
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100000</span>; i++) {
+            String.valueOf(i).intern();
+        }
+    }
+}
+</code></pre>
+<pre><code class="lang-java">[GC (Allocation Failure) [PSYoungGen: <span class="hljs-number">4096</span>K-&gt;<span class="hljs-number">488</span>K(<span class="hljs-number">4608</span>K)] <span class="hljs-number">4096</span>K-&gt;<span class="hljs-number">684</span>K(<span class="hljs-number">15872</span>K), <span class="hljs-number">0.0017277</span> secs] [Times: user=<span class="hljs-number">0.00</span> sys=<span class="hljs-number">0.00</span>, real=<span class="hljs-number">0.00</span> secs] 
+Heap
+ PSYoungGen      total <span class="hljs-number">4608</span>K, used <span class="hljs-number">3701</span>K [<span class="hljs-number">0x00000000ffb00000</span>, <span class="hljs-number">0x0000000100000000</span>, <span class="hljs-number">0x0000000100000000</span>)
+  eden space <span class="hljs-number">4096</span>K, <span class="hljs-number">78</span>% used [<span class="hljs-number">0x00000000ffb00000</span>,<span class="hljs-number">0x00000000ffe237d8</span>,<span class="hljs-number">0x00000000fff00000</span>)
+  from space <span class="hljs-number">512</span>K, <span class="hljs-number">95</span>% used [<span class="hljs-number">0x00000000fff00000</span>,<span class="hljs-number">0x00000000fff7a020</span>,<span class="hljs-number">0x00000000fff80000</span>)
+  to   space <span class="hljs-number">512</span>K, <span class="hljs-number">0</span>% used [<span class="hljs-number">0x00000000fff80000</span>,<span class="hljs-number">0x00000000fff80000</span>,<span class="hljs-number">0x0000000100000000</span>)
+ ParOldGen       total <span class="hljs-number">11264</span>K, used <span class="hljs-number">196</span>K [<span class="hljs-number">0x00000000ff000000</span>, <span class="hljs-number">0x00000000ffb00000</span>, <span class="hljs-number">0x00000000ffb00000</span>)
+  object space <span class="hljs-number">11264</span>K, <span class="hljs-number">1</span>% used [<span class="hljs-number">0x00000000ff000000</span>,<span class="hljs-number">0x00000000ff031010</span>,<span class="hljs-number">0x00000000ffb00000</span>)
+ Metaspace       used <span class="hljs-number">3306</span>K, capacity <span class="hljs-number">4496</span>K, committed <span class="hljs-number">4864</span>K, reserved <span class="hljs-number">1056768</span>K
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">space</span>    <span class="hljs-title">used</span> 359<span class="hljs-title">K</span>, <span class="hljs-title">capacity</span> 388<span class="hljs-title">K</span>, <span class="hljs-title">committed</span> 512<span class="hljs-title">K</span>, <span class="hljs-title">reserved</span> 1048576<span class="hljs-title">K</span>
+</span></code></pre>
+<h2 id="107-g1&#x4E2D;&#x7684;string&#x53BB;&#x91CD;&#x64CD;&#x4F5C;">10.7. G1&#x4E2D;&#x7684;String&#x53BB;&#x91CD;&#x64CD;&#x4F5C;</h2>
+<p>&#x5B98;&#x7F51;&#x5730;&#x5740;&#xFF1A;<a href="http://openjdk.java.net/jeps/192" target="_blank">JEP 192: String Deduplication in G1 (java.net)</a></p>
+<blockquote>
+<h2 id="motivation">Motivation</h2>
+<p>Many large-scale Java applications are currently bottlenecked on memory. Measurements have shown that roughly 25% of the Java heap live data set in these types of applications is consumed by <code>String</code> objects. Further, roughly half of those <code>String</code> objects are duplicates, where duplicates means <code>string1.equals(string2)</code> is true. Having duplicate <code>String</code> objects on the heap is, essentially, just a waste of memory. This project will implement automatic and continuous <code>String</code> deduplication in the G1 garbage collector to avoid wasting memory and reduce the memory footprint.</p>
+</blockquote>
+<p>&#x76EE;&#x524D;&#xFF0C;&#x8BB8;&#x591A;&#x5927;&#x89C4;&#x6A21;&#x7684;Java&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5728;&#x5185;&#x5B58;&#x4E0A;&#x9047;&#x5230;&#x4E86;&#x74F6;&#x9888;&#x3002;&#x6D4B;&#x91CF;&#x8868;&#x660E;&#xFF0C;&#x5728;&#x8FD9;&#x4E9B;&#x7C7B;&#x578B;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x5927;&#x7EA6;25%&#x7684;Java&#x5806;&#x5B9E;&#x65F6;&#x6570;&#x636E;&#x96C6;&#x88AB;<code>String&apos;&#x5BF9;&#x8C61;&#x6240;&#x6D88;&#x8017;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x8FD9;&#x4E9B; &quot;String &quot;&#x5BF9;&#x8C61;&#x4E2D;&#x5927;&#x7EA6;&#x6709;&#x4E00;&#x534A;&#x662F;&#x91CD;&#x590D;&#x7684;&#xFF0C;&#x5176;&#x4E2D;&#x91CD;&#x590D;&#x610F;&#x5473;&#x7740; &quot;string1.equals(string2) &quot;&#x662F;&#x771F;&#x7684;&#x3002;&#x5728;&#x5806;&#x4E0A;&#x6709;&#x91CD;&#x590D;&#x7684;</code>String&apos;&#x5BF9;&#x8C61;&#xFF0C;&#x4ECE;&#x672C;&#x8D28;&#x4E0A;&#x8BB2;&#xFF0C;&#x53EA;&#x662F;&#x4E00;&#x79CD;&#x5185;&#x5B58;&#x7684;&#x6D6A;&#x8D39;&#x3002;&#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#x5C06;&#x5728;G1&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x4E2D;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x548C;&#x6301;&#x7EED;&#x7684;`String&apos;&#x91CD;&#x590D;&#x6570;&#x636E;&#x5220;&#x9664;&#xFF0C;&#x4EE5;&#x907F;&#x514D;&#x6D6A;&#x8D39;&#x5185;&#x5B58;&#xFF0C;&#x51CF;&#x5C11;&#x5185;&#x5B58;&#x5360;&#x7528;&#x3002;</p>
+<hr>
+<p>&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x8BF4;&#x7684;&#x91CD;&#x590D;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x5728;&#x5806;&#x4E2D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x7684;&#x672C;&#x8EAB;&#x5C31;&#x4E0D;&#x4F1A;&#x91CD;&#x590D;</p>
+<p>&#x80CC;&#x666F;&#xFF1A;&#x5BF9;&#x8BB8;&#x591A;Java&#x5E94;&#x7528;&#xFF08;&#x6709;&#x5927;&#x7684;&#x4E5F;&#x6709;&#x5C0F;&#x7684;&#xFF09;&#x505A;&#x7684;&#x6D4B;&#x8BD5;&#x5F97;&#x51FA;&#x4EE5;&#x4E0B;&#x7ED3;&#x679C;&#xFF1A;</p>
+<ul>
+<li><p>&#x5806;&#x5B58;&#x6D3B;&#x6570;&#x636E;&#x96C6;&#x5408;&#x91CC;&#x9762;string&#x5BF9;&#x8C61;&#x5360;&#x4E86;25%</p>
+</li>
+<li><p>&#x5806;&#x5B58;&#x6D3B;&#x6570;&#x636E;&#x96C6;&#x5408;&#x91CC;&#x9762;&#x91CD;&#x590D;&#x7684;string&#x5BF9;&#x8C61;&#x6709;13.5%</p>
+</li>
+<li><p>string&#x5BF9;&#x8C61;&#x7684;&#x5E73;&#x5747;&#x957F;&#x5EA6;&#x662F;45</p>
+</li>
+</ul>
+<p>&#x8BB8;&#x591A;&#x5927;&#x89C4;&#x6A21;&#x7684;Java&#x5E94;&#x7528;&#x7684;&#x74F6;&#x9888;&#x5728;&#x4E8E;&#x5185;&#x5B58;&#xFF0C;&#x6D4B;&#x8BD5;&#x8868;&#x660E;&#xFF0C;&#x5728;&#x8FD9;&#x4E9B;&#x7C7B;&#x578B;&#x7684;&#x5E94;&#x7528;&#x91CC;&#x9762;&#xFF0C;<font style="background:yellow">Java&#x5806;&#x4E2D;&#x5B58;&#x6D3B;&#x7684;&#x6570;&#x636E;&#x96C6;&#x5408;&#x5DEE;&#x4E0D;&#x591A;25%&#x662F;String&#x5BF9;&#x8C61;</font>&#x3002;&#x66F4;&#x8FDB;&#x4E00;&#x6B65;&#xFF0C;&#x8FD9;&#x91CC;&#x9762;&#x5DEE;&#x4E0D;&#x591A;&#x4E00;&#x534A;string&#x5BF9;&#x8C61;&#x662F;&#x91CD;&#x590D;&#x7684;&#xFF0C;&#x91CD;&#x590D;&#x7684;&#x610F;&#x601D;&#x662F;&#x8BF4;&#xFF1A; <code>stringl.equals(string2)= true</code>&#x3002;<font style="background:yellow">&#x5806;&#x4E0A;&#x5B58;&#x5728;&#x91CD;&#x590D;&#x7684;String&#x5BF9;&#x8C61;&#x5FC5;&#x7136;&#x662F;&#x4E00;&#x79CD;&#x5185;&#x5B58;&#x7684;&#x6D6A;&#x8D39;</font>&#x3002;&#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#x5C06;&#x5728;G1&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x4E2D;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x6301;&#x7EED;&#x5BF9;&#x91CD;&#x590D;&#x7684;string&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x53BB;&#x91CD;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x80FD;&#x907F;&#x514D;&#x6D6A;&#x8D39;&#x5185;&#x5B58;&#x3002;</p>
+<p><strong>&#x5B9E;&#x73B0;</strong></p>
+<ol>
+<li>&#x5F53;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x5DE5;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x8BBF;&#x95EE;&#x5806;&#x4E0A;&#x5B58;&#x6D3B;&#x7684;&#x5BF9;&#x8C61;&#x3002;<font style="background:yellow">&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x8BBF;&#x95EE;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x662F;&#x5019;&#x9009;&#x7684;&#x8981;&#x53BB;&#x91CD;&#x7684;String&#x5BF9;&#x8C61;</font>&#x3002;</li>
+<li>&#x5982;&#x679C;&#x662F;&#xFF0C;&#x628A;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x63D2;&#x5165;&#x5230;&#x961F;&#x5217;&#x4E2D;&#x7B49;&#x5F85;&#x540E;&#x7EED;&#x7684;&#x5904;&#x7406;&#x3002;&#x4E00;&#x4E2A;&#x53BB;&#x91CD;&#x7684;&#x7EBF;&#x7A0B;&#x5728;&#x540E;&#x53F0;&#x8FD0;&#x884C;&#xFF0C;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x961F;&#x5217;&#x3002;&#x5904;&#x7406;&#x961F;&#x5217;&#x7684;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x610F;&#x5473;&#x7740;&#x4ECE;&#x961F;&#x5217;&#x5220;&#x9664;&#x8FD9;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x7136;&#x540E;&#x5C1D;&#x8BD5;&#x53BB;&#x91CD;&#x5B83;&#x5F15;&#x7528;&#x7684;string&#x5BF9;&#x8C61;&#x3002;</li>
+<li>&#x4F7F;&#x7528;&#x4E00;&#x4E2A;hashtable&#x6765;&#x8BB0;&#x5F55;&#x6240;&#x6709;&#x7684;&#x88AB;String&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x7684;&#x4E0D;&#x91CD;&#x590D;&#x7684;char&#x6570;&#x7EC4;&#x3002;&#x5F53;&#x53BB;&#x91CD;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x67E5;&#x8FD9;&#x4E2A;hashtable&#xFF0C;&#x6765;&#x770B;&#x5806;&#x4E0A;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#x7684;char&#x6570;&#x7EC4;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x5B58;&#x5728;&#xFF0C;String&#x5BF9;&#x8C61;&#x4F1A;&#x88AB;&#x8C03;&#x6574;&#x5F15;&#x7528;&#x90A3;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x91CA;&#x653E;&#x5BF9;&#x539F;&#x6765;&#x7684;&#x6570;&#x7EC4;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x6700;&#x7EC8;&#x4F1A;&#x88AB;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x56DE;&#x6536;&#x6389;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x67E5;&#x627E;&#x5931;&#x8D25;&#xFF0C;char&#x6570;&#x7EC4;&#x4F1A;&#x88AB;&#x63D2;&#x5165;&#x5230;hashtable&#xFF0C;&#x8FD9;&#x6837;&#x4EE5;&#x540E;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x5171;&#x4EAB;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x4E86;&#x3002;</li>
+</ol>
+<p><strong>&#x547D;&#x4EE4;&#x884C;&#x9009;&#x9879;</strong></p>
+<pre><code class="lang-java"># &#x5F00;&#x542F;String&#x53BB;&#x91CD;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x5F00;&#x542F;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5F00;&#x542F;&#x3002; 
+UseStringDeduplication(bool)  
+# &#x6253;&#x5370;&#x8BE6;&#x7EC6;&#x7684;&#x53BB;&#x91CD;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F; 
+PrintStringDeduplicationStatistics(bool)  
+# &#x8FBE;&#x5230;&#x8FD9;&#x4E2A;&#x5E74;&#x9F84;&#x7684;String&#x5BF9;&#x8C61;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x53BB;&#x91CD;&#x7684;&#x5019;&#x9009;&#x5BF9;&#x8C61;
+StringpeDuplicationAgeThreshold(uintx)
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="执行引擎.html" class="navigation navigation-prev " aria-label="Previous page: 9.执行引擎">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="垃圾回收概述及算法.html" class="navigation navigation-next " aria-label="Next page: 11.垃圾回收概述及算法">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"10.StringTable","level":"4.1.10","depth":2,"next":{"title":"11.垃圾回收概述及算法","level":"4.1.11","depth":2,"path":"学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收概述及算法.md","ref":"学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收概述及算法.md","articles":[]},"previous":{"title":"9.执行引擎","level":"4.1.9","depth":2,"path":"学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/执行引擎.md","ref":"学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/执行引擎.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","code","copy-code-button","back-to-top-button","-lunr","-search","search-pro","chapter-fold","hide-element"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"","minHeaderCount":"2","minHeaderDeep":"6"},"chapter-fold":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link",".pull-right"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"B.W.H","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Notes","language":"zh-hans","gitbook":"*","description":"学习笔记"},"file":{"path":"学习资料/Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/StringTable.md","mtime":"2022-05-19T01:19:17.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-05-19T01:20:09.695Z"},"basePath":"../../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../../gitbook/gitbook.js"></script>
+    <script src="../../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

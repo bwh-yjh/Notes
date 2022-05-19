@@ -1,0 +1,1251 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>建造者模式 · Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="B.W.H">
+        
+        
+    
+    <link rel="stylesheet" href="../../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="原型模式.html" />
+    
+    
+    <link rel="prev" href="抽象工厂模式.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">学习资料</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../../">
+            
+                <a href="../../../../">
+            
+                    
+                    资料
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../../Java.html">
+            
+                <a href="../../../Java.html">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1" data-path="../../juc并发编程/并发编程.html">
+            
+                <a href="../../juc并发编程/并发编程.html">
+            
+                    
+                    并发编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.1.2" data-path="../../Spring注解驱动/Spring注解驱动.html">
+            
+                <a href="../../Spring注解驱动/Spring注解驱动.html">
+            
+                    
+                    Spring注解驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../../../数据库.html">
+            
+                <a href="../../../数据库.html">
+            
+                    
+                    数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../../">
+            
+                <a href="../../../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Java基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../juc并发编程/并发编程.html">
+            
+                <a href="../../juc并发编程/并发编程.html">
+            
+                    
+                    并发编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../Spring注解驱动/Spring注解驱动.html">
+            
+                <a href="../../Spring注解驱动/Spring注解驱动.html">
+            
+                    
+                    Spring注解驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../juc并发编程/拓展/管程.html">
+            
+                <a href="../../juc并发编程/拓展/管程.html">
+            
+                    
+                    管程深入理解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">设计模式</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../设计模式.html">
+            
+                <a href="../设计模式.html">
+            
+                    
+                    设计模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="创建型模式.html">
+            
+                <a href="创建型模式.html">
+            
+                    
+                    创建型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="单例模式.html">
+            
+                <a href="单例模式.html">
+            
+                    
+                    单例模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="工厂模式.html">
+            
+                <a href="工厂模式.html">
+            
+                    
+                    工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3" data-path="抽象工厂模式.html">
+            
+                <a href="抽象工厂模式.html">
+            
+                    
+                    抽象工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.1.1.4" data-path="建造者模式.html">
+            
+                <a href="建造者模式.html">
+            
+                    
+                    建造者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.5" data-path="原型模式.html">
+            
+                <a href="原型模式.html">
+            
+                    
+                    原型模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../结构型模式/结构型模式.html">
+            
+                <a href="../结构型模式/结构型模式.html">
+            
+                    
+                    结构型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.2.1" data-path="../结构型模式/外观模式.html">
+            
+                <a href="../结构型模式/外观模式.html">
+            
+                    
+                    外观模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.2" data-path="../结构型模式/装饰器模式.html">
+            
+                <a href="../结构型模式/装饰器模式.html">
+            
+                    
+                    装饰器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.3" data-path="../结构型模式/组合模式.html">
+            
+                <a href="../结构型模式/组合模式.html">
+            
+                    
+                    组合模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.4" data-path="../结构型模式/享元模式.html">
+            
+                <a href="../结构型模式/享元模式.html">
+            
+                    
+                    享元模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.5" data-path="../结构型模式/代理模式.html">
+            
+                <a href="../结构型模式/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.6" data-path="../结构型模式/适配器模式.html">
+            
+                <a href="../结构型模式/适配器模式.html">
+            
+                    
+                    适配器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.7" data-path="../结构型模式/桥接模式.html">
+            
+                <a href="../结构型模式/桥接模式.html">
+            
+                    
+                    桥接模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../行为型模式/行为型模式.html">
+            
+                <a href="../行为型模式/行为型模式.html">
+            
+                    
+                    行为型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.3.1" data-path="../行为型模式/策略模式.html">
+            
+                <a href="../行为型模式/策略模式.html">
+            
+                    
+                    策略模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.2" data-path="../行为型模式/中介者模式.html">
+            
+                <a href="../行为型模式/中介者模式.html">
+            
+                    
+                    中介者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.3" data-path="../行为型模式/责任链模式.html">
+            
+                <a href="../行为型模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.4" data-path="../行为型模式/观察者模式.html">
+            
+                <a href="../行为型模式/观察者模式.html">
+            
+                    
+                    观察者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.5" data-path="../行为型模式/迭代器模式.html">
+            
+                <a href="../行为型模式/迭代器模式.html">
+            
+                    
+                    迭代器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.6" data-path="../行为型模式/访问者模式.html">
+            
+                <a href="../行为型模式/访问者模式.html">
+            
+                    
+                    访问者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JVM（JAVA虚拟机）</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇.html">
+            
+                    
+                    JVM上篇：内存与垃圾回收篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/JVM与Java体系结构.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/JVM与Java体系结构.html">
+            
+                    
+                    1.JVM与Java体系结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/类加载子系统.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/类加载子系统.html">
+            
+                    
+                    2.类加载子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/运行时数据区及程序计数器.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/运行时数据区及程序计数器.html">
+            
+                    
+                    3.运行时数据区及程序计数器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/虚拟机栈.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/虚拟机栈.html">
+            
+                    
+                    4.虚拟机栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/本地方法接口和本地方法栈.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/本地方法接口和本地方法栈.html">
+            
+                    
+                    5.本地方法接口和本地方法栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/堆.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/堆.html">
+            
+                    
+                    6.堆
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/方法区.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/方法区.html">
+            
+                    
+                    7.方法区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/对象实例化及直接内存.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/对象实例化及直接内存.html">
+            
+                    
+                    8.对象实例化及直接内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/执行引擎.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/执行引擎.html">
+            
+                    
+                    9.执行引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.10" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/StringTable.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/StringTable.html">
+            
+                    
+                    10.StringTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.11" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收概述及算法.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收概述及算法.html">
+            
+                    
+                    11.垃圾回收概述及算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.12" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收相关概念.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收相关概念.html">
+            
+                    
+                    12.垃圾回收相关概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.13" data-path="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收器.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收器.html">
+            
+                    
+                    13.垃圾回收器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../JVM（JAVA虚拟机）/JVM中篇：字节码与类加载篇.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM中篇：字节码与类加载篇.html">
+            
+                    
+                    JVM中篇：字节码与类加载篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../../JVM（JAVA虚拟机）/JVM下篇：性能监控与调优篇.html">
+            
+                <a href="../../JVM（JAVA虚拟机）/JVM下篇：性能监控与调优篇.html">
+            
+                    
+                    JVM下篇：性能监控与调优篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linux</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../../Linux/CentOS7安装.html">
+            
+                <a href="../../../Linux/CentOS7安装.html">
+            
+                    
+                    CentOS7安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Maven</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../../Maven/Maven插件.html">
+            
+                <a href="../../../Maven/Maven插件.html">
+            
+                    
+                    Maven插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">扩展知识</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../../扩展知识/UML类图/UML类图.html">
+            
+                <a href="../../../扩展知识/UML类图/UML类图.html">
+            
+                    
+                    UML类图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../../扩展知识/JVM分层编译/JVM分层编译.html">
+            
+                <a href="../../../扩展知识/JVM分层编译/JVM分层编译.html">
+            
+                    
+                    JVM分层编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../../../扩展知识/集合类容器类/集合类容器类.html">
+            
+                <a href="../../../扩展知识/集合类容器类/集合类容器类.html">
+            
+                    
+                    集合类容器类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">旅行攻略</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../../../旅行攻略/昆明-大理-丽江.html">
+            
+                <a href="../../../旅行攻略/昆明-大理-丽江.html">
+            
+                    
+                    昆明-大理-丽江
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../../.." >建造者模式</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><ul>
+<li><div><a href="#&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;">&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#x4E00;&#x3001;&#x4ECB;&#x7ECD;">&#x4E00;&#x3001;&#x4ECB;&#x7ECD;</a><i></i></div></li>
+<li><div><a href="#&#x4E8C;&#x3001;&#x5B9E;&#x73B0;">&#x4E8C;&#x3001;&#x5B9E;&#x73B0;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#x6B65;&#x9AA4;-1">&#x6B65;&#x9AA4; 1</a><i></i></div></li>
+<li><div><a href="#&#x6B65;&#x9AA4;-2">&#x6B65;&#x9AA4; 2</a><i></i></div></li>
+<li><div><a href="#&#x6B65;&#x9AA4;-3">&#x6B65;&#x9AA4; 3</a><i></i></div></li>
+<li><div><a href="#&#x6B65;&#x9AA4;-4">&#x6B65;&#x9AA4; 4</a><i></i></div></li>
+<li><div><a href="#&#x6B65;&#x9AA4;-5">&#x6B65;&#x9AA4; 5</a><i></i></div></li>
+<li><div><a href="#&#x6B65;&#x9AA4;-6">&#x6B65;&#x9AA4; 6</a><i></i></div></li>
+<li><div><a href="#&#x6B65;&#x9AA4;-7">&#x6B65;&#x9AA4; 7</a><i></i></div></li>
+<li><div><a href="#&#x6B65;&#x9AA4;-8">&#x6B65;&#x9AA4; 8</a><i></i></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+<h1 id="&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;">&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;</h1>
+<p>&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;&#xFF08;Builder Pattern&#xFF09;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5BF9;&#x8C61;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x6784;&#x5EFA;&#x6210;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5C5E;&#x4E8E;&#x521B;&#x5EFA;&#x578B;&#x6A21;&#x5F0F;&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x7684;&#x6700;&#x4F73;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>&#x4E00;&#x4E2A; Builder &#x7C7B;&#x4F1A;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x6784;&#x9020;&#x6700;&#x7EC8;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x8BE5; Builder &#x7C7B;&#x662F;&#x72EC;&#x7ACB;&#x4E8E;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x7684;&#x3002;</p>
+<h2 id="&#x4E00;&#x3001;&#x4ECB;&#x7ECD;">&#x4E00;&#x3001;&#x4ECB;&#x7ECD;</h2>
+<p><strong>&#x610F;&#x56FE;&#xFF1A;</strong>&#x5C06;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x7684;&#x6784;&#x5EFA;&#x4E0E;&#x5176;&#x8868;&#x793A;&#x76F8;&#x5206;&#x79BB;&#xFF0C;&#x4F7F;&#x5F97;&#x540C;&#x6837;&#x7684;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E0D;&#x540C;&#x7684;&#x8868;&#x793A;&#x3002;</p>
+<p><strong>&#x4E3B;&#x8981;&#x89E3;&#x51B3;&#xFF1A;</strong>&#x4E3B;&#x8981;&#x89E3;&#x51B3;&#x5728;&#x8F6F;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x9762;&#x4E34;&#x7740;&quot;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x5BF9;&#x8C61;&quot;&#x7684;&#x521B;&#x5EFA;&#x5DE5;&#x4F5C;&#xFF0C;&#x5176;&#x901A;&#x5E38;&#x7531;&#x5404;&#x4E2A;&#x90E8;&#x5206;&#x7684;&#x5B50;&#x5BF9;&#x8C61;&#x7528;&#x4E00;&#x5B9A;&#x7684;&#x7B97;&#x6CD5;&#x6784;&#x6210;&#xFF1B;&#x7531;&#x4E8E;&#x9700;&#x6C42;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x8FD9;&#x4E2A;&#x590D;&#x6742;&#x5BF9;&#x8C61;&#x7684;&#x5404;&#x4E2A;&#x90E8;&#x5206;&#x7ECF;&#x5E38;&#x9762;&#x4E34;&#x7740;&#x5267;&#x70C8;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x4F46;&#x662F;&#x5C06;&#x5B83;&#x4EEC;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x7684;&#x7B97;&#x6CD5;&#x5374;&#x76F8;&#x5BF9;&#x7A33;&#x5B9A;&#x3002;</p>
+<p><strong>&#x4F55;&#x65F6;&#x4F7F;&#x7528;&#xFF1A;</strong>&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x90E8;&#x4EF6;&#x4E0D;&#x4F1A;&#x53D8;&#xFF0C;&#x800C;&#x5176;&#x7EC4;&#x5408;&#x7ECF;&#x5E38;&#x53D8;&#x5316;&#x7684;&#x65F6;&#x5019;&#x3002;</p>
+<p><strong>&#x5982;&#x4F55;&#x89E3;&#x51B3;&#xFF1A;</strong>&#x5C06;&#x53D8;&#x4E0E;&#x4E0D;&#x53D8;&#x5206;&#x79BB;&#x5F00;&#x3002;</p>
+<p><strong>&#x5173;&#x952E;&#x4EE3;&#x7801;&#xFF1A;</strong>&#x5EFA;&#x9020;&#x8005;&#xFF1A;&#x521B;&#x5EFA;&#x548C;&#x63D0;&#x4F9B;&#x5B9E;&#x4F8B;&#xFF0C;&#x5BFC;&#x6F14;&#xFF1A;&#x7BA1;&#x7406;&#x5EFA;&#x9020;&#x51FA;&#x6765;&#x7684;&#x5B9E;&#x4F8B;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;</p>
+<p><strong>&#x5E94;&#x7528;&#x5B9E;&#x4F8B;&#xFF1A;</strong> 1&#x3001;&#x53BB;&#x80AF;&#x5FB7;&#x57FA;&#xFF0C;&#x6C49;&#x5821;&#x3001;&#x53EF;&#x4E50;&#x3001;&#x85AF;&#x6761;&#x3001;&#x70B8;&#x9E21;&#x7FC5;&#x7B49;&#x662F;&#x4E0D;&#x53D8;&#x7684;&#xFF0C;&#x800C;&#x5176;&#x7EC4;&#x5408;&#x662F;&#x7ECF;&#x5E38;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x751F;&#x6210;&#x51FA;&#x6240;&#x8C13;&#x7684;&quot;&#x5957;&#x9910;&quot;&#x3002; 2&#x3001;JAVA &#x4E2D;&#x7684; StringBuilder&#x3002;</p>
+<p><strong>&#x4F18;&#x70B9;&#xFF1A;</strong> 1&#x3001;&#x5EFA;&#x9020;&#x8005;&#x72EC;&#x7ACB;&#xFF0C;&#x6613;&#x6269;&#x5C55;&#x3002; 2&#x3001;&#x4FBF;&#x4E8E;&#x63A7;&#x5236;&#x7EC6;&#x8282;&#x98CE;&#x9669;&#x3002;</p>
+<p><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong> 1&#x3001;&#x4EA7;&#x54C1;&#x5FC5;&#x987B;&#x6709;&#x5171;&#x540C;&#x70B9;&#xFF0C;&#x8303;&#x56F4;&#x6709;&#x9650;&#x5236;&#x3002; 2&#x3001;&#x5982;&#x5185;&#x90E8;&#x53D8;&#x5316;&#x590D;&#x6742;&#xFF0C;&#x4F1A;&#x6709;&#x5F88;&#x591A;&#x7684;&#x5EFA;&#x9020;&#x7C7B;&#x3002;</p>
+<p><strong>&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;</strong> 1&#x3001;&#x9700;&#x8981;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x5177;&#x6709;&#x590D;&#x6742;&#x7684;&#x5185;&#x90E8;&#x7ED3;&#x6784;&#x3002; 2&#x3001;&#x9700;&#x8981;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x5185;&#x90E8;&#x5C5E;&#x6027;&#x672C;&#x8EAB;&#x76F8;&#x4E92;&#x4F9D;&#x8D56;&#x3002;</p>
+<p><strong>&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#xFF1A;</strong>&#x4E0E;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x7684;&#x533A;&#x522B;&#x662F;&#xFF1A;&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;&#x66F4;&#x52A0;&#x5173;&#x6CE8;&#x4E0E;&#x96F6;&#x4EF6;&#x88C5;&#x914D;&#x7684;&#x987A;&#x5E8F;&#x3002;</p>
+<h2 id="&#x4E8C;&#x3001;&#x5B9E;&#x73B0;">&#x4E8C;&#x3001;&#x5B9E;&#x73B0;</h2>
+<p>&#x6211;&#x4EEC;&#x5047;&#x8BBE;&#x4E00;&#x4E2A;&#x5FEB;&#x9910;&#x5E97;&#x7684;&#x5546;&#x4E1A;&#x6848;&#x4F8B;&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x5957;&#x9910;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x6C49;&#x5821;&#xFF08;Burger&#xFF09;&#x548C;&#x4E00;&#x676F;&#x51B7;&#x996E;&#xFF08;Cold drink&#xFF09;&#x3002;&#x6C49;&#x5821;&#xFF08;Burger&#xFF09;&#x53EF;&#x4EE5;&#x662F;&#x7D20;&#x98DF;&#x6C49;&#x5821;&#xFF08;Veg Burger&#xFF09;&#x6216;&#x9E21;&#x8089;&#x6C49;&#x5821;&#xFF08;Chicken Burger&#xFF09;&#xFF0C;&#x5B83;&#x4EEC;&#x662F;&#x5305;&#x5728;&#x7EB8;&#x76D2;&#x4E2D;&#x3002;&#x51B7;&#x996E;&#xFF08;Cold drink&#xFF09;&#x53EF;&#x4EE5;&#x662F;&#x53EF;&#x53E3;&#x53EF;&#x4E50;&#xFF08;coke&#xFF09;&#x6216;&#x767E;&#x4E8B;&#x53EF;&#x4E50;&#xFF08;pepsi&#xFF09;&#xFF0C;&#x5B83;&#x4EEC;&#x662F;&#x88C5;&#x5728;&#x74F6;&#x5B50;&#x4E2D;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5C06;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x98DF;&#x7269;&#x6761;&#x76EE;&#xFF08;&#x6BD4;&#x5982;&#x6C49;&#x5821;&#x548C;&#x51B7;&#x996E;&#xFF09;&#x7684; <em>Item</em> &#x63A5;&#x53E3;&#x548C;&#x5B9E;&#x73B0; <em>Item</em> &#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x4F53;&#x7C7B;&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x98DF;&#x7269;&#x5305;&#x88C5;&#x7684; <em>Packing</em> &#x63A5;&#x53E3;&#x548C;&#x5B9E;&#x73B0; <em>Packing</em> &#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x4F53;&#x7C7B;&#xFF0C;&#x6C49;&#x5821;&#x662F;&#x5305;&#x5728;&#x7EB8;&#x76D2;&#x4E2D;&#xFF0C;&#x51B7;&#x996E;&#x662F;&#x88C5;&#x5728;&#x74F6;&#x5B50;&#x4E2D;&#x3002;</p>
+<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <em>Meal</em> &#x7C7B;&#xFF0C;&#x5E26;&#x6709; <em>Item</em> &#x7684; <em>ArrayList</em> &#x548C;&#x4E00;&#x4E2A;&#x901A;&#x8FC7;&#x7ED3;&#x5408; <em>Item</em> &#x6765;&#x521B;&#x5EFA;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684; <em>Meal</em> &#x5BF9;&#x8C61;&#x7684; <em>MealBuilder</em>&#x3002;<em>BuilderPatternDemo</em> &#x7C7B;&#x4F7F;&#x7528; <em>MealBuilder</em> &#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <em>Meal</em>&#x3002;</p>
+<p><img src="&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;.assets/image-20220223212540869.png" alt="image-20220223212540869"></p>
+<h3 id="&#x6B65;&#x9AA4;-1">&#x6B65;&#x9AA4; 1</h3>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x98DF;&#x7269;&#x6761;&#x76EE;&#x548C;&#x98DF;&#x7269;&#x5305;&#x88C5;&#x7684;&#x63A5;&#x53E3;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Item</span> </span>{
+   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">name</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">public</span> Packing <span class="hljs-title">packing</span><span class="hljs-params">()</span></span>;
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-title">price</span><span class="hljs-params">()</span></span>;    
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Packing</span> </span>{
+   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">pack</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<h3 id="&#x6B65;&#x9AA4;-2">&#x6B65;&#x9AA4; 2</h3>
+<p>&#x521B;&#x5EFA;&#x5B9E;&#x73B0; Packing &#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x4F53;&#x7C7B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wrapper</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Packing</span> </span>{
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">pack</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Wrapper&quot;</span>;
+   }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bottle</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Packing</span> </span>{
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">pack</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Bottle&quot;</span>;
+   }
+}
+</code></pre>
+<h3 id="&#x6B65;&#x9AA4;-3">&#x6B65;&#x9AA4; 3</h3>
+<p>&#x521B;&#x5EFA;&#x5B9E;&#x73B0; Item &#x63A5;&#x53E3;&#x7684;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x8BE5;&#x7C7B;&#x63D0;&#x4F9B;&#x4E86;&#x9ED8;&#x8BA4;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Burger</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Item</span> </span>{
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> Packing <span class="hljs-title">packing</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Wrapper();
+   }
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">float</span> <span class="hljs-title">price</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ColdDrink</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Item</span> </span>{
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Packing <span class="hljs-title">packing</span><span class="hljs-params">()</span> </span>{
+       <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Bottle();
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">float</span> <span class="hljs-title">price</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<h3 id="&#x6B65;&#x9AA4;-4">&#x6B65;&#x9AA4; 4</h3>
+<p>&#x521B;&#x5EFA;&#x6269;&#x5C55;&#x4E86; Burger &#x548C; ColdDrink &#x7684;&#x5B9E;&#x4F53;&#x7C7B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VegBurger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Burger</span> </span>{
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-title">price</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-number">25.0f</span>;
+   }
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">name</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Veg Burger&quot;</span>;
+   }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChickenBurger</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Burger</span> </span>{
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-title">price</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-number">50.5f</span>;
+   }
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">name</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Chicken Burger&quot;</span>;
+   }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Coke</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ColdDrink</span> </span>{
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-title">price</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-number">30.0f</span>;
+   }
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">name</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Coke&quot;</span>;
+   }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pepsi</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ColdDrink</span> </span>{
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-title">price</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-number">35.0f</span>;
+   }
+
+   <span class="hljs-meta">@Override</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">name</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Pepsi&quot;</span>;
+   }
+}
+</code></pre>
+<h3 id="&#x6B65;&#x9AA4;-5">&#x6B65;&#x9AA4; 5</h3>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Meal &#x7C7B;&#xFF0C;&#x5E26;&#x6709;&#x4E0A;&#x9762;&#x5B9A;&#x4E49;&#x7684; Item &#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Meal</span> </span>{
+   <span class="hljs-keyword">private</span> List&lt;Item&gt; items = <span class="hljs-keyword">new</span> ArrayList&lt;Item&gt;();    
+
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addItem</span><span class="hljs-params">(Item item)</span></span>{
+      items.add(item);
+   }
+
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-title">getCost</span><span class="hljs-params">()</span></span>{
+      <span class="hljs-keyword">float</span> cost = <span class="hljs-number">0.0f</span>;
+      <span class="hljs-keyword">for</span> (Item item : items) {
+         cost += item.price();
+      }        
+      <span class="hljs-keyword">return</span> cost;
+   }
+
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">showItems</span><span class="hljs-params">()</span></span>{
+      <span class="hljs-keyword">for</span> (Item item : items) {
+         System.out.print(<span class="hljs-string">&quot;Item : &quot;</span>+item.name());
+         System.out.print(<span class="hljs-string">&quot;, Packing : &quot;</span>+item.packing().pack());
+         System.out.println(<span class="hljs-string">&quot;, Price : &quot;</span>+item.price());
+      }        
+   }    
+}
+</code></pre>
+<h3 id="&#x6B65;&#x9AA4;-6">&#x6B65;&#x9AA4; 6</h3>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A; MealBuilder &#x7C7B;&#xFF0C;&#x5B9E;&#x9645;&#x7684; builder &#x7C7B;&#x8D1F;&#x8D23;&#x521B;&#x5EFA; Meal &#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MealBuilder</span> </span>{
+
+   <span class="hljs-function"><span class="hljs-keyword">public</span> Meal <span class="hljs-title">prepareVegMeal</span> <span class="hljs-params">()</span></span>{
+      Meal meal = <span class="hljs-keyword">new</span> Meal();
+      meal.addItem(<span class="hljs-keyword">new</span> VegBurger());
+      meal.addItem(<span class="hljs-keyword">new</span> Coke());
+      <span class="hljs-keyword">return</span> meal;
+   }   
+
+   <span class="hljs-function"><span class="hljs-keyword">public</span> Meal <span class="hljs-title">prepareNonVegMeal</span> <span class="hljs-params">()</span></span>{
+      Meal meal = <span class="hljs-keyword">new</span> Meal();
+      meal.addItem(<span class="hljs-keyword">new</span> ChickenBurger());
+      meal.addItem(<span class="hljs-keyword">new</span> Pepsi());
+      <span class="hljs-keyword">return</span> meal;
+   }
+}
+</code></pre>
+<h3 id="&#x6B65;&#x9AA4;-7">&#x6B65;&#x9AA4; 7</h3>
+<p>BuiderPatternDemo &#x4F7F;&#x7528; MealBuilder &#x6765;&#x6F14;&#x793A;&#x5EFA;&#x9020;&#x8005;&#x6A21;&#x5F0F;&#xFF08;Builder Pattern&#xFF09;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BuilderPatternDemo</span> </span>{
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+      MealBuilder mealBuilder = <span class="hljs-keyword">new</span> MealBuilder();
+
+      Meal vegMeal = mealBuilder.prepareVegMeal();
+      System.out.println(<span class="hljs-string">&quot;Veg Meal&quot;</span>);
+      vegMeal.showItems();
+      System.out.println(<span class="hljs-string">&quot;Total Cost: &quot;</span> +vegMeal.getCost());
+
+      Meal nonVegMeal = mealBuilder.prepareNonVegMeal();
+      System.out.println(<span class="hljs-string">&quot;\n\nNon-Veg Meal&quot;</span>);
+      nonVegMeal.showItems();
+      System.out.println(<span class="hljs-string">&quot;Total Cost: &quot;</span> +nonVegMeal.getCost());
+   }
+}
+</code></pre>
+<h3 id="&#x6B65;&#x9AA4;-8">&#x6B65;&#x9AA4; 8</h3>
+<p>&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-java">Veg Meal
+Item : Veg Burger, Packing : Wrapper, Price : <span class="hljs-number">25.0</span>
+Item : Coke, Packing : Bottle, Price : <span class="hljs-number">30.0</span>
+Total Cost: <span class="hljs-number">55.0</span>
+
+
+Non-Veg Meal
+Item : Chicken Burger, Packing : Wrapper, Price : <span class="hljs-number">50.5</span>
+Item : Pepsi, Packing : Bottle, Price : <span class="hljs-number">35.0</span>
+Total Cost: <span class="hljs-number">85.5</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="抽象工厂模式.html" class="navigation navigation-prev " aria-label="Previous page: 抽象工厂模式">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="原型模式.html" class="navigation navigation-next " aria-label="Next page: 原型模式">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"建造者模式","level":"3.1.1.4","depth":3,"next":{"title":"原型模式","level":"3.1.1.5","depth":3,"path":"学习资料/Java/设计模式/创建型模式/原型模式.md","ref":"学习资料/Java/设计模式/创建型模式/原型模式.md","articles":[]},"previous":{"title":"抽象工厂模式","level":"3.1.1.3","depth":3,"path":"学习资料/Java/设计模式/创建型模式/抽象工厂模式.md","ref":"学习资料/Java/设计模式/创建型模式/抽象工厂模式.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","code","copy-code-button","back-to-top-button","-lunr","-search","search-pro","chapter-fold","hide-element"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"","minHeaderCount":"2","minHeaderDeep":"6"},"chapter-fold":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link",".pull-right"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"B.W.H","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Notes","language":"zh-hans","gitbook":"*","description":"学习笔记"},"file":{"path":"学习资料/Java/设计模式/创建型模式/建造者模式.md","mtime":"2022-05-19T01:19:17.477Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-05-19T01:20:09.695Z"},"basePath":"../../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../../gitbook/gitbook.js"></script>
+    <script src="../../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

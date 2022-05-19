@@ -1,0 +1,1118 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>UML类图 · Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="B.W.H">
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../JVM分层编译/JVM分层编译.html" />
+    
+    
+    <link rel="prev" href="../../Maven/Maven插件.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">学习资料</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    资料
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../Java.html">
+            
+                <a href="../../Java.html">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1" data-path="../../Java/juc并发编程/并发编程.html">
+            
+                <a href="../../Java/juc并发编程/并发编程.html">
+            
+                    
+                    并发编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.1.2" data-path="../../Java/Spring注解驱动/Spring注解驱动.html">
+            
+                <a href="../../Java/Spring注解驱动/Spring注解驱动.html">
+            
+                    
+                    Spring注解驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../../数据库.html">
+            
+                <a href="../../数据库.html">
+            
+                    
+                    数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Java基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../Java/juc并发编程/并发编程.html">
+            
+                <a href="../../Java/juc并发编程/并发编程.html">
+            
+                    
+                    并发编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../../Java/Spring注解驱动/Spring注解驱动.html">
+            
+                <a href="../../Java/Spring注解驱动/Spring注解驱动.html">
+            
+                    
+                    Spring注解驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../../Java/juc并发编程/拓展/管程.html">
+            
+                <a href="../../Java/juc并发编程/拓展/管程.html">
+            
+                    
+                    管程深入理解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">设计模式</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../Java/设计模式/设计模式.html">
+            
+                <a href="../../Java/设计模式/设计模式.html">
+            
+                    
+                    设计模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../Java/设计模式/创建型模式/创建型模式.html">
+            
+                <a href="../../Java/设计模式/创建型模式/创建型模式.html">
+            
+                    
+                    创建型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1.1" data-path="../../Java/设计模式/创建型模式/单例模式.html">
+            
+                <a href="../../Java/设计模式/创建型模式/单例模式.html">
+            
+                    
+                    单例模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.2" data-path="../../Java/设计模式/创建型模式/工厂模式.html">
+            
+                <a href="../../Java/设计模式/创建型模式/工厂模式.html">
+            
+                    
+                    工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.3" data-path="../../Java/设计模式/创建型模式/抽象工厂模式.html">
+            
+                <a href="../../Java/设计模式/创建型模式/抽象工厂模式.html">
+            
+                    
+                    抽象工厂模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.4" data-path="../../Java/设计模式/创建型模式/建造者模式.html">
+            
+                <a href="../../Java/设计模式/创建型模式/建造者模式.html">
+            
+                    
+                    建造者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.1.5" data-path="../../Java/设计模式/创建型模式/原型模式.html">
+            
+                <a href="../../Java/设计模式/创建型模式/原型模式.html">
+            
+                    
+                    原型模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../Java/设计模式/结构型模式/结构型模式.html">
+            
+                <a href="../../Java/设计模式/结构型模式/结构型模式.html">
+            
+                    
+                    结构型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.2.1" data-path="../../Java/设计模式/结构型模式/外观模式.html">
+            
+                <a href="../../Java/设计模式/结构型模式/外观模式.html">
+            
+                    
+                    外观模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.2" data-path="../../Java/设计模式/结构型模式/装饰器模式.html">
+            
+                <a href="../../Java/设计模式/结构型模式/装饰器模式.html">
+            
+                    
+                    装饰器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.3" data-path="../../Java/设计模式/结构型模式/组合模式.html">
+            
+                <a href="../../Java/设计模式/结构型模式/组合模式.html">
+            
+                    
+                    组合模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.4" data-path="../../Java/设计模式/结构型模式/享元模式.html">
+            
+                <a href="../../Java/设计模式/结构型模式/享元模式.html">
+            
+                    
+                    享元模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.5" data-path="../../Java/设计模式/结构型模式/代理模式.html">
+            
+                <a href="../../Java/设计模式/结构型模式/代理模式.html">
+            
+                    
+                    代理模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.6" data-path="../../Java/设计模式/结构型模式/适配器模式.html">
+            
+                <a href="../../Java/设计模式/结构型模式/适配器模式.html">
+            
+                    
+                    适配器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2.7" data-path="../../Java/设计模式/结构型模式/桥接模式.html">
+            
+                <a href="../../Java/设计模式/结构型模式/桥接模式.html">
+            
+                    
+                    桥接模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../Java/设计模式/行为型模式/行为型模式.html">
+            
+                <a href="../../Java/设计模式/行为型模式/行为型模式.html">
+            
+                    
+                    行为型模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.3.1" data-path="../../Java/设计模式/行为型模式/策略模式.html">
+            
+                <a href="../../Java/设计模式/行为型模式/策略模式.html">
+            
+                    
+                    策略模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.2" data-path="../../Java/设计模式/行为型模式/中介者模式.html">
+            
+                <a href="../../Java/设计模式/行为型模式/中介者模式.html">
+            
+                    
+                    中介者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.3" data-path="../../Java/设计模式/行为型模式/责任链模式.html">
+            
+                <a href="../../Java/设计模式/行为型模式/责任链模式.html">
+            
+                    
+                    责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.4" data-path="../../Java/设计模式/行为型模式/观察者模式.html">
+            
+                <a href="../../Java/设计模式/行为型模式/观察者模式.html">
+            
+                    
+                    观察者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.5" data-path="../../Java/设计模式/行为型模式/迭代器模式.html">
+            
+                <a href="../../Java/设计模式/行为型模式/迭代器模式.html">
+            
+                    
+                    迭代器模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3.6" data-path="../../Java/设计模式/行为型模式/访问者模式.html">
+            
+                <a href="../../Java/设计模式/行为型模式/访问者模式.html">
+            
+                    
+                    访问者模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">JVM（JAVA虚拟机）</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇.html">
+            
+                    
+                    JVM上篇：内存与垃圾回收篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/JVM与Java体系结构.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/JVM与Java体系结构.html">
+            
+                    
+                    1.JVM与Java体系结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/类加载子系统.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/类加载子系统.html">
+            
+                    
+                    2.类加载子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/运行时数据区及程序计数器.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/运行时数据区及程序计数器.html">
+            
+                    
+                    3.运行时数据区及程序计数器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/虚拟机栈.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/虚拟机栈.html">
+            
+                    
+                    4.虚拟机栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/本地方法接口和本地方法栈.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/本地方法接口和本地方法栈.html">
+            
+                    
+                    5.本地方法接口和本地方法栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/堆.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/堆.html">
+            
+                    
+                    6.堆
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/方法区.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/方法区.html">
+            
+                    
+                    7.方法区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/对象实例化及直接内存.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/对象实例化及直接内存.html">
+            
+                    
+                    8.对象实例化及直接内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/执行引擎.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/执行引擎.html">
+            
+                    
+                    9.执行引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.10" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/StringTable.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/StringTable.html">
+            
+                    
+                    10.StringTable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.11" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收概述及算法.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收概述及算法.html">
+            
+                    
+                    11.垃圾回收概述及算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.12" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收相关概念.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收相关概念.html">
+            
+                    
+                    12.垃圾回收相关概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.13" data-path="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收器.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM上篇：内存与垃圾回收篇/垃圾回收器.html">
+            
+                    
+                    13.垃圾回收器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../Java/JVM（JAVA虚拟机）/JVM中篇：字节码与类加载篇.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM中篇：字节码与类加载篇.html">
+            
+                    
+                    JVM中篇：字节码与类加载篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../../Java/JVM（JAVA虚拟机）/JVM下篇：性能监控与调优篇.html">
+            
+                <a href="../../Java/JVM（JAVA虚拟机）/JVM下篇：性能监控与调优篇.html">
+            
+                    
+                    JVM下篇：性能监控与调优篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linux</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../Linux/CentOS7安装.html">
+            
+                <a href="../../Linux/CentOS7安装.html">
+            
+                    
+                    CentOS7安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Maven</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../Maven/Maven插件.html">
+            
+                <a href="../../Maven/Maven插件.html">
+            
+                    
+                    Maven插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">扩展知识</li>
+        
+        
+    
+        <li class="chapter active" data-level="7.1" data-path="UML类图.html">
+            
+                <a href="UML类图.html">
+            
+                    
+                    UML类图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../JVM分层编译/JVM分层编译.html">
+            
+                <a href="../JVM分层编译/JVM分层编译.html">
+            
+                    
+                    JVM分层编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../集合类容器类/集合类容器类.html">
+            
+                <a href="../集合类容器类/集合类容器类.html">
+            
+                    
+                    集合类容器类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">旅行攻略</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../../旅行攻略/昆明-大理-丽江.html">
+            
+                <a href="../../旅行攻略/昆明-大理-丽江.html">
+            
+                    
+                    昆明-大理-丽江
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >UML类图</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><ul>
+<li><div><a href="#uml&#x7C7B;&#x56FE;">UML&#x7C7B;&#x56FE;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1-&#x7C7B;&#x56FE;&#x57FA;&#x7840;&#x5C5E;&#x6027;">1. &#x7C7B;&#x56FE;&#x57FA;&#x7840;&#x5C5E;&#x6027;</a><i></i></div></li>
+<li><div><a href="#2-&#x7C7B;&#x4E0E;&#x7C7B;&#x4E4B;&#x95F4;&#x5173;&#x7CFB;">2. &#x7C7B;&#x4E0E;&#x7C7B;&#x4E4B;&#x95F4;&#x5173;&#x7CFB;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#21-&#x6CDB;&#x5316;&#xFF08;generalization&#xFF09;">2.1 &#x6CDB;&#x5316;&#xFF08;Generalization&#xFF09;</a><i></i></div></li>
+<li><div><a href="#22-&#x5B9E;&#x73B0;&#xFF08;realization&#xFF09;">2.2 &#x5B9E;&#x73B0;&#xFF08;Realization&#xFF09;</a><i></i></div></li>
+<li><div><a href="#23-&#x5173;&#x8054;&#xFF08;association&#xFF09;">2.3 &#x5173;&#x8054;&#xFF08;Association&#xFF09;</a><i></i></div></li>
+<li><div><a href="#24-&#x805A;&#x5408;&#xFF08;aggregation&#xFF09;">2.4 &#x805A;&#x5408;&#xFF08;Aggregation&#xFF09;</a><i></i></div></li>
+<li><div><a href="#25-&#x7EC4;&#x5408;&#xFF08;composition&#xFF09;">2.5 &#x7EC4;&#x5408;&#xFF08;Composition&#xFF09;</a><i></i></div></li>
+<li><div><a href="#26-&#x4F9D;&#x8D56;&#xFF08;dependency&#xFF09;">2.6 &#x4F9D;&#x8D56;&#xFF08;Dependency&#xFF09;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#3&#x5404;&#x79CD;&#x5173;&#x7CFB;&#x7684;&#x5F3A;&#x5F31;&#x987A;&#x5E8F;">3.&#x5404;&#x79CD;&#x5173;&#x7CFB;&#x7684;&#x5F3A;&#x5F31;&#x987A;&#x5E8F;</a><i></i></div></li>
+</ul></li>
+</ul>
+</div>
+
+<p>&#x7B14;&#x8BB0;&#x6765;&#x6E90;&#xFF1A;</p>
+<p><a href="https://blog.csdn.net/tianhai110/article/details/6339565" target="_blank">https://blog.csdn.net/tianhai110/article/details/6339565</a></p>
+<p><a href="https://www.jianshu.com/p/57620b762160" target="_blank">https://www.jianshu.com/p/57620b762160</a></p>
+<h1 id="uml&#x7C7B;&#x56FE;">UML&#x7C7B;&#x56FE;</h1>
+<h2 id="1-&#x7C7B;&#x56FE;&#x57FA;&#x7840;&#x5C5E;&#x6027;">1. &#x7C7B;&#x56FE;&#x57FA;&#x7840;&#x5C5E;&#x6027;</h2>
+<p><img src="UML&#x7C7B;&#x56FE;.assets/image-20220221155715102.png" alt="image-20220221155715102"></p>
+<pre><code>+&#x8868;&#x793A;public
+-&#x8868;&#x793A;private  
+#&#x8868;&#x793A;protected 
+~&#x8868;&#x793A;default,&#x4E5F;&#x5C31;&#x662F;&#x5305;&#x6743;&#x9650;  
+_&#x4E0B;&#x5212;&#x7EBF;&#x8868;&#x793A;static  
+&#x659C;&#x4F53;&#x8868;&#x793A;&#x62BD;&#x8C61;
+</code></pre><h2 id="2-&#x7C7B;&#x4E0E;&#x7C7B;&#x4E4B;&#x95F4;&#x5173;&#x7CFB;">2. &#x7C7B;&#x4E0E;&#x7C7B;&#x4E4B;&#x95F4;&#x5173;&#x7CFB;</h2>
+<p>&#x5728;UML&#x7C7B;&#x56FE;&#x4E2D;&#xFF0C;&#x5E38;&#x89C1;&#x7684;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x5173;&#x7CFB;&#xFF1A;</p>
+<p><strong>&#x6CDB;&#x5316;&#xFF08;<em>Generalization</em>&#xFF09;&#xFF0C;</strong></p>
+<p><strong>&#x5B9E;&#x73B0;&#xFF08;<em>Realization</em>&#xFF09;&#xFF0C;</strong></p>
+<p><strong>&#x5173;&#x8054;&#xFF08;<em>Association</em>&#xFF09;&#xFF0C;</strong></p>
+<p><strong>&#x805A;&#x5408;&#xFF08;<em>Aggregation</em>&#xFF09;&#xFF0C;</strong></p>
+<p><strong>&#x7EC4;&#x5408;&#xFF08;<em>Composition</em>&#xFF09;&#xFF0C;</strong></p>
+<p><strong>&#x4F9D;&#x8D56;&#xFF08;<em>Dependency</em>&#xFF09;</strong></p>
+<h3 id="21-&#x6CDB;&#x5316;&#xFF08;generalization&#xFF09;">2.1 &#x6CDB;&#x5316;&#xFF08;<em>Generalization</em>&#xFF09;</h3>
+<font color="red">&#x3010;&#x6CDB;&#x5316;&#x5173;&#x7CFB;&#x3011;&#xFF1A;&#x662F;&#x4E00;&#x79CD;&#x7EE7;&#x627F;&#x5173;&#x7CFB;,&#x5B83;&#x6307;&#x5B9A;&#x4E86;&#x5B50;&#x7C7B;&#x5982;&#x4F55;&#x7279;&#x5316;&#x7236;&#x7C7B;&#x7684;&#x6240;&#x6709;&#x7279;&#x5F81;&#x548C;&#x884C;&#x4E3A;&#x3002;</font><br>
+
+<font color="blue">&#x3010;&#x7BAD;&#x5934;&#x6307;&#x5411;&#x3011;&#xFF1A;&#x5E26;&#x4E09;&#x89D2;&#x7BAD;&#x5934;&#x7684;&#x5B9E;&#x7EBF;&#xFF0C;&#x7BAD;&#x5934;&#x6307;&#x5411;&#x7236;&#x7C7B;&#x3002;</font>
+
+<p>&#x3010;&#x793A;&#x4F8B;&#x3011;&#xFF1A;&#x9E1F;&#x7C7B;&#x7EE7;&#x627F;&#x62BD;&#x8C61;&#x7C7B;&#x52A8;&#x7269;</p>
+<p><img src="UML&#x7C7B;&#x56FE;.assets/image-20220221180257435.png" alt="image-20220221180257435"></p>
+<h3 id="22-&#x5B9E;&#x73B0;&#xFF08;realization&#xFF09;">2.2 &#x5B9E;&#x73B0;&#xFF08;<em>Realization</em>&#xFF09;</h3>
+<font color="red">&#x3010;&#x5B9E;&#x73B0;&#x5173;&#x7CFB;&#x3011;&#xFF1A;&#x662F;&#x4E00;&#x79CD;&#x7C7B;&#x4E0E;&#x63A5;&#x53E3;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x8868;&#x793A;&#x7C7B;&#x662F;&#x63A5;&#x53E3;&#x6240;&#x6709;&#x7279;&#x5F81;&#x548C;&#x884C;&#x4E3A;&#x7684;&#x5B9E;&#x73B0;&#x3002;<br></font>
+
+<font color="blue">&#x3010;&#x7BAD;&#x5934;&#x6307;&#x5411;&#x3011;&#xFF1A;&#x5E26;&#x4E09;&#x89D2;&#x7BAD;&#x5934;&#x7684;&#x865A;&#x7EBF;&#xFF0C;&#x7BAD;&#x5934;&#x6307;&#x5411;&#x63A5;&#x53E3;&#x3002;</font>
+
+<p>&#x3010;&#x793A;&#x4F8B;&#x3011;&#xFF1A;&#x5927;&#x96C1;&#x9700;&#x8981;&#x98DE;&#x7FD4;&#xFF0C;&#x5C31;&#x8981;&#x5B9E;&#x73B0;&#x98DE;&#x884C;&#x7684;&#x884C;&#x4E3A;</p>
+<p><img src="UML&#x7C7B;&#x56FE;.assets/image-20220221181723522.png" alt="image-20220221181723522"></p>
+<h3 id="23-&#x5173;&#x8054;&#xFF08;association&#xFF09;">2.3 &#x5173;&#x8054;&#xFF08;<em>Association</em>&#xFF09;</h3>
+<font color="red">&#x3010;&#x5173;&#x8054;&#x5173;&#x7CFB;&#x3011;&#xFF1A;&#x5BF9;&#x4E8E;&#x4E24;&#x4E2A;&#x76F8;&#x5BF9;&#x72EC;&#x7ACB;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x4F8B;&#x4E0E;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x4E9B;&#x7279;&#x5B9A;&#x5B9E;&#x4F8B;&#x5B58;&#x5728;&#x56FA;&#x5B9A;&#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#x65F6;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x4E3A;&#x5173;&#x8054;&#x5173;&#x7CFB;&#x3002;</font><br>
+
+&#x5173;&#x8054;&#x53EF;&#x4EE5;&#x662F;&#x53CC;&#x5411;&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x5355;&#x5411;&#x7684;&#x3002;&#x53CC;&#x5411;&#x7684;&#x5173;&#x8054;&#x53EF;&#x4EE5;&#x6709;&#x4E24;&#x4E2A;&#x7BAD;&#x5934;&#x6216;&#x8005;&#x6CA1;&#x6709;&#x7BAD;&#x5934;&#xFF0C;&#x5355;&#x5411;&#x7684;&#x5173;&#x8054;&#x6709;&#x4E00;&#x4E2A;&#x7BAD;&#x5934;&#x3002;
+
+<font color="blue">&#x3010;&#x7BAD;&#x5934;&#x6307;&#x5411;&#x3011;&#xFF1A;&#x5E26;&#x666E;&#x901A;&#x7BAD;&#x5934;&#x7684;&#x5B9E;&#x5FC3;&#x7EBF;&#xFF0C;&#x6307;&#x5411;&#x88AB;&#x62E5;&#x6709;&#x8005;&#x3002;</font>
+
+<p>&#x3010;&#x793A;&#x4F8B;&#x3011;&#xFF1A;&#x4F01;&#x9E45;&#x9700;&#x8981;<code>&#x77E5;&#x9053;</code>&#x6C14;&#x5019;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x9700;&#x8981;<code>&#x4E86;&#x89E3;</code>&#x6C14;&#x5019;&#x89C4;&#x5F8B;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x7C7B;<code>&#x77E5;&#x9053;</code>&#x53E6;&#x4E00;&#x4E2A;&#x7C7B;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x5173;&#x8054;&#x3002;</p>
+<p><img src="UML&#x7C7B;&#x56FE;.assets/image-20220221181744516.png" alt="image-20220221181744516"></p>
+<h3 id="24-&#x805A;&#x5408;&#xFF08;aggregation&#xFF09;">2.4 &#x805A;&#x5408;&#xFF08;<em>Aggregation</em>&#xFF09;</h3>
+<font color="red">&#x3010;&#x805A;&#x5408;&#x5173;&#x7CFB;&#x3011;&#xFF1A;&#x8868;&#x793A;&#x4E00;&#x79CD;&#x5F31;&#x7684;`&#x62E5;&#x6709;`&#x5173;&#x7CFB;&#xFF0C;&#x5373;has-a&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x4F53;&#x73B0;&#x7684;&#x662F;A&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x5305;&#x542B;B&#x5BF9;&#x8C61;&#xFF0C;&#x4F46;B&#x5BF9;&#x8C61;&#x4E0D;&#x662F;A&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002; <b>&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x5177;&#x6709;&#x5404;&#x81EA;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</b>&#x3002;</font><br>
+
+<font color="blue">&#x3010;&#x7BAD;&#x5934;&#x6307;&#x5411;&#x3011;&#xFF1A;&#x5E26;&#x7A7A;&#x5FC3;&#x83F1;&#x5F62;&#x7684;&#x5B9E;&#x5FC3;&#x7EBF;&#xFF0C;&#x83F1;&#x5F62;&#x6307;&#x5411;&#x6574;&#x4F53;&#x3002;</font>
+
+<p>&#x3010;&#x793A;&#x4F8B;&#x3011;&#xFF1A;&#x6BCF;&#x4E00;&#x53EA;&#x5927;&#x96C1;&#x90FD;&#x5C5E;&#x4E8E;&#x4E00;&#x4E2A;&#x5927;&#x96C1;&#x7FA4;&#xFF0C;&#x4E00;&#x4E2A;&#x5927;&#x96C1;&#x7FA4;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x53EA;&#x5927;&#x96C1;&#x3002;&#x5F53;&#x5927;&#x96C1;&#x6B7B;&#x53BB;&#x540E;&#x5927;&#x96C1;&#x7FA4;&#x5E76;&#x4E0D;&#x4F1A;&#x6D88;&#x5931;&#xFF0C;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E0D;&#x540C;&#x3002;</p>
+<p><img src="UML&#x7C7B;&#x56FE;.assets/image-20220221182346664.png" alt="image-20220221182346664"></p>
+<h3 id="25-&#x7EC4;&#x5408;&#xFF08;composition&#xFF09;">2.5 &#x7EC4;&#x5408;&#xFF08;<em>Composition</em>&#xFF09;</h3>
+<font color="red">&#x3010;&#x7EC4;&#x5408;&#x5173;&#x7CFB;&#x3011;&#xFF1A;&#x7EC4;&#x5408;&#x662F;&#x4E00;&#x79CD;&#x5F3A;&#x7684;`&#x62E5;&#x6709;`&#x5173;&#x7CFB;&#xFF0C;&#x662F;&#x4E00;&#x79CD;contains-a&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x4F53;&#x73B0;&#x4E86;&#x4E25;&#x683C;&#x7684;&#x90E8;&#x5206;&#x548C;&#x6574;&#x4F53;&#x5173;&#x7CFB;&#xFF0C;<b>&#x90E8;&#x5206;&#x548C;&#x6574;&#x4F53;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E00;&#x6837;</b>&#x3002;</font><br>
+
+<font color="blue">&#x3010;&#x7BAD;&#x5934;&#x6307;&#x5411;&#x3011;&#xFF1A;&#x5E26;&#x5B9E;&#x5FC3;&#x83F1;&#x5F62;&#x7684;&#x5B9E;&#x5FC3;&#x7EBF;&#xFF0C;&#x83F1;&#x5F62;&#x6307;&#x5411;&#x6574;&#x4F53;&#x3002;</font>
+
+<p>&#x3010;&#x793A;&#x4F8B;&#x3011;&#xFF1A;&#x9E1F;&#x548C;&#x7FC5;&#x8180;&#x5C31;&#x662F;&#x7EC4;&#x5408;&#x5173;&#x7CFB;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x662F;&#x90E8;&#x5206;&#x548C;&#x6574;&#x4F53;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x5E76;&#x4E14;&#x7FC5;&#x8180;&#x548C;&#x9E1F;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;</p>
+<p><img src="UML&#x7C7B;&#x56FE;.assets/image-20220221182653598.png" alt="image-20220221182653598"></p>
+<h3 id="26-&#x4F9D;&#x8D56;&#xFF08;dependency&#xFF09;">2.6 &#x4F9D;&#x8D56;&#xFF08;<em>Dependency</em>&#xFF09;</h3>
+<font color="red">&#x3010;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3011;&#xFF1A;&#x5BF9;&#x4E8E;&#x4E24;&#x4E2A;&#x76F8;&#x5BF9;&#x72EC;&#x7ACB;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x8D1F;&#x8D23;&#x6784;&#x9020;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x6216;&#x8005;&#x4F9D;&#x8D56;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x4E3B;&#x8981;&#x4F53;&#x73B0;&#x4E3A;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;</font>
+
+<blockquote>
+<p>&#x200B;    &#x5C3D;&#x91CF;&#x4E0D;&#x4F7F;&#x7528;&#x53CC;&#x5411;&#x7684;&#x4E92;&#x76F8;&#x4F9D;&#x8D56;</p>
+</blockquote>
+<font color="green">&#x3010;&#x4EE3;&#x7801;&#x8868;&#x73B0;&#x3011;&#xFF1A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x3001;&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#x6216;&#x8005;&#x5BF9;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x3002;</font><br>
+
+<font color="blue">&#x3010;&#x7BAD;&#x5934;&#x6307;&#x5411;&#x3011;&#xFF1A;&#x5E26;&#x7BAD;&#x5934;&#x7684;&#x865A;&#x7EBF;&#xFF0C;&#x6307;&#x5411;&#x88AB;&#x4F7F;&#x7528;&#x8005;&#x3002;</font>
+
+<p>&#x3010;&#x793A;&#x4F8B;&#x3011;&#xFF1A;&#x52A8;&#x7269;&#x4F9D;&#x8D56;&#x6C27;&#x6C14;&#x548C;&#x6C34;&#x3002;&#x8C03;&#x7528;&#x65B0;&#x9648;&#x4EE3;&#x8C22;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x6C27;&#x6C14;&#x7C7B;&#x4E0E;&#x6C34;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;</p>
+<p><img src="UML&#x7C7B;&#x56FE;.assets/image-20220221183942449.png" alt="image-20220221183942449"></p>
+<h2 id="3&#x5404;&#x79CD;&#x5173;&#x7CFB;&#x7684;&#x5F3A;&#x5F31;&#x987A;&#x5E8F;">3.&#x5404;&#x79CD;&#x5173;&#x7CFB;&#x7684;&#x5F3A;&#x5F31;&#x987A;&#x5E8F;</h2>
+<font style="font-size:20px;font-weight:bold">&#x6CDB;&#x5316;=&#x5B9E;&#x73B0;&gt;&#x7EC4;&#x5408;&gt;&#x805A;&#x5408;&gt;&#x5173;&#x8054;&gt;&#x4F9D;&#x8D56;</font>
+
+<p>&#x4E0B;&#x9762;&#x8FD9;&#x5F20;UML&#x56FE;&#xFF0C;&#x6BD4;&#x8F83;&#x5F62;&#x8C61;&#x5730;&#x5C55;&#x793A;&#x4E86;&#x5404;&#x79CD;&#x7C7B;&#x56FE;&#x5173;&#x7CFB;&#xFF1A;</p>
+<p><img src="UML&#x7C7B;&#x56FE;.assets/image-20220221184205916.png" alt="image-20220221184205916"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../../Maven/Maven插件.html" class="navigation navigation-prev " aria-label="Previous page: Maven插件">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../JVM分层编译/JVM分层编译.html" class="navigation navigation-next " aria-label="Next page: JVM分层编译">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"UML类图","level":"7.1","depth":1,"next":{"title":"JVM分层编译","level":"7.2","depth":1,"path":"学习资料/扩展知识/JVM分层编译/JVM分层编译.md","ref":"学习资料/扩展知识/JVM分层编译/JVM分层编译.md","articles":[]},"previous":{"title":"Maven插件","level":"6.1","depth":1,"path":"学习资料/Maven/Maven插件.md","ref":"学习资料/Maven/Maven插件.md","articles":[]},"dir":"ltr"},"config":{"plugins":["page-treeview","code","copy-code-button","back-to-top-button","-lunr","-search","search-pro","chapter-fold","hide-element"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"","minHeaderCount":"2","minHeaderDeep":"6"},"chapter-fold":{},"search-pro":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link",".pull-right"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"B.W.H","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Notes","language":"zh-hans","gitbook":"*","description":"学习笔记"},"file":{"path":"学习资料/扩展知识/UML类图/UML类图.md","mtime":"2022-05-19T01:19:17.493Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-05-19T01:20:09.695Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
