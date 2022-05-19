@@ -63,6 +63,10 @@
 
 - [CentOS7安装](/学习资料/Linux/CentOS7安装.md)
 
+## Maven
+
+- [Maven插件](/学习资料/Maven/Maven插件.md)
+
 ## 扩展知识
 
 * [UML类图](/学习资料/扩展知识/UML类图/UML类图.md)
